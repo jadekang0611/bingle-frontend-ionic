@@ -3,10 +3,14 @@ import {
   IonHeader,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonSegment,
+  IonSegmentButton,
+  IonLabel,
+  IonIcon
 } from '@ionic/react';
 import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+
 import './Home.css';
 
 const Follow: React.FC = () => {
@@ -23,7 +27,18 @@ const Follow: React.FC = () => {
             <IonTitle size="large">Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        <IonSegment>
+          <IonSegment
+            onIonChange={e => console.log('Segment selected, e.detail.value')}
+          >
+            <IonSegmentButton value="followers">
+              <IonLabel>Followers</IonLabel>
+            </IonSegmentButton>
+            <IonSegmentButton value="following">
+              <IonLabel>Following</IonLabel>
+            </IonSegmentButton>
+          </IonSegment>
+        </IonSegment>
       </IonContent>
     </IonPage>
   );

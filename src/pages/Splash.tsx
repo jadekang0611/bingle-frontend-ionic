@@ -16,6 +16,8 @@ const slideOpts = {
   speed: 400
 };
 
+//TODO: (1) Add corresponding images (2) Add corresponding blurb (3) Make sure the routing is added to the continue button (4) Add routing with a condition to App component that only a user who is signing up for the first time sees this.
+
 const Splash: React.FC = () => {
   return (
     <IonContent fullscreen className="ion-padding" scroll-y="false">
