@@ -1,0 +1,11 @@
+#avatar-container {
+  overflow: visible;
+  padding: 0 !important;
+}
+
+.avatar-img {
+  height: 200px;
+  width: 200px;
+  margin: 8px 24px !important;
+  border-radius: 50%;
+}

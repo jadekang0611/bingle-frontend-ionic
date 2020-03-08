@@ -56,7 +56,7 @@ const Institutions: React.FC = () => {
           <IonRow>
             {institutionLogo.map((institution, i) => {
               return (
-                <IonCol className="institution-col">
+                <IonCol className="institution-col" key={i}>
                   <input
                     className="institution-img"
                     type="image"
