@@ -1,0 +1,7 @@
+{
+  "name": "bingle-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
