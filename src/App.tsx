@@ -18,6 +18,7 @@ import Institutions from './pages/Institutions';
 import Landing from './pages/Landing';
 import SearchScreen from './pages/SearchScreen';
 import MyAccount from './pages/MyAccount';
+import Follow from './pages/Follow';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -37,7 +38,6 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import Follow from './pages/Follow';
 
 const App: React.FC = () => (
   <IonApp>

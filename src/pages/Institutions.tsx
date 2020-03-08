@@ -25,18 +25,18 @@ import leWagon from './image/leWagon.png';
 import udacity from './image/udacity.png';
 
 const Institutions: React.FC = () => {
-  // const institutionLogo = [
-  //   appAcademy,
-  //   bloc,
-  //   codingdojo,
-  //   flatiron,
-  //   generalAssembly,
-  //   hackReactor,
-  //   ironhack,
-  //   lambda,
-  //   leWagon,
-  //   udacity
-  // ];
+  const institutionLogo = [
+    appAcademy,
+    bloc,
+    codingDojo,
+    flatIron,
+    generalAssembly,
+    hackReactor,
+    ironHack,
+    lambda,
+    leWagon,
+    udacity
+  ];
 
   return (
     <IonPage>
@@ -54,10 +54,23 @@ const Institutions: React.FC = () => {
         <br></br>
         <IonGrid>
           <IonRow>
-            <IonCol className="institution-col">
-              <img src={appAcademy} alt={appAcademy} width="120" height="120" />
-            </IonCol>
-            <IonCol className="institution-col">
+            {/* <img src={appAcademy} alt={appAcademy} width="120" height="120" /> */}
+            {institutionLogo.map(institution => {
+              return (
+                <IonCol>
+                  <input
+                    className="institution-img"
+                    type="image"
+                    src={institution}
+                    value={institution}
+                    onClick={() => {}}
+                    alt="logos"
+                  />
+                </IonCol>
+              );
+            })}
+
+            {/* <IonCol className="institution-col">
               <img src={bloc} alt={bloc} width="120" height="120" />
             </IonCol>
           </IonRow>
@@ -105,7 +118,7 @@ const Institutions: React.FC = () => {
             </IonCol>
             <IonCol className="institution-col">
               <img src={udacity} alt={udacity} width="120" height="120" />
-            </IonCol>
+            </IonCol> */}
           </IonRow>
         </IonGrid>
       </IonContent>
