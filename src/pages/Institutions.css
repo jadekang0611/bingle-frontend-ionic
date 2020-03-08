@@ -1,5 +1,5 @@
 .institution-col {
-  background: 'fff' !important;
+  padding: 16px;
 }
 
 .institution-img {
@@ -7,4 +7,9 @@
   display: block;
   margin: auto;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  outline: none !important;
+}
+
+.institution-img:focus {
+  outline: none !important;
 }

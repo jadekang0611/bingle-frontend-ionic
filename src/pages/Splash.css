@@ -1,0 +1,34 @@
+IonSlides {
+  height: 100%;
+}
+
+.slide {
+  display: block;
+}
+
+.slide h2 {
+  margin-top: 2.8rem;
+  color: #000000;
+}
+
+.swiper-slide img {
+  max-height: 50%;
+  max-width: 80%;
+  margin: 60px 0 40px;
+  pointer-events: none;
+}
+
+.slide p b {
+  font-weight: 500;
+}
+
+.slide p {
+  padding: 0 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #60646b;
+}
+
+.slide p b {
+  color: #000000;
+}

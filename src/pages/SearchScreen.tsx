@@ -4,7 +4,10 @@ import {
   IonHeader,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonSearchbar,
+  IonList,
+  IonItem
 } from '@ionic/react';
 
 const SearchScreen: React.FC = () => {
@@ -21,6 +24,12 @@ const SearchScreen: React.FC = () => {
             <IonTitle size="large">Search Screen</IonTitle>
           </IonToolbar>
         </IonHeader>
+        <IonSearchbar
+          showCancelButton="focus"
+          placeholder="Software Engineer"
+          autocomplete="on"
+          inputmode="text"
+        ></IonSearchbar>
       </IonContent>
     </IonPage>
   );

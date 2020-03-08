@@ -54,10 +54,9 @@ const Institutions: React.FC = () => {
         <br></br>
         <IonGrid>
           <IonRow>
-            {/* <img src={appAcademy} alt={appAcademy} width="120" height="120" /> */}
-            {institutionLogo.map(institution => {
+            {institutionLogo.map((institution, i) => {
               return (
-                <IonCol>
+                <IonCol className="institution-col">
                   <input
                     className="institution-img"
                     type="image"
@@ -65,60 +64,12 @@ const Institutions: React.FC = () => {
                     value={institution}
                     onClick={() => {}}
                     alt="logos"
+                    width="120"
+                    height="120"
                   />
                 </IonCol>
               );
             })}
-
-            {/* <IonCol className="institution-col">
-              <img src={bloc} alt={bloc} width="120" height="120" />
-            </IonCol>
-          </IonRow>
-          <br></br>
-          <IonRow>
-            <IonCol className="institution-col">
-              <img src={codingDojo} alt={codingDojo} width="120" height="120" />
-            </IonCol>
-            <IonCol className="institution-col">
-              <img src={flatIron} alt={flatIron} width="120" height="120" />
-            </IonCol>
-          </IonRow>
-          <br></br>
-          <IonRow>
-            <IonCol className="institution-col">
-              <img
-                src={generalAssembly}
-                alt={generalAssembly}
-                width="120"
-                height="120"
-              />
-            </IonCol>
-            <IonCol className="institution-col">
-              <img
-                src={hackReactor}
-                alt={hackReactor}
-                width="120"
-                height="120"
-              />
-            </IonCol>
-          </IonRow>
-          <br></br>
-          <IonRow>
-            <IonCol className="institution-col">
-              <img src={ironHack} alt={ironHack} width="120" height="120" />
-            </IonCol>
-            <IonCol className="institution-col">
-              <img src={lambda} alt={lambda} width="120" height="120" />
-            </IonCol>
-          </IonRow>
-          <br></br>
-          <IonRow>
-            <IonCol className="institution-col">
-              <img src={leWagon} alt={leWagon} width="120" height="120" />
-            </IonCol>
-            <IonCol className="institution-col">
-              <img src={udacity} alt={udacity} width="120" height="120" />
-            </IonCol> */}
           </IonRow>
         </IonGrid>
       </IonContent>

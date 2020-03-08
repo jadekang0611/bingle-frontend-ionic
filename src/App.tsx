@@ -10,7 +10,7 @@ import {
   IonIcon
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { grid, search, star, person } from 'ionicons/icons';
+import { square, grid, search, star, person } from 'ionicons/icons';
 import Home from './pages/Home';
 
 // My screens are imported here
@@ -19,6 +19,7 @@ import Landing from './pages/Landing';
 import SearchScreen from './pages/SearchScreen';
 import MyAccount from './pages/MyAccount';
 import Follow from './pages/Follow';
+import Splash from './pages/Splash';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -45,6 +46,7 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/home" component={Home} exact={true} />
+          <Route path="/splash" component={Splash} />
           <Route path="/landing" component={Landing} exact={true} />
           <Route path="/institutions" component={Institutions} />
           <Route path="/search" component={SearchScreen} />
@@ -53,6 +55,10 @@ const App: React.FC = () => (
           <Route exact path="/" render={() => <Redirect to="/home" />} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
+          <IonTabButton tab="splash" href="/splash">
+            <IonIcon icon={square} />
+            <IonLabel>Splash</IonLabel>
+          </IonTabButton>
           <IonTabButton tab="institutions" href="/institutions">
             <IonIcon icon={grid} />
             <IonLabel>Institutions</IonLabel>
