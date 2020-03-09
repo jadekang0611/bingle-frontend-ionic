@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -29,6 +29,8 @@ import person9 from './image/avatars/person9.png';
 import person10 from './image/avatars/person10.png';
 //
 
+import { people } from './data/dummy-data';
+
 const slideOpts = {
   slidesPerView: 4,
   initialSlide: 1,
@@ -49,29 +51,42 @@ const SearchScreen: React.FC = () => {
     person10
   ];
 
-  const avartarBio = [
-    {
-      image: { person1 },
-      name: 'Mariah Carey',
-      title: 'UI/UX Designer',
-      institution: 'General Assembly'
+  let count = 0;
+
+  function alternateColors() {
+    if (count === 4) {
+      count = 1;
+    } else {
+      count++;
     }
-  ];
+  }
+
+  // const [searchString, setSearchString] = useState();
+  // const [searchResults, setSearchResults] = useState();
+  // const searchHandler = (event: any) => {
+  //   setSearchString(event.target.value);
+  // };
+  // useEffect(() => {
+  //   const results = people.filter(user => {
+  //     if (user !== undefined) {
+  //       user.title.toLowerCase().includes(searchString);
+  //     }
+  //   });
+  //   setSearchResults(results);
+  // }, [searchString]);
   return (
     <IonPage>
-      {/* <IonToolbar>
-        <IonTitle>Search Screen</IonTitle>
-      </IonToolbar> */}
+
       <IonContent>
-        {/* <IonToolbar>
-          <IonTitle size="large">Search Screen</IonTitle>
-        </IonToolbar> */}
+  
         <IonSearchbar
           className="searchBar-container"
           // showCancelButton="focus"
           placeholder="Software Engineer"
           autocomplete="on"
           inputmode="text"
+          // value={searchString}
+          // onChange={searchHandler}
         ></IonSearchbar>
 
         <IonSlides options={slideOpts} id="avatar-container">
@@ -89,37 +104,36 @@ const SearchScreen: React.FC = () => {
           })}
         </IonSlides>
         <br></br>
-        <IonList>
-          <IonItem>
-            <IonAvatar slot="start">
-              <img src={person1} alt="avatar" />
-            </IonAvatar>
-            <IonLabel>
-              <h2>Mariah Carey</h2>
-              <h3>Software Engineer</h3>
-              <p>General Assembly</p>
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonAvatar slot="start">
-              <img src={person1} alt="avatar" />
-            </IonAvatar>
-            <IonLabel>
-              <h2>Mariah Carey</h2>
-              <h3>Software Engineer</h3>
-              <p>General Assembly</p>
-            </IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonAvatar slot="start">
-              <img src={person1} alt="avatar" />
-            </IonAvatar>
-            <IonLabel>
-              <h2>Mariah Carey</h2>
-              <h3>Software Engineer</h3>
-              <p>General Assembly</p>
-            </IonLabel>
-          </IonItem>
+        <IonList id="show-users-container">
+          {/* TypeScript gave me an error that my object possibly underfined; therefore, I wrapped my whole mapped array with a condition  */}
+          {people.map((user, id) => {
+            alternateColors();
+            console.log(id);
+            if (user !== undefined) {
+              console.log(user.img);
+              return (
+                <IonItem
+                  key={id}
+                  className={`alt-color-${count} search-users-container`}
+                >
+                  <IonAvatar className="search-image-container" slot="start">
+                    <img
+                      className="user-image-md"
+                      src={process.env.PUBLIC_URL + user.img}
+                      alt="avatar"
+                    />
+                  </IonAvatar>
+                  <IonLabel className="user-info-basic">
+                    <h2>{user.name}</h2>
+                    <div className="spacing"></div>
+                    <h3>{user.title}</h3>
+                    <div className="spacing"></div>
+                    <p>{user.institution}</p>
+                  </IonLabel>
+                </IonItem>
+              );
+            }
+          })}
         </IonList>
       </IonContent>
     </IonPage>

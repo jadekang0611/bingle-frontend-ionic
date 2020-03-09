@@ -13,16 +13,16 @@ import './Institutions.css';
 
 // Institution image are imported here
 
-import appAcademy from './image/appAcademy.png';
-import bloc from './image/bloc.png';
-import codingDojo from './image/codingDojo.png';
-import flatIron from './image/flatIron.png';
-import generalAssembly from './image/generalAssembly.png';
-import hackReactor from './image/hackReactor.png';
-import ironHack from './image/ironHack.png';
-import lambda from './image/lambda.png';
-import leWagon from './image/leWagon.png';
-import udacity from './image/udacity.png';
+import appAcademy from './image/logos/appAcademy.png';
+import bloc from './image/logos/bloc.png';
+import codingDojo from './image/logos/codingDojo.png';
+import flatIron from './image/logos/flatIron.png';
+import generalAssembly from './image/logos/generalAssembly.png';
+import hackReactor from './image/logos/hackReactor.png';
+import ironHack from './image/logos/ironHack.png';
+import lambda from './image/logos/lambda.png';
+import leWagon from './image/logos/leWagon.png';
+import udacity from './image/logos/udacity.png';
 
 const Institutions: React.FC = () => {
   const institutionLogo = [

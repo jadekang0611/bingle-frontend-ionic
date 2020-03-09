@@ -8,11 +8,6 @@
   font-weight: bold;
 }
 
-icon-inner {
-  color: white;
-  background: yellow;
-}
-
 #avatar-container {
   overflow: visible;
   padding: 0 !important;
@@ -27,4 +22,71 @@ icon-inner {
   border: 1px solid #f5cd34;
   background-color: #fff;
   padding: 0.25rem;
+}
+
+.alt-color-1 {
+  --ion-item-background: #f39c92;
+}
+
+.alt-color-2 {
+  --ion-item-background: #72d9b4;
+}
+
+.alt-color-3 {
+  --ion-item-background: #85d7ef;
+}
+
+.alt-color-4 {
+  --ion-item-background: #aba1e6;
+}
+
+.search-users-container {
+  height: 100%;
+  margin: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+  /* --ion-item-background: #72d9b4; */
+  --inner-border-width: 0;
+}
+
+#show-users-container {
+  padding: 0 !important;
+  background: #f5f5f5 !important;
+}
+
+.user-info-basic {
+  text-align: right;
+  margin: 12px 12px;
+}
+
+.spacing {
+  height: 10px;
+}
+
+.user-info-basic h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.user-info-basic h3 {
+  font-size: 16px;
+  color: #fff;
+}
+
+.user-info-basic p {
+  font-size: 16px;
+  color: #fff;
+}
+
+.user-image-md {
+  width: 200px;
+}
+
+.search-image-container {
+  width: 120px;
+  height: auto;
+  border-radius: 0% !important;
 }
