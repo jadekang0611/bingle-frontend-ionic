@@ -12,14 +12,18 @@ import {
   IonCol
 } from '@ionic/react';
 import './Landing.css';
+import BingleLogo from './image/bingle-logo.png';
 
 const Landing: React.FC = () => {
   return (
     <IonPage className="landing-page">
       <IonContent className="landing-page">
-        <IonToolbar>
-          <IonTitle className="logo">Bingle</IonTitle>
-        </IonToolbar>
+        <div className="logo-container">
+          <img id="bingle-logo" src={BingleLogo} alt="Bingle" />
+        </div>
+        <div className="landing-blurb-container">
+          <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+        </div>
         <IonGrid>
           <IonRow className="button-container">
             <IonCol>

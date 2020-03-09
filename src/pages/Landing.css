@@ -37,3 +37,19 @@
   --background: #fff;
   color: #000;
 }
+
+#bingle-logo {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.logo-container {
+  padding-top: 14rem;
+  display: flex;
+  justify-content: center;
+}
+
+.landing-blurb-container {
+  text-align: center;
+}
