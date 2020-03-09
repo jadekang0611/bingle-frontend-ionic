@@ -13,7 +13,8 @@ import {
   IonCol,
   IonAvatar,
   IonSlides,
-  IonSlide
+  IonSlide,
+  IonLabel
 } from '@ionic/react';
 import './SearchScreen.css';
 import person1 from './image/avatars/person1.png';
@@ -47,21 +48,27 @@ const SearchScreen: React.FC = () => {
     person9,
     person10
   ];
+
+  const avartarBio = [
+    {
+      image: { person1 },
+      name: 'Mariah Carey',
+      title: 'UI/UX Designer',
+      institution: 'General Assembly'
+    }
+  ];
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Search Screen</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      {/* <IonToolbar>
+        <IonTitle>Search Screen</IonTitle>
+      </IonToolbar> */}
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Search Screen</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        {/* <IonToolbar>
+          <IonTitle size="large">Search Screen</IonTitle>
+        </IonToolbar> */}
         <IonSearchbar
-          showCancelButton="focus"
+          className="searchBar-container"
+          // showCancelButton="focus"
           placeholder="Software Engineer"
           autocomplete="on"
           inputmode="text"
@@ -80,33 +87,40 @@ const SearchScreen: React.FC = () => {
               </IonSlide>
             );
           })}
-
-          {/* <IonSlide>
-            <IonAvatar>
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
-            </IonAvatar>
-          </IonSlide>
-          <IonSlide>
-            <IonAvatar>
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
-            </IonAvatar>
-          </IonSlide>
-          <IonSlide>
-            <IonAvatar>
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
-            </IonAvatar>
-          </IonSlide>
-          <IonSlide>
-            <IonAvatar>
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
-            </IonAvatar>
-          </IonSlide>
-          <IonSlide>
-            <IonAvatar>
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
-            </IonAvatar>
-          </IonSlide> */}
         </IonSlides>
+        <br></br>
+        <IonList>
+          <IonItem>
+            <IonAvatar slot="start">
+              <img src={person1} alt="avatar" />
+            </IonAvatar>
+            <IonLabel>
+              <h2>Mariah Carey</h2>
+              <h3>Software Engineer</h3>
+              <p>General Assembly</p>
+            </IonLabel>
+          </IonItem>
+          <IonItem>
+            <IonAvatar slot="start">
+              <img src={person1} alt="avatar" />
+            </IonAvatar>
+            <IonLabel>
+              <h2>Mariah Carey</h2>
+              <h3>Software Engineer</h3>
+              <p>General Assembly</p>
+            </IonLabel>
+          </IonItem>
+          <IonItem>
+            <IonAvatar slot="start">
+              <img src={person1} alt="avatar" />
+            </IonAvatar>
+            <IonLabel>
+              <h2>Mariah Carey</h2>
+              <h3>Software Engineer</h3>
+              <p>General Assembly</p>
+            </IonLabel>
+          </IonItem>
+        </IonList>
       </IonContent>
     </IonPage>
   );
