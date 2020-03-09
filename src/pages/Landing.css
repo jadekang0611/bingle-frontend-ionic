@@ -1,0 +1,39 @@
+.landing-page {
+  background-image: url('./image/bingleBackground.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  --background: none;
+}
+
+.button-container {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.landing-button {
+  --border-radius: 8px !important;
+  margin-bottom: 16px;
+  /* margin-left: 16px;
+  margin-right: 16px; */
+}
+
+.landing-footer {
+  padding-bottom: 16px !important;
+}
+.footer-title {
+  font-size: 12px;
+}
+
+.log-in-button {
+  --background: transparent;
+  border: 2px solid #fff;
+  border-radius: 8px !important;
+  text-decoration: underline;
+}
+
+.sign-up-button {
+  --background: #fff;
+  color: #000;
+}

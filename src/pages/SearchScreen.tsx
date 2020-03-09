@@ -14,7 +14,9 @@ import {
   IonAvatar,
   IonSlides,
   IonSlide,
-  IonLabel
+  IonLabel,
+  IonModal,
+  IonButton
 } from '@ionic/react';
 import './SearchScreen.css';
 import person1 from './image/avatars/person1.png';
@@ -60,7 +62,12 @@ const SearchScreen: React.FC = () => {
       count++;
     }
   }
+  const [showModal, setShowModal] = useState(false);
 
+  const showProfile = (e: any) => {
+    setShowModal(true);
+    console.log(e.target);
+  };
   // const [searchString, setSearchString] = useState();
   // const [searchResults, setSearchResults] = useState();
   // const searchHandler = (event: any) => {
@@ -76,9 +83,7 @@ const SearchScreen: React.FC = () => {
   // }, [searchString]);
   return (
     <IonPage>
-
       <IonContent>
-  
         <IonSearchbar
           className="searchBar-container"
           // showCancelButton="focus"
@@ -108,13 +113,13 @@ const SearchScreen: React.FC = () => {
           {/* TypeScript gave me an error that my object possibly underfined; therefore, I wrapped my whole mapped array with a condition  */}
           {people.map((user, id) => {
             alternateColors();
-            console.log(id);
+
             if (user !== undefined) {
-              console.log(user.img);
               return (
                 <IonItem
                   key={id}
                   className={`alt-color-${count} search-users-container`}
+                  onClick={showProfile}
                 >
                   <IonAvatar className="search-image-container" slot="start">
                     <img
@@ -135,6 +140,9 @@ const SearchScreen: React.FC = () => {
             }
           })}
         </IonList>
+        <IonModal isOpen={showModal}>
+          <IonButton onClick={() => setShowModal(false)}>Close Modal</IonButton>
+        </IonModal>
       </IonContent>
     </IonPage>
   );

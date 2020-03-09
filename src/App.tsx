@@ -10,7 +10,7 @@ import {
   IonIcon
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { square, grid, search, star, person } from 'ionicons/icons';
+import { square, grid, search, star, person, home } from 'ionicons/icons';
 import Home from './pages/Home';
 
 // My screens are imported here
@@ -55,6 +55,10 @@ const App: React.FC = () => (
           <Route exact path="/" render={() => <Redirect to="/home" />} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
+          <IonTabButton tab="landing" href="/landing">
+            <IonIcon icon={home} />
+            <IonLabel>Landing</IonLabel>
+          </IonTabButton>
           <IonTabButton tab="splash" href="/splash">
             <IonIcon icon={square} />
             <IonLabel>Splash</IonLabel>

@@ -1,26 +1,52 @@
 import React from 'react';
 import {
   IonContent,
-  IonHeader,
   IonPage,
+  IonButton,
+  IonToolbar,
+  IonFooter,
   IonTitle,
-  IonToolbar
+  IonText,
+  IonGrid,
+  IonRow,
+  IonCol
 } from '@ionic/react';
+import './Landing.css';
 
 const Landing: React.FC = () => {
   return (
-    <IonPage>
-      <IonHeader>
+    <IonPage className="landing-page">
+      <IonContent className="landing-page">
         <IonToolbar>
-          <IonTitle>Landing</IonTitle>
+          <IonTitle className="logo">Bingle</IonTitle>
         </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonHeader collapse="condense">
+        <IonGrid>
+          <IonRow className="button-container">
+            <IonCol>
+              <IonButton
+                className="landing-button log-in-button"
+                expand="block"
+              >
+                Log In
+              </IonButton>
+            </IonCol>
+            <IonCol>
+              <IonButton
+                className="landing-button sign-up-button"
+                expand="block"
+              >
+                Sign up
+              </IonButton>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+        <IonFooter className="ion-no-border landing-footer">
           <IonToolbar>
-            <IonTitle size="large">Landing</IonTitle>
+            <IonTitle className="footer-title">
+              Copyright &copy; 2020 Bingle
+            </IonTitle>
           </IonToolbar>
-        </IonHeader>
+        </IonFooter>
       </IonContent>
     </IonPage>
   );
