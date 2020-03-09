@@ -22,7 +22,7 @@ export async function loginUser(username: string, password: string) {
     console.log(res);
     return true;
   } catch (error) {
-    console.log(error);
+    toast(error.message);
     return false;
   }
 }

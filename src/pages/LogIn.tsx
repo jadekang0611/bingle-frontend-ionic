@@ -21,12 +21,8 @@ const LogIn: React.FC = () => {
   const [password, setPassword] = useState('');
 
   async function login() {
-    console.log('hit');
-    console.log('User:' + username);
     const res = await loginUser(username, password);
-    if (!res) {
-      toast('There was an error logging in.');
-    } else {
+    if (res){
       toast('You are logged in!');
     }
     console.log(res);

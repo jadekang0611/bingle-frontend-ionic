@@ -25,7 +25,7 @@ const Landing: React.FC = () => {
             <img id="bingle-logo" src={BingleLogo} alt="Bingle" />
           </div>
           <div className="landing-blurb-container">
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+            <h2>Empower the bootcamp community</h2>
           </div>
           <IonGrid>
             <IonRow className="button-container">

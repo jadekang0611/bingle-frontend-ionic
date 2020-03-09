@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   IonText,
   IonInput,
@@ -16,8 +16,23 @@ import {
   IonPage,
   IonTextarea
 } from '@ionic/react';
+import { toast } from '../toast';
+import { registerUser } from '../firebaseConfig';
 
-const Signup = () => {
+const Signup: React.FC = () => {
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [title, setTitle] = useState('');
+  const [bootcamp, setBootcamp] = useState('');
+  const [completion, setCompletion] = useState('');
+  const [aboutMe, setAboutMe] = useState('');
+  async function register() {
+    if (username.trim() === '' || password.trim() === '') {
+      return toast('Username and password are required');
+    }
+    const res = await registerUser(username, password);
+  }
   return (
     <IonPage>
       <IonHeader translucent>
@@ -38,6 +53,7 @@ const Signup = () => {
                 placeholder="Enter your name"
                 clearInput
                 required
+                onIonChange={(e: any) => setName(e.target.value)}
               ></IonInput>
             </IonItem>
             <IonItem>
@@ -50,6 +66,7 @@ const Signup = () => {
                 placeholder="Enter your title"
                 clearInput
                 required
+                onIonChange={(e: any) => setTitle(e.target.value)}
               ></IonInput>
             </IonItem>
             <IonItem>
@@ -62,6 +79,7 @@ const Signup = () => {
                 placeholder="Enter your email"
                 clearInput
                 required
+                onIonChange={(e: any) => setUsername(e.target.value)}
               ></IonInput>
             </IonItem>
 
@@ -75,6 +93,7 @@ const Signup = () => {
                 placeholder="Enter your password"
                 clearInput
                 required
+                onIonChange={(e: any) => setPassword(e.target.value)}
               ></IonInput>
             </IonItem>
             <IonItem>
@@ -85,6 +104,7 @@ const Signup = () => {
                 placeholder="Select One"
                 okText="Select"
                 cancelText="Dismiss"
+                onIonChange={(e: any) => setBootcamp(e.target.value)}
               >
                 <IonSelectOption value="appAcademy">appAcademy</IonSelectOption>
                 <IonSelectOption value="bloc">bloc</IonSelectOption>
@@ -111,6 +131,7 @@ const Signup = () => {
               <IonDatetime
                 displayFormat="MMM YYYY"
                 placeholder="Select Date"
+                onIonChange={(e: any) => setCompletion(e.target.value)}
               ></IonDatetime>
             </IonItem>
             <IonItem>
@@ -119,6 +140,7 @@ const Signup = () => {
                 autoGrow={true}
                 placeholder="Please share who you are to the Bingle community!"
                 required
+                onIonChange={(e: any) => setAboutMe(e.target.value)}
               ></IonTextarea>
             </IonItem>
           </IonList>
