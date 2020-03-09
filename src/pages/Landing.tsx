@@ -13,6 +13,8 @@ import {
 } from '@ionic/react';
 import './Landing.css';
 import BingleLogo from './image/bingle-logo.png';
+import LogIn from './LogIn';
+import Signup from './Signup';
 
 const Landing: React.FC = () => {
   return (
@@ -31,6 +33,7 @@ const Landing: React.FC = () => {
                 <IonButton
                   className="landing-button log-in-button"
                   expand="block"
+                  href="/login"
                 >
                   Log In
                 </IonButton>
@@ -39,6 +42,7 @@ const Landing: React.FC = () => {
                 <IonButton
                   className="landing-button sign-up-button"
                   expand="block"
+                  href="/signup"
                 >
                   Sign up
                 </IonButton>

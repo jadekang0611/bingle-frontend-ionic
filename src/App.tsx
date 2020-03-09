@@ -21,6 +21,7 @@ import MyAccount from './pages/MyAccount';
 import Follow from './pages/Follow';
 import Onboarding from './pages/Onboarding';
 import Signup from './pages/Signup';
+import LogIn from './pages/LogIn';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -47,9 +48,10 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/home" component={Home} exact={true} />
+          <Route path="/login" component={LogIn} />
+          <Route path="/signup" component={Signup} />
           <Route path="/signup/onboarding" component={Onboarding} />
           <Route path="/landing" component={Landing} exact={true} />
-          <Route path="/landing/signup" component={Signup} exact={true} />
           <Route path="/institutions" component={Institutions} />
           <Route path="/search" component={SearchScreen} />
           <Route path="/follows" component={Follow} />
