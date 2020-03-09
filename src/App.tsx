@@ -19,7 +19,8 @@ import Landing from './pages/Landing';
 import SearchScreen from './pages/SearchScreen';
 import MyAccount from './pages/MyAccount';
 import Follow from './pages/Follow';
-import Splash from './pages/Splash';
+import Onboarding from './pages/Onboarding';
+import Signup from './pages/Signup';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -46,8 +47,9 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/home" component={Home} exact={true} />
-          <Route path="/splash" component={Splash} />
+          <Route path="/signup/onboarding" component={Onboarding} />
           <Route path="/landing" component={Landing} exact={true} />
+          <Route path="/landing/signup" component={Signup} exact={true} />
           <Route path="/institutions" component={Institutions} />
           <Route path="/search" component={SearchScreen} />
           <Route path="/follows" component={Follow} />
@@ -59,9 +61,9 @@ const App: React.FC = () => (
             <IonIcon icon={home} />
             <IonLabel>Landing</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="splash" href="/splash">
+          <IonTabButton tab="splash" href="/signup/onboarding">
             <IonIcon icon={square} />
-            <IonLabel>Splash</IonLabel>
+            <IonLabel>Onboarding</IonLabel>
           </IonTabButton>
           <IonTabButton tab="institutions" href="/institutions">
             <IonIcon icon={grid} />

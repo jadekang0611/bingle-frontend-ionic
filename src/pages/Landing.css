@@ -34,7 +34,7 @@
 }
 
 .sign-up-button {
-  --background: #fff;
+  --background: #f5cd34;
   color: #000;
 }
 
@@ -45,11 +45,19 @@
 }
 
 .logo-container {
-  padding-top: 14rem;
   display: flex;
   justify-content: center;
 }
 
 .landing-blurb-container {
   text-align: center;
+}
+
+.center-items {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
 }
