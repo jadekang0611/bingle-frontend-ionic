@@ -6,11 +6,14 @@ import {
   IonText,
   IonLabel,
   IonList,
-  IonHeader,
   IonPage,
   IonTitle,
+  IonButtons,
   IonButton,
-  IonToolbar
+  IonToolbar,
+  IonBackButton,
+  IonHeader,
+  IonMenuButton
 } from '@ionic/react';
 import { loginUser } from '../firebaseConfig';
 import './LogIn.css';
@@ -22,13 +25,20 @@ const LogIn: React.FC = () => {
 
   async function login() {
     const res = await loginUser(username, password);
-    if (res){
+    if (res) {
       toast('You are logged in!');
     }
     console.log(res);
   }
   return (
     <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/landing" />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
       <IonContent>
         <IonList lines="full" class="ion-no-margin ion-no-padding">
           <IonItem>

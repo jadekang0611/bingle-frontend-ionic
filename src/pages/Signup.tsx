@@ -9,12 +9,13 @@ import {
   IonSelect,
   IonSelectOption,
   IonButton,
+  IonButtons,
   IonDatetime,
   IonHeader,
   IonToolbar,
-  IonTitle,
   IonPage,
-  IonTextarea
+  IonTextarea,
+  IonBackButton
 } from '@ionic/react';
 import { toast } from '../toast';
 import { registerUser } from '../firebaseConfig';
@@ -35,9 +36,11 @@ const Signup: React.FC = () => {
   }
   return (
     <IonPage>
-      <IonHeader translucent>
+      <IonHeader>
         <IonToolbar>
-          <IonTitle>Creat Account</IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/landing" />
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
