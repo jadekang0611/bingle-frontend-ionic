@@ -1,13 +1,16 @@
 .back-button-container {
   background: #f39c92;
   padding: 16px;
+  position: relative;
+  z-index: 1;
 }
-.behind-background {
+#behind-background-box {
   background: #f39c92;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   height: 250px;
-  position: absolute;
+  position: relative;
+  z-index: 1;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -19,22 +22,55 @@
   border-radius: 50%;
 }
 
-.user-view-card {
-  top: 20%;
-  z-index: 1;
-  /* transform: translateY(-50%); */
+.user-view-button {
+  --background: #f5cd34;
+  margin: auto;
+  width: 50%;
+  text-transform: uppercase;
+  --background-activated: #f5cd34;
+  --background-activated-opacity: 0.7;
+  --ripple-color: #f5cd34;
 }
 
-.project-section {
-  position: absolute;
+#user-view-card-box {
+  /* top: 50%;
+  z-index: 1; */
+  text-align: center;
+  transform: translateY(-25%);
+  --background: #fff;
+  position: relative;
+  z-index: 500;
+}
+
+#project-section-box {
   left: 0;
   right: 0;
   margin: 0 auto;
+  position: relative;
+  z-index: 600;
+  transform: translateY(-10%);
 }
 
+#opacity-bottom-box {
+  background: white;
+  opacity: 0.6;
+}
 .contact-button {
-  position: relative;
+  position: fixed;
+  z-index: 700;
   bottom: 0;
   left: 0;
   right: 0;
+  --background: #f5cd34;
+  margin-bottom: 16px;
+  --background-activated: #f5cd34;
+  --background-activated-opacity: 0.7;
+  --ripple-color: #f5cd34;
+  width: 100%;
+  margin: auto;
+}
+
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
 }
