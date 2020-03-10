@@ -14,7 +14,7 @@ import { square, grid, search, star, person, home } from 'ionicons/icons';
 import Home from './pages/Home';
 
 // My screens are imported here
-import Institutions from './pages/Institutions';
+// import Institutions from './pages/Institutions';
 import Landing from './pages/Landing';
 import SearchScreen from './pages/SearchScreen';
 import MyAccount from './pages/MyAccount';
@@ -52,7 +52,7 @@ const App: React.FC = () => (
           <Route path="/signup" component={Signup} />
           <Route path="/signup/onboarding" component={Onboarding} />
           <Route path="/landing" component={Landing} exact={true} />
-          <Route path="/institutions" component={Institutions} />
+          {/* <Route path="/institutions" component={Institutions} /> */}
           <Route path="/search" component={SearchScreen} />
           <Route path="/follows" component={Follow} />
           <Route path="/myaccount" component={MyAccount} exact={true} />
@@ -67,10 +67,10 @@ const App: React.FC = () => (
             <IonIcon icon={square} />
             <IonLabel>Onboarding</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="institutions" href="/institutions">
+          {/* <IonTabButton tab="institutions" href="/institutions">
             <IonIcon icon={grid} />
             <IonLabel>Institutions</IonLabel>
-          </IonTabButton>
+          </IonTabButton> */}
           <IonTabButton tab="search" href="/search">
             <IonIcon icon={search} />
             <IonLabel>Search</IonLabel>

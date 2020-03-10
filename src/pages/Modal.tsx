@@ -5,8 +5,13 @@ import {
   IonToolbar,
   IonTitle,
   IonButtons,
+  IonIcon,
   IonButton,
-  IonIcon
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle
 } from '@ionic/react';
 
 type ModalProps = {
@@ -14,31 +19,23 @@ type ModalProps = {
   src: string;
   name: string;
   about: string;
-  details: string;
-  mainColor: string;
-  url: string;
 };
 
 class Modal extends React.Component<ModalProps> {
   render() {
     return (
       <>
-        <IonHeader>
-          <IonToolbar color="primary">
-            <IonTitle>{this.props.name}</IonTitle>
-            <IonButtons slot="end">
-              <IonButton onClick={() => this.props.closeAction()}>
-                <IonIcon name="close" slot="icon-only"></IonIcon>
-              </IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonHeader>
         <IonContent className="ion-padding">
-          <div>
-            <img alt={this.props.name} src={this.props.src}></img>
-          </div>
+          <IonCard>
+            <div></div>
+            <IonCardHeader>
+              <IonCardSubtitle>About</IonCardSubtitle>
+              <IonCardTitle>{this.props.name}</IonCardTitle>
+            </IonCardHeader>
+            <IonCardContent>{this.props.about}</IonCardContent>
+          </IonCard>
+          <div></div>
           <div>{this.props.about}</div>
-          <div>{this.props.details}</div>
         </IonContent>
       </>
     );
@@ -49,26 +46,12 @@ export default ({
   closeAction,
   src,
   name,
-  about,
-  details,
-  mainColor,
-  url
+  about
 }: {
   closeAction: Function;
   src: string;
   name: string;
   about: string;
-  details: string;
-  mainColor: string;
-  url: string;
 }) => (
-  <Modal
-    closeAction={closeAction}
-    src={src}
-    name={name}
-    about={about}
-    details={details}
-    mainColor={mainColor}
-    url={url}
-  ></Modal>
+  <Modal closeAction={closeAction} src={src} name={name} about={about}></Modal>
 );

@@ -146,8 +146,6 @@ const Institutions: React.FC = () => {
     setName(e.target.name);
     setSrc(e.target.src);
     setAbout(e.target.about);
-    setDetails(e.target.details);
-    setMainColor(e.target.mainColor);
     setUrl(e.target.url);
     setShowModal(true);
   }
@@ -178,9 +176,6 @@ const Institutions: React.FC = () => {
                     src={institution.src}
                     name={institution.name}
                     about={institution.about}
-                    // // details={institution.details}
-                    // // url={institution.url}
-                    // mainColor={institution.mainColor}
                     alt="logos"
                     width="120"
                     height="120"
@@ -197,13 +192,9 @@ const Institutions: React.FC = () => {
             src={src}
             name={name}
             about={about}
-            details={details}
-            url={url}
-            mainColor={mainColor}
           ></Modal>
           <IonButton onClick={() => setShowModal(false)}>Close</IonButton>
         </IonModal>
-        <IonButton onClick={() => setShowModal(true)}>Show Modal</IonButton>
       </IonContent>
     </IonPage>
   );
