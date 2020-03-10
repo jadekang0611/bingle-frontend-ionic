@@ -30,50 +30,113 @@ import udacity from './image/logos/udacity.png';
 const Institutions: React.FC = () => {
   const institutionLogo = [
     {
-      name: 'appAcademy',
-      src: appAcademy
+      name: 'App Academy',
+      src: appAcademy,
+      url: 'https://www.appacademy.io/',
+      mainColor: 'red',
+      about:
+        'Since App Academy started 6 years ago, graduates have been placed at over 1,000+ tech companies',
+      details:
+        "Over twelve weeks, you'll learn all the skills needed to begin a career as a web developer. Through hands-on projects, we train you to build web applications with Ruby on Rails, JavaScript, and React/Redux. Prior programming experience isn't required. However, you will need lots of tenacity and a passion for building cool stuff."
     },
     {
       name: 'bloc',
-      src: bloc
+      src: bloc,
+      url: 'https://bloc.io',
+      mainColor: 'blue',
+      about:
+        'Since App Academy started 6 years ago, graduates have been placed at over 1,000+ tech companies',
+      details:
+        "Over twelve weeks, you'll learn all the skills needed to begin a career as a web developer. Through hands-on projects, we train you to build web applications with Ruby on Rails, JavaScript, and React/Redux. Prior programming experience isn't required. However, you will need lots of tenacity and a passion for building cool stuff."
     },
     {
-      name: 'codingDojo',
-      src: codingDojo
+      name: 'Coding Dojo',
+      src: codingDojo,
+      url: 'https://www.codingdojo.com',
+      mainColor: '#000',
+      about:
+        'Since App Academy started 6 years ago, graduates have been placed at over 1,000+ tech companies',
+      details:
+        "Over twelve weeks, you'll learn all the skills needed to begin a career as a web developer. Through hands-on projects, we train you to build web applications with Ruby on Rails, JavaScript, and React/Redux. Prior programming experience isn't required. However, you will need lots of tenacity and a passion for building cool stuff."
     },
     {
-      name: 'flatIron',
-      src: flatIron
+      name: 'Flatiron School',
+      src: flatIron,
+      url: 'https://https://flatironschool.com/',
+      mainColor: '#00b3e6',
+      about: 'To enable the pursuit of a better life through education',
+      details:
+        'Education should be the best investment you make in your future—and at Flatiron School, we’re committed to helping you learn the skills you need to change yours for the better. Online and on our 12 WeWork campuses across the country and in London, we provide the skills, community, and immersive, outcomes-driven curriculum you need to launch a career in Software Engineering, Data Science, or UX/UI Design.'
     },
     {
       name: 'generalAssembly',
-      src: generalAssembly
+      src: generalAssembly,
+      url: 'https://https://generalassemb.ly/',
+      mainColor: '#ED201E',
+      about:
+        'Since App Academy started 6 years ago, graduates have been placed at over 1,000+ tech companies',
+      details:
+        "Over twelve weeks, you'll learn all the skills needed to begin a career as a web developer. Through hands-on projects, we train you to build web applications with Ruby on Rails, JavaScript, and React/Redux. Prior programming experience isn't required. However, you will need lots of tenacity and a passion for building cool stuff."
     },
     {
       name: 'hackReactor',
-      src: hackReactor
+      src: hackReactor,
+      url: 'https://https://www.galvanize.com/',
+      mainColor: '#DE821C',
+      about:
+        'Since App Academy started 6 years ago, graduates have been placed at over 1,000+ tech companies',
+      details:
+        "Over twelve weeks, you'll learn all the skills needed to begin a career as a web developer. Through hands-on projects, we train you to build web applications with Ruby on Rails, JavaScript, and React/Redux. Prior programming experience isn't required. However, you will need lots of tenacity and a passion for building cool stuff."
     },
     {
       name: 'ironHack',
-      src: ironHack
+      src: ironHack,
+      url: 'https://ironhack.com',
+      mainColor: '#56b4ff',
+      about:
+        'Since App Academy started 6 years ago, graduates have been placed at over 1,000+ tech companies',
+      details:
+        "Over twelve weeks, you'll learn all the skills needed to begin a career as a web developer. Through hands-on projects, we train you to build web applications with Ruby on Rails, JavaScript, and React/Redux. Prior programming experience isn't required. However, you will need lots of tenacity and a passion for building cool stuff."
     },
     {
       name: 'lambda',
-      src: lambda
+      src: lambda,
+      url: 'https://lambdaschool.com/',
+      mainColor: '#ec3943',
+      about:
+        'Since App Academy started 6 years ago, graduates have been placed at over 1,000+ tech companies',
+      details:
+        "Over twelve weeks, you'll learn all the skills needed to begin a career as a web developer. Through hands-on projects, we train you to build web applications with Ruby on Rails, JavaScript, and React/Redux. Prior programming experience isn't required. However, you will need lots of tenacity and a passion for building cool stuff."
     },
     {
       name: 'leWagon',
-      src: leWagon
+      src: leWagon,
+      url: 'https://www.lewagon.com/',
+      mainColor: '#ED1118',
+      about:
+        'Since App Academy started 6 years ago, graduates have been placed at over 1,000+ tech companies',
+      details:
+        "Over twelve weeks, you'll learn all the skills needed to begin a career as a web developer. Through hands-on projects, we train you to build web applications with Ruby on Rails, JavaScript, and React/Redux. Prior programming experience isn't required. However, you will need lots of tenacity and a passion for building cool stuff."
     },
     {
       name: 'udacity',
-      src: udacity
+      src: udacity,
+      url: 'https://www.udacity.com/',
+      mainColor: '#52b3e4',
+      about:
+        'Since App Academy started 6 years ago, graduates have been placed at over 1,000+ tech companies',
+      details:
+        "Over twelve weeks, you'll learn all the skills needed to begin a career as a web developer. Through hands-on projects, we train you to build web applications with Ruby on Rails, JavaScript, and React/Redux. Prior programming experience isn't required. However, you will need lots of tenacity and a passion for building cool stuff."
     }
   ];
 
   const [showModal, setShowModal] = useState(false);
   const [src, setSrc] = useState('');
   const [name, setName] = useState('');
+  const [about, setAbout] = useState('');
+  const [details, setDetails] = useState('');
+  const [mainColor, setMainColor] = useState('');
+  const [url, setUrl] = useState('');
 
   async function closeModal() {
     await setShowModal(false);
@@ -82,6 +145,10 @@ const Institutions: React.FC = () => {
   function openModal(e: any) {
     setName(e.target.name);
     setSrc(e.target.src);
+    setAbout(e.target.about);
+    setDetails(e.target.details);
+    setMainColor(e.target.mainColor);
+    setUrl(e.target.url);
     setShowModal(true);
   }
 
@@ -110,6 +177,10 @@ const Institutions: React.FC = () => {
                     type="image"
                     src={institution.src}
                     name={institution.name}
+                    about={institution.about}
+                    // // details={institution.details}
+                    // // url={institution.url}
+                    // mainColor={institution.mainColor}
                     alt="logos"
                     width="120"
                     height="120"
@@ -121,8 +192,16 @@ const Institutions: React.FC = () => {
           </IonRow>
         </IonGrid>
         <IonModal isOpen={showModal}>
-          <Modal closeAction={closeModal} src={src} name={name}></Modal>
-          <IonButton onClick={() => setShowModal(false)}>Close Modal</IonButton>
+          <Modal
+            closeAction={closeModal}
+            src={src}
+            name={name}
+            about={about}
+            details={details}
+            url={url}
+            mainColor={mainColor}
+          ></Modal>
+          <IonButton onClick={() => setShowModal(false)}>Close</IonButton>
         </IonModal>
         <IonButton onClick={() => setShowModal(true)}>Show Modal</IonButton>
       </IonContent>

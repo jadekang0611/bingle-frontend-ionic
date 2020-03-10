@@ -13,6 +13,10 @@ type ModalProps = {
   closeAction: Function;
   src: string;
   name: string;
+  about: string;
+  details: string;
+  mainColor: string;
+  url: string;
 };
 
 class Modal extends React.Component<ModalProps> {
@@ -30,7 +34,11 @@ class Modal extends React.Component<ModalProps> {
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
-          <img alt={this.props.name} src={this.props.src}></img>
+          <div>
+            <img alt={this.props.name} src={this.props.src}></img>
+          </div>
+          <div>{this.props.about}</div>
+          <div>{this.props.details}</div>
         </IonContent>
       </>
     );
@@ -40,9 +48,27 @@ class Modal extends React.Component<ModalProps> {
 export default ({
   closeAction,
   src,
-  name
+  name,
+  about,
+  details,
+  mainColor,
+  url
 }: {
   closeAction: Function;
   src: string;
   name: string;
-}) => <Modal closeAction={closeAction} src={src} name={name}></Modal>;
+  about: string;
+  details: string;
+  mainColor: string;
+  url: string;
+}) => (
+  <Modal
+    closeAction={closeAction}
+    src={src}
+    name={name}
+    about={about}
+    details={details}
+    mainColor={mainColor}
+    url={url}
+  ></Modal>
+);

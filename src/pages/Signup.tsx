@@ -19,7 +19,6 @@ import {
 } from '@ionic/react';
 import { toast } from '../toast';
 import { registerUser } from '../firebaseConfig';
-import { Loading } from './Loading';
 
 const Signup: React.FC = () => {
   const [name, setName] = useState('');

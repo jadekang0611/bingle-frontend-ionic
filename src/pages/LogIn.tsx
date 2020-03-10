@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   IonContent,
   IonItem,
@@ -7,13 +7,11 @@ import {
   IonLabel,
   IonList,
   IonPage,
-  IonTitle,
   IonButtons,
   IonButton,
   IonToolbar,
   IonBackButton,
-  IonHeader,
-  IonMenuButton
+  IonHeader
 } from '@ionic/react';
 import { loginUser } from '../firebaseConfig';
 import './LogIn.css';

@@ -6,15 +6,12 @@ import {
   IonToolbar,
   IonFooter,
   IonTitle,
-  IonText,
   IonGrid,
   IonRow,
   IonCol
 } from '@ionic/react';
 import './Landing.css';
 import BingleLogo from './image/bingle-logo.png';
-import LogIn from './LogIn';
-import Signup from './Signup';
 
 const Landing: React.FC = () => {
   return (

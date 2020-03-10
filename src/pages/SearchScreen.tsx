@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonSearchbar,
   IonList,
   IonItem,
-  IonRow,
-  IonGrid,
-  IonCol,
   IonAvatar,
   IonSlides,
   IonSlide,
-  IonLabel,
-  IonModal,
-  IonButton
+  IonLabel
 } from '@ionic/react';
 import './SearchScreen.css';
 import person1 from './image/avatars/person1.png';
@@ -62,12 +54,7 @@ const SearchScreen: React.FC = () => {
       count++;
     }
   }
-  const [showModal, setShowModal] = useState(false);
 
-  const showProfile = (e: any) => {
-    setShowModal(true);
-    console.log(e.target);
-  };
   // const [searchString, setSearchString] = useState();
   // const [searchResults, setSearchResults] = useState();
   // const searchHandler = (event: any) => {
@@ -119,7 +106,7 @@ const SearchScreen: React.FC = () => {
                 <IonItem
                   key={id}
                   className={`alt-color-${count} search-users-container`}
-                  onClick={showProfile}
+                  onClick={() => {}}
                 >
                   <IonAvatar className="search-image-container" slot="start">
                     <img
@@ -140,9 +127,6 @@ const SearchScreen: React.FC = () => {
             }
           })}
         </IonList>
-        <IonModal isOpen={showModal}>
-          <IonButton onClick={() => setShowModal(false)}>Close Modal</IonButton>
-        </IonModal>
       </IonContent>
     </IonPage>
   );
