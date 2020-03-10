@@ -1,16 +1,23 @@
 .searchbar-input.sc-ion-searchbar-md {
-  border-radius: 24px;
+  border-radius: 24px !important;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.searchbar-left-aligned.sc-ion-searchbar-ios-h
+  .searchbar-input.sc-ion-searchbar-ios {
+  border-radius: 24px !important;
 }
 .searchBar-container {
   margin-top: 16px;
   color: #000;
   font-weight: bold;
+  --background: #f1f6f8;
 }
 
 #avatar-container {
   overflow: visible;
   padding: 0 !important;
+  --ion-background-color: #fef9f8 !important;
 }
 
 .avatar-img {
@@ -54,7 +61,7 @@
 
 #show-users-container {
   padding: 0 !important;
-  background: #f5f5f5 !important;
+  background: #f2f9f8 !important;
 }
 
 .user-info-basic {
@@ -67,7 +74,7 @@
 }
 
 .user-info-basic h2 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
 }
 

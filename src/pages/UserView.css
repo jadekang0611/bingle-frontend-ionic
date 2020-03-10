@@ -3,6 +3,7 @@
   padding: 16px;
   position: relative;
   z-index: 1;
+  color: #fff;
 }
 #behind-background-box {
   background: #f39c92;
@@ -30,6 +31,7 @@
   --background-activated: #f5cd34;
   --background-activated-opacity: 0.7;
   --ripple-color: #f5cd34;
+  font-weight: 600 !important;
 }
 
 #user-view-card-box {
@@ -37,9 +39,61 @@
   z-index: 1; */
   text-align: center;
   transform: translateY(-25%);
-  --background: #fff;
+
   position: relative;
   z-index: 500;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.user-view-card {
+  --background: #fff;
+  border-radius: 20px;
+}
+
+.user-name {
+  color: #000;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.user-title {
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: #a6b1bc;
+}
+
+.user-blurb {
+  line-height: 2;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: #a6b1bc;
+}
+
+#card-bottom-section-grid {
+  margin-top: 32px;
+  border-top: 1px solid #e7e7e7;
+  text-transform: uppercase;
+}
+
+.vertical-line {
+  line-height: 10px;
+  border: 0.5px solid #e7e7e7;
+}
+
+.card-bottom-title {
+  justify-content: center;
+  color: #a6b1bc;
+}
+
+.card-bottom-number {
+  margin-top: 4px;
+  justify-content: center;
+  color: #ef6e36;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 #project-section-box {
@@ -48,7 +102,8 @@
   margin: 0 auto;
   position: relative;
   z-index: 600;
-  transform: translateY(-10%);
+  transform: translateY(-18%);
+  top: 20%;
 }
 
 #opacity-bottom-box {
@@ -66,11 +121,50 @@
   --background-activated: #f5cd34;
   --background-activated-opacity: 0.7;
   --ripple-color: #f5cd34;
-  width: 100%;
+  width: 70%;
   margin: auto;
+  margin-bottom: 10px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .ripple-parent {
   position: relative;
-  overflow: hidden;
+}
+
+.project-section-grid {
+  margin: 24px;
+}
+
+.project-section-title-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.project-section-title {
+  margin: 0;
+  color: #121212;
+}
+.view-all-button {
+  width: 100px;
+  font-size: 12px;
+  margin: 0;
+}
+
+.project-img-container {
+  list-style: none;
+}
+
+.project-section-img-row {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.project-img {
+  border-radius: 10px;
+  margin: 8px;
 }
