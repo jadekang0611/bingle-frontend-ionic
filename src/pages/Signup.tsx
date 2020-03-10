@@ -19,6 +19,7 @@ import {
 } from '@ionic/react';
 import { toast } from '../toast';
 import { registerUser } from '../firebaseConfig';
+import { Loading } from './Loading';
 
 const Signup: React.FC = () => {
   const [name, setName] = useState('');
@@ -148,7 +149,12 @@ const Signup: React.FC = () => {
             </IonItem>
           </IonList>
           <div className="ion-padding">
-            <IonButton expand="block" type="submit" className="ion-n-margin">
+            <IonButton
+              expand="block"
+              type="submit"
+              className="ion-n-margin"
+              // onClick={Loading}
+            >
               Creat my account
             </IonButton>
           </div>

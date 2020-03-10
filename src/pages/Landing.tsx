@@ -9,8 +9,7 @@ import {
   IonText,
   IonGrid,
   IonRow,
-  IonCol,
-  
+  IonCol
 } from '@ionic/react';
 import './Landing.css';
 import BingleLogo from './image/bingle-logo.png';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -7,9 +7,12 @@ import {
   IonToolbar,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
+  IonModal,
+  IonButton
 } from '@ionic/react';
 import './Institutions.css';
+import Modal from './Modal';
 
 // Institution image are imported here
 
@@ -26,17 +29,61 @@ import udacity from './image/logos/udacity.png';
 
 const Institutions: React.FC = () => {
   const institutionLogo = [
-    appAcademy,
-    bloc,
-    codingDojo,
-    flatIron,
-    generalAssembly,
-    hackReactor,
-    ironHack,
-    lambda,
-    leWagon,
-    udacity
+    {
+      name: 'appAcademy',
+      src: appAcademy
+    },
+    {
+      name: 'bloc',
+      src: bloc
+    },
+    {
+      name: 'codingDojo',
+      src: codingDojo
+    },
+    {
+      name: 'flatIron',
+      src: flatIron
+    },
+    {
+      name: 'generalAssembly',
+      src: generalAssembly
+    },
+    {
+      name: 'hackReactor',
+      src: hackReactor
+    },
+    {
+      name: 'ironHack',
+      src: ironHack
+    },
+    {
+      name: 'lambda',
+      src: lambda
+    },
+    {
+      name: 'leWagon',
+      src: leWagon
+    },
+    {
+      name: 'udacity',
+      src: udacity
+    }
   ];
+
+  const [showModal, setShowModal] = useState(false);
+  const [src, setSrc] = useState('');
+  const [name, setName] = useState('');
+
+  async function closeModal() {
+    await setShowModal(false);
+  }
+
+  function openModal(e: any) {
+    setName(e.target.name);
+    setSrc(e.target.src);
+    setShowModal(true);
+  }
 
   return (
     <IonPage>
@@ -55,23 +102,29 @@ const Institutions: React.FC = () => {
         <IonGrid>
           <IonRow>
             {institutionLogo.map((institution, i) => {
+              console.log(institution.name);
               return (
                 <IonCol className="institution-col" key={i}>
                   <input
                     className="institution-img"
                     type="image"
-                    src={institution}
-                    value={institution}
-                    onClick={() => {}}
+                    src={institution.src}
+                    name={institution.name}
                     alt="logos"
                     width="120"
                     height="120"
+                    onClick={openModal}
                   />
                 </IonCol>
               );
             })}
           </IonRow>
         </IonGrid>
+        <IonModal isOpen={showModal}>
+          <Modal closeAction={closeModal} src={src} name={name}></Modal>
+          <IonButton onClick={() => setShowModal(false)}>Close Modal</IonButton>
+        </IonModal>
+        <IonButton onClick={() => setShowModal(true)}>Show Modal</IonButton>
       </IonContent>
     </IonPage>
   );
