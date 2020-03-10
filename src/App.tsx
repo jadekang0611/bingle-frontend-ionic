@@ -22,6 +22,7 @@ import Follow from './pages/Follow';
 import Onboarding from './pages/Onboarding';
 import Signup from './pages/Signup';
 import LogIn from './pages/LogIn';
+import UserView from './pages/UserView';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -56,6 +57,7 @@ const App: React.FC = () => (
           <Route path="/search" component={SearchScreen} />
           <Route path="/follows" component={Follow} />
           <Route path="/myaccount" component={MyAccount} exact={true} />
+          <Route path="/user" component={UserView} />
           <Route exact path="/" render={() => <Redirect to="/home" />} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
