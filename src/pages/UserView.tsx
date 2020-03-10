@@ -1,13 +1,9 @@
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonGrid,
   IonRow,
   IonCol,
-  IonInput,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -18,17 +14,23 @@ import {
   IonBackButton
 } from '@ionic/react';
 import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Home.css';
+import './UserView.css';
 
 const UserView: React.FC = () => {
   return (
     <IonPage>
-      <IonButtons slot="start">
+      <IonButtons className="back-button-container" slot="start">
         <IonBackButton defaultHref="/landing" />
       </IonButtons>
       <IonContent>
-        <IonCard>
+        <div className="behind-background">
+          <img
+            className="user-view-image"
+            src="https://via.placeholder.com/200"
+            alt="user"
+          />
+        </div>
+        <IonCard className="user-view-card">
           <IonCardHeader>
             <IonCardTitle>Mariah Carey</IonCardTitle>
             <IonCardSubtitle>UI/UX Designer</IonCardSubtitle>
@@ -52,7 +54,7 @@ const UserView: React.FC = () => {
             </IonGrid>
           </IonCardContent>
         </IonCard>
-        <IonGrid>
+        <IonGrid className="project-section">
           <IonRow>
             <IonCol>
               <h2>PROJECTS</h2>
@@ -61,8 +63,6 @@ const UserView: React.FC = () => {
               <IonButton>VIEW ALL</IonButton>
             </IonCol>
           </IonRow>
-        </IonGrid>
-        <IonGrid>
           <IonRow>
             <IonCol>
               <img src="https://via.placeholder.com/150x120" alt="project" />
@@ -79,6 +79,15 @@ const UserView: React.FC = () => {
               <img src="https://via.placeholder.com/150x120" alt="project" />
             </IonCol>
           </IonRow>
+          <IonRow>
+            <IonCol>
+              <img src="https://via.placeholder.com/150x120" alt="project" />
+            </IonCol>
+            <IonCol>
+              <img src="https://via.placeholder.com/150x120" alt="project" />
+            </IonCol>
+          </IonRow>
+          <IonButton className="contact-button">HIRE</IonButton>
         </IonGrid>
       </IonContent>
     </IonPage>
