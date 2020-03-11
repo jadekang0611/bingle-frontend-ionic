@@ -13,7 +13,11 @@ import {
   IonToolbar,
   IonBackButton,
   IonHeader,
-  IonLoading
+  IonLoading,
+  IonListHeader,
+  IonGrid,
+  IonRow,
+  IonCol
 } from '@ionic/react';
 import { loginUser } from '../firebaseConfig';
 import './LogIn.css';
@@ -37,8 +41,8 @@ const LogIn: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
+        <IonToolbar className="login-tool-bar toolbar-background">
+          <IonButtons className="login-back-button-container" slot="start">
             <IonBackButton defaultHref="/landing" />
           </IonButtons>
         </IonToolbar>
@@ -48,32 +52,35 @@ const LogIn: React.FC = () => {
         duration={0}
         isOpen={busy}
       ></IonLoading>
-      <IonContent>
-        <IonList lines="full" class="ion-no-margin ion-no-padding">
-          <IonItem>
-            <IonLabel position="stacked">Email</IonLabel>
-            <IonInput
-              required
-              placeholder="Enter your email"
-              type="email"
-              onIonChange={(e: any) => setUsername(e.target.value)}
-            ></IonInput>
-          </IonItem>
-          <IonItem>
-            <IonLabel position="stacked">Password</IonLabel>
-            <IonInput
-              required
-              placeholder="Enter your password"
-              type="password"
-              value={password}
-              onIonChange={(e: any) => setPassword(e.target.value)}
-            ></IonInput>
-          </IonItem>
-        </IonList>
-        <div className="ion-padding">
-          <IonButton expand="block" onClick={login} class="ion-no-margin">
-            Login
-          </IonButton>
+      <IonContent id="login-screen">
+        <h2 className="login-title">Welcome back!</h2>
+        <div id="login-container">
+          <IonList lines="full" class="ion-no-margin ion-no-padding">
+            <IonItem>
+              <IonLabel position="stacked">Email</IonLabel>
+              <IonInput
+                required
+                placeholder="Enter your email"
+                type="email"
+                onIonChange={(e: any) => setUsername(e.target.value)}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Password</IonLabel>
+              <IonInput
+                required
+                placeholder="Enter your password"
+                type="password"
+                value={password}
+                onIonChange={(e: any) => setPassword(e.target.value)}
+              ></IonInput>
+            </IonItem>
+          </IonList>
+          <div className="ion-padding">
+            <IonButton expand="block" onClick={login} class="ion-no-margin">
+              Login
+            </IonButton>
+          </div>
         </div>
       </IonContent>
     </IonPage>

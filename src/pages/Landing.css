@@ -36,6 +36,7 @@
   border: 2px solid #fff;
   border-radius: 8px !important;
   text-decoration: underline;
+  --color: #fff;
 }
 
 .sign-up-button {

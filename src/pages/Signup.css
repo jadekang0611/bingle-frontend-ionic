@@ -24,8 +24,13 @@
   padding: 8px;
   border-radius: 20px;
   border: 1px solid #f5cd34;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .signup-title {
   font-size: 24px;
+}
+
+.action-sheet-group {
+  --background: #fef9f8;
 }
