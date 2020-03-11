@@ -20,14 +20,14 @@ import person3 from './image/avatars/person3.png';
 
 const UserView: React.FC = () => {
   const projects = [
-    'https://via.placeholder.com/150x120',
-    'https://via.placeholder.com/150x120',
-    'https://via.placeholder.com/150x120',
-    'https://via.placeholder.com/150x120',
-    'https://via.placeholder.com/150x120',
-    'https://via.placeholder.com/150x120',
-    'https://via.placeholder.com/150x120',
-    'https://via.placeholder.com/150x120'
+    'https://via.placeholder.com/170x120',
+    'https://via.placeholder.com/170x120',
+    'https://via.placeholder.com/170x120',
+    'https://via.placeholder.com/170x120',
+    'https://via.placeholder.com/170x120',
+    'https://via.placeholder.com/170x120',
+    'https://via.placeholder.com/170x120',
+    'https://via.placeholder.com/170x120'
   ];
   return (
     <IonPage>
@@ -85,18 +85,18 @@ const UserView: React.FC = () => {
                 shape="round"
                 size="default"
               >
-                VIEW ALL
+                GITHUB
                 <IonRippleEffect></IonRippleEffect>
               </IonButton>
             </IonRow>
             <IonRow className="project-section-img-row">
-              <IonCol size="6">
-                {projects.map((project, i) => {
-                  return (
+              {projects.map((project, i) => {
+                return (
+                  <IonCol size="6">
                     <img className="project-img" src={project} alt="project" />
-                  );
-                })}
-              </IonCol>
+                  </IonCol>
+                );
+              })}
             </IonRow>
           </IonGrid>
         </div>
