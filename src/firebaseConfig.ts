@@ -15,6 +15,7 @@ const config = {
 firebase.initializeApp(config);
 export const auth = firebase.auth();
 const storageRef = firebase.storage().ref();
+
 // export function getCurrentUser() {
 //     return new Promise((resolve, reject) => {
 //         const unsubscribe = firebase.auth().onAuthStateChanged(function (user) {
@@ -28,6 +29,7 @@ const storageRef = firebase.storage().ref();
 //         })
 //     })
 // }
+
 export function logoutUser() {
   return firebase.auth().signOut();
 }

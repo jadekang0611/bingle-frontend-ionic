@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IonText,
   IonInput,
@@ -17,7 +17,7 @@ import {
   IonListHeader
 } from '@ionic/react';
 import { toast } from '../toast';
-import { registerUser } from '../firebaseConfig';
+import { registerUser, auth } from '../firebaseConfig';
 import './MyAccount.css';
 
 const Signup: React.FC = () => {
@@ -27,7 +27,48 @@ const Signup: React.FC = () => {
   const [title, setTitle] = useState('');
   const [bootcamp, setBootcamp] = useState('');
   const [completion, setCompletion] = useState('');
-  const [aboutMe, setAboutMe] = useState('');
+  const [blurb, setBlurb] = useState('');
+  const [photo, setPhoto] = useState('');
+
+  const [] = useState();
+
+  useEffect(() => {
+    if (auth !== null) {
+      if (auth.currentUser !== null) {
+        const uid = auth.currentUser.uid;
+
+        const params = {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          method: 'GET'
+        };
+        fetch(
+          'https://us-central1-bingle-backend.cloudfunctions.net/app/api/read/user/' +
+            uid,
+          params
+        )
+          .then(res => {
+            return res.json();
+            console.log(res);
+          })
+          .then(data => {
+            const userData = data[0];
+            setName(userData.name);
+            setUsername(userData.username);
+            setPassword(userData.password);
+            setTitle(userData.title);
+            setBlurb(userData.blurb);
+            setPhoto(userData.photo);
+            setBootcamp(userData.bootcamp);
+            setCompletion(userData.completion);
+            console.log(userData);
+          });
+      }
+    }
+  }, []);
+
   async function register() {
     if (username.trim() === '' || password.trim() === '') {
       return toast('Username and password are required');
@@ -54,7 +95,7 @@ const Signup: React.FC = () => {
                   type="url"
                   placeholder="Upload your photo"
                   clearInput
-                  required
+                  value={photo}
                   onIonChange={(e: any) => setName(e.target.value)}
                 ></IonInput>
               </IonItem>
@@ -62,9 +103,9 @@ const Signup: React.FC = () => {
                 <IonLabel position="stacked">Name</IonLabel>
                 <IonInput
                   type="text"
+                  value={name}
                   placeholder="Enter your name"
                   clearInput
-                  required
                   onIonChange={(e: any) => setName(e.target.value)}
                 ></IonInput>
               </IonItem>
@@ -72,9 +113,9 @@ const Signup: React.FC = () => {
                 <IonLabel position="stacked">Title</IonLabel>
                 <IonInput
                   type="text"
+                  value={title}
                   placeholder="Enter your title"
                   clearInput
-                  required
                   onIonChange={(e: any) => setTitle(e.target.value)}
                 ></IonInput>
               </IonItem>
@@ -85,7 +126,7 @@ const Signup: React.FC = () => {
                   type="email"
                   placeholder="Enter your email"
                   clearInput
-                  required
+                  value={username}
                   onIonChange={(e: any) => setUsername(e.target.value)}
                 ></IonInput>
               </IonItem>
@@ -95,31 +136,26 @@ const Signup: React.FC = () => {
                 <IonInput
                   disabled
                   type="password"
-                  placeholder="*********"
+                  value={password}
                   clearInput
-                  required
                   onIonChange={(e: any) => setPassword(e.target.value)}
                 ></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel position="stacked">Your Bootcamp</IonLabel>
-                <IonInput disabled>General Assembly</IonInput>
+                <IonInput disabled value={bootcamp}></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel position="stacked">Completion</IonLabel>
-                <IonDatetime
-                  displayFormat="MMM YYYY"
-                  placeholder="Select Date"
-                  onIonChange={(e: any) => setCompletion(e.target.value)}
-                ></IonDatetime>
+                <IonInput disabled value={completion}></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel position="floating">About me</IonLabel>
                 <IonTextarea
                   autoGrow={true}
                   placeholder="Please share who you are to the Bingle community!"
-                  required
-                  onIonChange={(e: any) => setAboutMe(e.target.value)}
+                  value={blurb}
+                  onIonChange={(e: any) => setBlurb(e.target.value)}
                 ></IonTextarea>
               </IonItem>
             </IonList>
