@@ -57,6 +57,27 @@ const SearchScreen: React.FC = () => {
 
   const [searchList, setSearchList] = useState(people);
   const [loadedList, setLoadedList] = useState(people);
+  const [loadedPeople, setLoadedPeople] = useState([]);
+
+  useEffect(() => {
+    const params = {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'GET'
+    };
+    fetch(
+      'https://us-central1-bingle-backend.cloudfunctions.net/app/api/read/users',
+      params
+    )
+      .then(res => {
+        return res.json();
+        console.log(res);
+      })
+      .then(data => {
+        console.log(data);
+      });
+  }, []);
 
   function filterList(e: any) {
     const searchTerm = e.srcElement.value;
