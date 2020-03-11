@@ -6,6 +6,7 @@ export const followingPeople = [
     name: 'Josh Peterson',
     title: 'Software Engineer',
     institution: 'Le Wagon',
+    institutionLogo: '/image/leWagon.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -23,6 +24,7 @@ export const followingPeople = [
     name: 'Alex Bernard',
     title: 'Software Engineer',
     institution: 'Lambda School',
+    institutionLogo: '/image/lambda.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -40,6 +42,7 @@ export const followingPeople = [
     name: 'Sam Smith',
     title: 'Software Engineer',
     institution: 'Coding Dojo',
+    institutionLogo: '/image/codingDojo.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },

@@ -1,0 +1,31 @@
+.create-button {
+  --background: #f5cd34;
+  --border-radius: 10px;
+  --color: #121212;
+  --background-activated: #fff;
+  --background-activated-opacity: 0.7;
+  --ripple-color: #f5cd34;
+}
+
+.tool-bar {
+  --background: #fef9f8;
+  --border-color: #fef9f8;
+}
+.back-button-container {
+  --color: #f5cd34;
+  --background: #fff !important;
+}
+
+#signup-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 16px;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #f5cd34;
+}
+
+.signup-title {
+  font-size: 24px;
+}

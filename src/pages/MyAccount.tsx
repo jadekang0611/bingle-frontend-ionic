@@ -38,7 +38,7 @@ const Signup: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start">
+          <IonButtons slot="start back">
             <IonBackButton defaultHref="/landing" />
           </IonButtons>
         </IonToolbar>

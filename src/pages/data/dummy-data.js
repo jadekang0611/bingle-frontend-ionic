@@ -6,6 +6,7 @@ export const people = [
     name: 'Mariah Carey',
     title: 'UI/UX Designer',
     institution: 'General Assembly',
+    institutionLogo: '/image/generalAssembly.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -23,6 +24,7 @@ export const people = [
     name: 'Jennifer Levin',
     title: 'React Developer',
     institution: 'Udacity',
+    institutionLogo: '/image/udacity.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -41,6 +43,7 @@ export const people = [
     name: 'Sarah Noah',
     title: 'Backend Developer',
     institution: 'Hack Reactor',
+    institutionLogo: '/image/hackReactor.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -58,6 +61,7 @@ export const people = [
     name: 'Joe Jackson',
     title: 'UI/UX Designer',
     institution: 'General Assembly',
+    institutionLogo: '/image/generalAssembly.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -75,6 +79,7 @@ export const people = [
     name: 'Amanda Power',
     title: 'UI/UX Designer',
     institution: 'General Assembly',
+    institutionLogo: '/image/generalAssembly.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -92,6 +97,7 @@ export const people = [
     name: 'Sophia Soo',
     title: 'Web Developer',
     institution: 'Bloc',
+    institutionLogo: '/image/bloc.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -109,6 +115,7 @@ export const people = [
     name: 'Zach Khan',
     title: 'Software Engineer',
     institution: 'Iron Hack',
+    institutionLogo: '/image/ironHack.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -126,6 +133,7 @@ export const people = [
     name: 'Josh Peterson',
     title: 'Software Engineer',
     institution: 'Le Wagon',
+    institutionLogo: '/image/leWagon.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -143,6 +151,7 @@ export const people = [
     name: 'Alex Bernard',
     title: 'Software Engineer',
     institution: 'Lambda School',
+    institutionLogo: '/image/lambda.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
@@ -160,6 +169,7 @@ export const people = [
     name: 'Sam Smith',
     title: 'Software Engineer',
     institution: 'Coding Dojo',
+    institutionLogo: '/image/codingDojo.png',
     project: [
       { photo: 'png', url: 'https://github.com' },
       { photo: 'png', url: 'https://github.com' },
