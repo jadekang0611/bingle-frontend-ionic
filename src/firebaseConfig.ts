@@ -13,20 +13,35 @@ const config = {
 };
 
 firebase.initializeApp(config);
-
+export const auth = firebase.auth();
+const storageRef = firebase.storage().ref();
+// export function getCurrentUser() {
+//     return new Promise((resolve, reject) => {
+//         const unsubscribe = firebase.auth().onAuthStateChanged(function (user) {
+//             if (user) {
+//                 resolve(user);
+//             }
+//             else {
+//                 resolve(null);
+//             }
+//             unsubscribe();
+//         })
+//     })
+// }
+export function logoutUser() {
+  return firebase.auth().signOut();
+}
 export async function loginUser(username: string, password: string) {
   try {
     const res = await firebase
       .auth()
       .signInWithEmailAndPassword(username, password);
-    console.log(res);
-    return true;
+    return res;
   } catch (error) {
-    toast(error.message);
+    toast(error.message, 4000);
     return false;
   }
 }
-
 export async function registerUser(username: string, password: string) {
   try {
     const res = await firebase
@@ -35,7 +50,7 @@ export async function registerUser(username: string, password: string) {
     console.log(res);
     return true;
   } catch (error) {
-    toast(error.message);
+    toast(error.message, 4000);
     return false;
   }
 }

@@ -31,11 +31,21 @@ const Signup: React.FC = () => {
   const [bootcamp, setBootcamp] = useState('');
   const [completion, setCompletion] = useState('');
   const [aboutMe, setAboutMe] = useState('');
+
   async function register() {
+    console.log("register");
+    console.log(username);
+    console.log(password);
     if (username.trim() === '' || password.trim() === '') {
+      console.log("required");
       return toast('Username and password are required');
     }
     const res = await registerUser(username, password);
+    console.log(res);
+    if(res){
+      console.log("registered");
+      toast("You have registered successfully!");
+    }
   }
   return (
     <IonPage>
@@ -58,7 +68,7 @@ const Signup: React.FC = () => {
                   Name <IonText color="danger">*</IonText>
                 </IonLabel>
                 <IonInput
-                  value=""
+                  
                   type="text"
                   placeholder="Enter your name"
                   clearInput
@@ -71,7 +81,7 @@ const Signup: React.FC = () => {
                   Title <IonText color="danger">*</IonText>
                 </IonLabel>
                 <IonInput
-                  value=""
+                  
                   type="text"
                   placeholder="Enter your title"
                   clearInput
@@ -84,7 +94,7 @@ const Signup: React.FC = () => {
                   Email <IonText color="danger">*</IonText>
                 </IonLabel>
                 <IonInput
-                  value=""
+                  
                   type="email"
                   placeholder="Enter your email"
                   clearInput
@@ -97,7 +107,6 @@ const Signup: React.FC = () => {
                   Password <IonText color="danger">*</IonText>
                 </IonLabel>
                 <IonInput
-                  value=""
                   type="password"
                   placeholder="Enter your password"
                   clearInput
@@ -161,9 +170,9 @@ const Signup: React.FC = () => {
                 expand="block"
                 type="submit"
                 className="ion-n-margin create-button"
-                // onClick={Loading}
+                onClick={register}
               >
-                Creat my account
+                Create my account
               </IonButton>
             </div>
           </form>

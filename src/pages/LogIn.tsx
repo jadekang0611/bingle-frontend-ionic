@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   IonContent,
   IonItem,
@@ -11,22 +12,27 @@ import {
   IonButton,
   IonToolbar,
   IonBackButton,
-  IonHeader
+  IonHeader,
+  IonLoading
 } from '@ionic/react';
 import { loginUser } from '../firebaseConfig';
 import './LogIn.css';
 import { toast } from '../toast';
 
 const LogIn: React.FC = () => {
+  const [busy, setBusy] = useState<boolean>(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   async function login() {
-    const res = await loginUser(username, password);
+    setBusy(true);
+    const res: any = await loginUser(username, password);
     if (res) {
+      history.replace('/search');
       toast('You are logged in!');
     }
-    console.log(res);
+    setBusy(false);
   }
   return (
     <IonPage>
@@ -37,24 +43,27 @@ const LogIn: React.FC = () => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
+      <IonLoading
+        message="Logging in..."
+        duration={0}
+        isOpen={busy}
+      ></IonLoading>
       <IonContent>
         <IonList lines="full" class="ion-no-margin ion-no-padding">
           <IonItem>
-            <IonLabel position="stacked">
-              Email <IonText color="danger">*</IonText>
-            </IonLabel>
+            <IonLabel position="stacked">Email</IonLabel>
             <IonInput
               required
+              placeholder="Enter your email"
               type="email"
               onIonChange={(e: any) => setUsername(e.target.value)}
             ></IonInput>
           </IonItem>
           <IonItem>
-            <IonLabel position="stacked">
-              Password <IonText color="danger">*</IonText>
-            </IonLabel>
+            <IonLabel position="stacked">Password</IonLabel>
             <IonInput
               required
+              placeholder="Enter your password"
               type="password"
               value={password}
               onIonChange={(e: any) => setPassword(e.target.value)}

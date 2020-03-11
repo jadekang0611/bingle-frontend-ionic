@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
@@ -22,6 +22,8 @@ import Onboarding from './pages/Onboarding';
 import Signup from './pages/Signup';
 import LogIn from './pages/LogIn';
 import UserView from './pages/UserView';
+import ProtectedRoute from './components/ProtectedRoute';
+import { auth } from './firebaseConfig';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -42,51 +44,77 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/login" component={LogIn} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/signup/onboarding" component={Onboarding} />
-          <Route path="/landing" component={Landing} exact={true} />
-          {/* <Route path="/institutions" component={Institutions} /> */}
-          <Route path="/search" component={SearchScreen} />
-          <Route path="/follows" component={Follow} />
-          <Route path="/myaccount" component={MyAccount} exact={true} />
-          <Route path="/user" component={UserView} />
-          <Route exact path="/" render={() => <Redirect to="/landing" />} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom" translucent={true}>
-          <IonTabButton tab="landing" href="/landing">
-            <IonIcon icon={home} />
-            <IonLabel>Landing</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="splash" href="/signup/onboarding">
-            <IonIcon icon={square} />
-            <IonLabel>Onboarding</IonLabel>
-          </IonTabButton>
-          {/* <IonTabButton tab="institutions" href="/institutions">
+const App: React.FC = () => {
+  const [authenticated, setAuthenticated] = useState(false);
+  useEffect(() => {
+    auth.onAuthStateChanged(authenticated => {
+      authenticated ? setAuthenticated(true) : setAuthenticated(false);
+    });
+  });
+  console.log(authenticated);
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route path="/login" component={LogIn} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/signup/onboarding" component={Onboarding} />
+            <Route path="/landing" component={Landing} exact={true} />
+            {/* <Route path="/institutions" component={Institutions} /> */}
+            <ProtectedRoute
+              path="/search"
+              auth={authenticated}
+              component={SearchScreen}
+            />
+            <ProtectedRoute
+              path="/follows"
+              auth={authenticated}
+              component={Follow}
+            />
+            <ProtectedRoute
+              path="/myaccount"
+              auth={authenticated}
+              component={MyAccount}
+              exact={true}
+            />
+            <ProtectedRoute
+              path="/user"
+              auth={authenticated}
+              component={UserView}
+            />
+            <Route exact path="/" render={() => <Redirect to="/landing" />} />
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom" translucent={true}>
+            <IonTabButton tab="landing" href="/landing">
+              <IonIcon icon={home} />
+              <IonLabel>Landing</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="splash" href="/signup/onboarding">
+              <IonIcon icon={square} />
+              <IonLabel>Onboarding</IonLabel>
+            </IonTabButton>
+            {/* <IonTabButton tab="institutions" href="/institutions">
             <IonIcon icon={grid} />
             <IonLabel>Institutions</IonLabel>
           </IonTabButton> */}
-          <IonTabButton tab="search" href="/search">
-            <IonIcon icon={search} />
-            <IonLabel>Search</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="follows" href="/follows">
-            <IonIcon icon={star} />
-            <IonLabel>Follow</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="myaccount" href="/myaccount">
-            <IonIcon icon={person} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+            <IonTabButton tab="search" href="/search">
+              <IonIcon icon={search} />
+              <IonLabel>Search</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="follows" href="/follows">
+              <IonIcon icon={star} />
+              <IonLabel>Follow</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="myaccount" href="/myaccount">
+              <IonIcon icon={person} />
+              <IonLabel>Profile</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

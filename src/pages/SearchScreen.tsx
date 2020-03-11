@@ -55,19 +55,26 @@ const SearchScreen: React.FC = () => {
     }
   }
 
-  // const [searchString, setSearchString] = useState();
-  // const [searchResults, setSearchResults] = useState();
-  // const searchHandler = (event: any) => {
-  //   setSearchString(event.target.value);
-  // };
-  // useEffect(() => {
-  //   const results = people.filter(user => {
-  //     if (user !== undefined) {
-  //       user.title.toLowerCase().includes(searchString);
-  //     }
-  //   });
-  //   setSearchResults(results);
-  // }, [searchString]);
+  const [searchList, setSearchList] = useState(people);
+  const [loadedList, setLoadedList] = useState(people);
+
+  function filterList(e: any) {
+    const searchTerm = e.srcElement.value;
+    setSearchList(people);
+    if (!searchTerm) {
+      return;
+    }
+    setSearchList(
+      loadedList.filter(item => {
+        if (item && searchTerm) {
+          if (item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
+      })
+    );
+  }
   return (
     <IonPage>
       <IonContent>
@@ -77,6 +84,7 @@ const SearchScreen: React.FC = () => {
           placeholder="Software Engineer"
           autocomplete="on"
           inputmode="text"
+          onIonChange={e => filterList(e)}
           // value={searchString}
           // onChange={searchHandler}
         ></IonSearchbar>
@@ -98,9 +106,8 @@ const SearchScreen: React.FC = () => {
         <br></br>
         <IonList id="show-users-container">
           {/* TypeScript gave me an error that my object possibly underfined; therefore, I wrapped my whole mapped array with a condition  */}
-          {people.map((user, id) => {
+          {searchList.map((user, id) => {
             alternateColors();
-
             if (user !== undefined) {
               return (
                 <IonItem
