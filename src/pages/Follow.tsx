@@ -7,31 +7,32 @@ import {
   IonSegment,
   IonSegmentButton,
   IonLabel,
-  IonIcon
+  IonAvatar,
+  IonList,
+  IonListHeader,
+  IonItem
 } from '@ionic/react';
-import React from 'react';
-
+import React, { useState } from 'react';
+import { people } from './data/dummy-data';
+import {followingPeople} from './data/dummy-data-following'
 import './Home.css';
 
 const Follow: React.FC = () => {
+  let followers = people;
+  let following = followingPeople;
+  const [showFollowers, setShowFollowers] = useState();
+
+  const followerHandler = () => {
+    // setShowFollowers();
+  };
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <IonSegment>
           <IonSegment
             onIonChange={e => console.log('Segment selected, e.detail.value')}
           >
-            <IonSegmentButton value="followers">
+            <IonSegmentButton value="followers" onClick={followerHandler}>
               <IonLabel>Followers</IonLabel>
             </IonSegmentButton>
             <IonSegmentButton value="following">
