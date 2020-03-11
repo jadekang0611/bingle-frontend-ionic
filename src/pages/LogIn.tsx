@@ -23,6 +23,7 @@ import { loginUser } from '../firebaseConfig';
 import './LogIn.css';
 import { toast } from '../toast';
 
+
 const LogIn: React.FC = () => {
   const [busy, setBusy] = useState<boolean>(false);
   const [username, setUsername] = useState('');

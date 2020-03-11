@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   IonItemDivider,
   IonText,
@@ -31,22 +32,64 @@ const Signup: React.FC = () => {
   const [bootcamp, setBootcamp] = useState('');
   const [completion, setCompletion] = useState('');
   const [aboutMe, setAboutMe] = useState('');
+  const history = useHistory();
+  let userData = {
+    id: '',
+    blurb: '',
+    name: '',
+    email: '',
+    title: '',
+    bootcamp: ''
+  };
 
-  async function register() {
-    console.log("register");
+  async function register(e: any) {
+    e.preventDefault();
+    console.log('register');
     console.log(username);
     console.log(password);
     if (username.trim() === '' || password.trim() === '') {
-      console.log("required");
+      console.log('required');
       return toast('Username and password are required');
     }
     const res = await registerUser(username, password);
-    console.log(res);
-    if(res){
-      console.log("registered");
-      toast("You have registered successfully!");
+    console.log('Response' + res);
+    if (res) {
+      console.log('registered');
+      if (res.user !== null) {
+        console.log('1');
+        if (res.user.uid !== null) {
+          console.log('2');
+          userData = {
+            id: res.user.uid,
+            blurb: aboutMe,
+            name: name,
+            email: username,
+            title: title,
+            bootcamp: bootcamp
+          };
+        }
+      }
+
+      const params = {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData),
+        method: 'POST'
+      };
+
+      fetch(
+        'https://us-central1-bingle-backend.cloudfunctions.net/app/api/create/user',
+        params
+      ).then(res => {
+        console.log('you did it');
+        console.log(res);
+        toast('You have registered successfully!');
+        history.replace("/search");
+      });
     }
   }
+
   return (
     <IonPage>
       <IonHeader>
@@ -58,7 +101,6 @@ const Signup: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <div id="signup-container">
-          <form onSubmit={() => {}}>
             <IonList lines="full" className="ion-no-margin ion-no-padding">
               <IonListHeader className="signup-title">
                 Create a new account
@@ -68,7 +110,6 @@ const Signup: React.FC = () => {
                   Name <IonText color="danger">*</IonText>
                 </IonLabel>
                 <IonInput
-                  
                   type="text"
                   placeholder="Enter your name"
                   clearInput
@@ -81,7 +122,6 @@ const Signup: React.FC = () => {
                   Title <IonText color="danger">*</IonText>
                 </IonLabel>
                 <IonInput
-                  
                   type="text"
                   placeholder="Enter your title"
                   clearInput
@@ -94,7 +134,6 @@ const Signup: React.FC = () => {
                   Email <IonText color="danger">*</IonText>
                 </IonLabel>
                 <IonInput
-                  
                   type="email"
                   placeholder="Enter your email"
                   clearInput
@@ -168,14 +207,12 @@ const Signup: React.FC = () => {
             <div className="ion-padding">
               <IonButton
                 expand="block"
-                type="submit"
                 className="ion-n-margin create-button"
                 onClick={register}
               >
                 Create my account
               </IonButton>
             </div>
-          </form>
         </div>
       </IonContent>
     </IonPage>
