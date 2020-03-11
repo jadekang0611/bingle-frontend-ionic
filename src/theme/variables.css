@@ -247,6 +247,9 @@ http://ionicframework.com/docs/theming/ */
   :root {
     --ion-background-color: #fef9f8;
     --ion-background-color-rgb: 254, 249, 248;
+    --ion-tab-bar-backround-color: #fff;
+    --ion-tab-bar-color-selected: #f5cd34;
+    --ion-tab-bar-border-color: #fff;
 
     --ion-text-color: #121212;
     --ion-text-color-rgb: 18, 18, 18;

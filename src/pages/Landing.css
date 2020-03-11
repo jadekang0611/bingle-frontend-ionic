@@ -21,13 +21,18 @@
 
 .landing-footer {
   padding-bottom: 16px !important;
+  text-align: center;
+  position: fixed;
 }
 .footer-title {
   font-size: 12px;
+  --color: #fff;
 }
 
 .log-in-button {
   --background: transparent;
+  --background-activated: #f5cd34;
+  --background-activated-opacity: 0.7;
   border: 2px solid #fff;
   border-radius: 8px !important;
   text-decoration: underline;
@@ -35,7 +40,10 @@
 
 .sign-up-button {
   --background: #f5cd34;
-  color: #000;
+  --color: #121212;
+  --background-activated: #fff;
+  --background-activated-opacity: 0.7;
+  --ripple-color: #f5cd34;
 }
 
 #bingle-logo {
@@ -51,6 +59,7 @@
 
 .landing-blurb-container {
   text-align: center;
+  color: #fff;
 }
 
 .center-items {

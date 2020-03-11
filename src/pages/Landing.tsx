@@ -8,7 +8,8 @@ import {
   IonTitle,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
+  IonRippleEffect
 } from '@ionic/react';
 import './Landing.css';
 import BingleLogo from './image/bingle-logo.png';
@@ -33,6 +34,7 @@ const Landing: React.FC = () => {
                   href="/login"
                 >
                   Log In
+                  <IonRippleEffect type="unbounded"></IonRippleEffect>
                 </IonButton>
               </IonCol>
               <IonCol>
@@ -42,6 +44,7 @@ const Landing: React.FC = () => {
                   href="/signup"
                 >
                   Sign up
+                  <IonRippleEffect type="unbounded"></IonRippleEffect>
                 </IonButton>
               </IonCol>
             </IonRow>

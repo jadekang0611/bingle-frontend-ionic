@@ -11,7 +11,6 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { square, grid, search, star, person, home } from 'ionicons/icons';
-import Home from './pages/Home';
 
 // My screens are imported here
 // import Institutions from './pages/Institutions';
@@ -48,7 +47,6 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/home" component={Home} exact={true} />
           <Route path="/login" component={LogIn} />
           <Route path="/signup" component={Signup} />
           <Route path="/signup/onboarding" component={Onboarding} />
@@ -58,9 +56,9 @@ const App: React.FC = () => (
           <Route path="/follows" component={Follow} />
           <Route path="/myaccount" component={MyAccount} exact={true} />
           <Route path="/user" component={UserView} />
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
+          <Route exact path="/" render={() => <Redirect to="/landing" />} />
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
+        <IonTabBar slot="bottom" translucent={true}>
           <IonTabButton tab="landing" href="/landing">
             <IonIcon icon={home} />
             <IonLabel>Landing</IonLabel>
