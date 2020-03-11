@@ -1,18 +1,15 @@
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
-  IonSegment,
-  IonSegmentButton,
   IonLabel,
   IonAvatar,
   IonList,
   IonListHeader,
   IonItem,
   IonButton,
+  IonGrid,
   IonRow,
+  IonCol,
   IonChip
 } from '@ionic/react';
 import React, { useState } from 'react';
@@ -24,30 +21,43 @@ const Follow: React.FC = () => {
   let followers = people;
   let following = followingPeople;
   const [showFollow, setShowFollow] = useState(followers);
+  const [who, setWho] = useState('Check out your followers');
 
   const followerHandler = () => {
     setShowFollow(followers);
-    console.log(showFollow);
+    setWho('Check out your followers');
   };
 
   const followingHandler = () => {
     setShowFollow(following);
+    setWho('See who you are following');
   };
   return (
     <IonPage>
-      <IonHeader translucent>
-        <IonToolbar className="follow-tool-bar-container">
-          <IonButton onClick={followerHandler}>
+      <IonRow className="follow-button-row">
+        <IonCol>
+          <IonButton
+            className="follower-button"
+            expand="full"
+            onClick={followerHandler}
+          >
             <IonLabel>Followers</IonLabel>
           </IonButton>
-          <IonButton onClick={followingHandler}>
+        </IonCol>
+        <div id="follow-vertical-line"></div>
+        <IonCol>
+          <IonButton
+            className="following-button"
+            expand="full"
+            onClick={followingHandler}
+          >
             <IonLabel>Following</IonLabel>
           </IonButton>
-        </IonToolbar>
-      </IonHeader>
+        </IonCol>
+      </IonRow>
       <IonContent>
         <IonList>
-          <IonListHeader>Check out your followers</IonListHeader>
+          <IonListHeader className="follow-main-title">{who}</IonListHeader>
           {showFollow.map((user, id) => {
             if (user !== undefined) {
               return (
@@ -70,7 +80,7 @@ const Follow: React.FC = () => {
                         </IonAvatar>
                       </IonChip>
                     </IonRow>
-                    <h3>{user.title}</h3>
+                    <h3 className="follow-title">{user.title}</h3>
                   </IonLabel>
                 </IonItem>
               );

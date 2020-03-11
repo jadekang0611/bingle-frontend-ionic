@@ -4,4 +4,56 @@
 
 .institution-chip {
   margin: 0;
+  margin-right: 2px;
+  background: #e7e7e7;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.follow-button-row {
+  margin-top: 8px;
+  justify-content: space-between;
+}
+
+.follow-title {
+  color: #a6b1bc;
+  font-weight: 500;
+}
+.follower-button {
+  --background: transparent;
+  border-bottom: 1px solid #e7e7e7;
+  color: #121212;
+  --background-activated: transparent;
+  --background-activated-opacity: 0.7;
+  --ripple-color: #f5cd34;
+  padding-bottom: 12px;
+}
+
+.following-button {
+  --background: transparent;
+  border-bottom: 1px solid #e7e7e7;
+  color: #121212;
+  --background-activated: transparent;
+  --background-activated-opacity: 0.7;
+  --ripple-color: #f5cd34;
+  padding-bottom: 12px;
+}
+
+.follower-button:active {
+  border-bottom: 1px solid #f5cd34;
+  color: #121212;
+}
+
+.following-button:active {
+  border-bottom: 1px solid #f5cd34;
+  color: #121212;
+}
+
+#follow-vertical-line {
+  height: 80%;
+  border: 0.25px solid #e7e7e7;
+}
+
+.follow-main-title {
+  margin: 16px 0px;
+  color: #121212;
 }
