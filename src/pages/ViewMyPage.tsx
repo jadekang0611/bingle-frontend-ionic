@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import {
   IonContent,
   IonPage,
@@ -14,7 +15,6 @@ import {
   IonBackButton,
   IonRippleEffect
 } from '@ionic/react';
-import React from 'react';
 import './ViewMyPage.css';
 import person3 from './image/avatars/person3.png';
 import { RouteComponentProps } from 'react-router';
@@ -25,6 +25,43 @@ interface ViewMyPageProps
   }> {}
 
 const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
+  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
+  const [bootcamp, setBootcamp] = useState('');
+  const [blurb, setBlurb] = useState('');
+  const [photo, setPhoto] = useState('');
+  const [github, setGithub] = useState('');
+
+  useEffect(() => {
+    const uid: any = match.params.uid;
+
+    const params = {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      method: 'GET'
+    };
+    fetch(
+      'https://us-central1-bingle-backend.cloudfunctions.net/app/api/read/user/' +
+        uid,
+      params
+    )
+      .then(res => {
+        return res.json();
+        console.log(res);
+      })
+      .then(data => {
+        const userData = data[0];
+        setName(userData.name);
+        setTitle(userData.title);
+        setBlurb(userData.blurb);
+        setPhoto(userData.photo);
+        setBootcamp(userData.bootcamp);
+        console.log(userData);
+      });
+  }, []);
+
   const projects = [
     'https://via.placeholder.com/170x120',
     'https://via.placeholder.com/170x120',
@@ -42,19 +79,17 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
       </IonButtons>
       <IonContent>
         <div id="my-behind-background-box">
-          <img className="user-view-image" src={person3} alt="user" />
+          <img className="user-view-image" src={photo} alt="user" />
         </div>
         <div id="my-user-view-card-box">
           <IonCard className="my-user-view-card">
             <IonCardHeader>
-              <IonCardTitle className="my-user-name">
-                Mariah Carey {match.params.uid}
-              </IonCardTitle>
+              <IonCardTitle className="my-user-name">{name}</IonCardTitle>
               <IonCardSubtitle className="my-user-title">
-                UI/UX Designer
+                {title}
               </IonCardSubtitle>
               <IonCardSubtitle className="my-user-blurb">
-                I became an expert in UI/UX after the GA immersive program!
+                {blurb}
               </IonCardSubtitle>
             </IonCardHeader>
             <IonCardContent className="my-user-bottom-container">
@@ -93,6 +128,8 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
                 className="my-user-view-button view-all-button"
                 shape="round"
                 size="default"
+                href={github}
+                disabled
               >
                 GITHUB
                 <IonRippleEffect></IonRippleEffect>

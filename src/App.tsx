@@ -22,6 +22,7 @@ import Onboarding from './pages/Onboarding';
 import Signup from './pages/Signup';
 import LogIn from './pages/LogIn';
 import UserView from './pages/UserView';
+import ViewMyPage from './pages/ViewMyPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { auth } from './firebaseConfig';
 
@@ -79,9 +80,13 @@ const App: React.FC = () => {
               exact={true}
             />
             <ProtectedRoute
-              path="/user"
+              path="/user/:uid"
               auth={authenticated}
               component={UserView}
+            />
+            <Route
+              path="/myaccount/:uid"
+              component={ViewMyPage}
             />
             <Route exact path="/" render={() => <Redirect to="/landing" />} />
           </IonRouterOutlet>
