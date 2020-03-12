@@ -117,6 +117,9 @@ const Signup: React.FC = () => {
           <IonList lines="full" className="ion-no-margin ion-no-padding">
             <IonListHeader className="signup-title">My Account</IonListHeader>
             <IonItem>
+              <IonButton>View my profile</IonButton>
+            </IonItem>
+            <IonItem>
               <IonLabel position="stacked">Photo</IonLabel>
               <IonInput
                 clearInput

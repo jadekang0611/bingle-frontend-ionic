@@ -22,7 +22,7 @@ import person8 from './image/avatars/person8.png';
 import person9 from './image/avatars/person9.png';
 import person10 from './image/avatars/person10.png';
 //
-
+import { IonReactRouter } from '@ionic/react-router';
 import { people } from './data/dummy-data';
 
 const slideOpts = {
@@ -55,9 +55,23 @@ const SearchScreen: React.FC = () => {
     }
   }
 
-  const [searchList, setSearchList] = useState(people);
-  const [loadedList, setLoadedList] = useState(people);
-  const [loadedPeople, setLoadedPeople] = useState([]);
+  const selectedItem = {
+    id: "",
+    name: "",
+    email: "",
+    bootcamp: "",
+    followers: "",
+    following: "",
+    blurb: "",
+    github: "",
+    photo: "",
+    projects: "",
+    title: "",
+  };
+
+  const [searchList, setSearchList] = useState([selectedItem]);
+  const [loadedList, setLoadedList] = useState([selectedItem]);
+  const [people, setPeople] = useState([selectedItem]);
 
   useEffect(() => {
     const params = {
@@ -75,6 +89,9 @@ const SearchScreen: React.FC = () => {
         console.log(res);
       })
       .then(data => {
+        setSearchList(data);
+        setLoadedList(data);
+        setPeople(data);
         console.log(data);
       });
   }, []);
@@ -85,6 +102,8 @@ const SearchScreen: React.FC = () => {
     if (!searchTerm) {
       return;
     }
+    console.log("Loaded List: " + loadedList);
+    console.log("People: " + people);
     setSearchList(
       loadedList.filter(item => {
         if (item && searchTerm) {
@@ -130,8 +149,10 @@ const SearchScreen: React.FC = () => {
           {searchList.map((user, id) => {
             alternateColors();
             if (user !== undefined) {
+              let link = "/user/" + user.id;
               return (
                 <IonItem
+                  routerLink={link}
                   key={id}
                   className={`alt-color-${count} search-users-container`}
                   onClick={() => {}}
@@ -139,7 +160,7 @@ const SearchScreen: React.FC = () => {
                   <IonAvatar className="search-image-container" slot="start">
                     <img
                       className="user-image-md"
-                      src={process.env.PUBLIC_URL + user.img}
+                      src={user.photo}
                       alt="avatar"
                     />
                   </IonAvatar>
@@ -148,7 +169,7 @@ const SearchScreen: React.FC = () => {
                     <div className="spacing"></div>
                     <h3>{user.title}</h3>
                     <div className="spacing"></div>
-                    <p>{user.institution}</p>
+                    <p>{user.bootcamp}</p>
                   </IonLabel>
                 </IonItem>
               );

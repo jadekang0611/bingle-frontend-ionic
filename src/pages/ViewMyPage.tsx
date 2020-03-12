@@ -15,16 +15,16 @@ import {
   IonRippleEffect
 } from '@ionic/react';
 import React from 'react';
-import './UserView.css';
+import './ViewMyPage.css';
 import person3 from './image/avatars/person3.png';
 import { RouteComponentProps } from 'react-router';
 
-interface UserViewProps
+interface ViewMyPageProps
   extends RouteComponentProps<{
     uid: string;
   }> {}
 
-const UserView: React.FC<UserViewProps> = ({ match }) => {
+const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
   const projects = [
     'https://via.placeholder.com/170x120',
     'https://via.placeholder.com/170x120',
@@ -37,59 +37,60 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
   ];
   return (
     <IonPage>
-      <IonButtons className="back-button-container" slot="start">
-        <IonBackButton defaultHref="/search" />
+      <IonButtons className="my-back-button-container" slot="start">
+        <IonBackButton defaultHref="/myaccount" />
       </IonButtons>
       <IonContent>
-        <div id="behind-background-box">
+        <div id="my-behind-background-box">
           <img className="user-view-image" src={person3} alt="user" />
         </div>
-        <div id="user-view-card-box">
-          <IonCard className="user-view-card">
+        <div id="my-user-view-card-box">
+          <IonCard className="my-user-view-card">
             <IonCardHeader>
-              <IonCardTitle className="user-name">
+              <IonCardTitle className="my-user-name">
                 Mariah Carey {match.params.uid}
               </IonCardTitle>
-              <IonCardSubtitle className="user-title">
+              <IonCardSubtitle className="my-user-title">
                 UI/UX Designer
               </IonCardSubtitle>
-              <IonCardSubtitle className="user-blurb">
+              <IonCardSubtitle className="my-user-blurb">
                 I became an expert in UI/UX after the GA immersive program!
               </IonCardSubtitle>
             </IonCardHeader>
-            <IonCardContent className="user-bottom-container">
+            <IonCardContent className="my-user-bottom-container">
               <IonRow>
                 <IonButton
-                  className="user-view-button ripple-parent"
+                  className="my-user-view-button ripple-parent"
                   shape="round"
+                  disabled
                 >
                   {' '}
                   Follow
                   <IonRippleEffect type="unbounded"></IonRippleEffect>
                 </IonButton>
               </IonRow>
-              <IonGrid id="card-bottom-section-grid">
+              <IonGrid id="my-card-bottom-section-grid">
                 <IonRow>
                   <IonCol>
-                    <IonRow className="card-bottom-title">Followers</IonRow>
-                    <IonRow className="card-bottom-number">20K</IonRow>
+                    <IonRow className="my-card-bottom-title">Followers</IonRow>
+                    <IonRow className="my-card-bottom-number">20K</IonRow>
                   </IonCol>
-                  <div className="vertical-line"></div>
+                  <div className="my-vertical-line"></div>
                   <IonCol>
-                    <IonRow className="card-bottom-title">Following</IonRow>
-                    <IonRow className="card-bottom-number">5K</IonRow>
+                    <IonRow className="my-card-bottom-title">Following</IonRow>
+                    <IonRow className="my-card-bottom-number">5K</IonRow>
                   </IonCol>
                 </IonRow>
               </IonGrid>
             </IonCardContent>
           </IonCard>
         </div>
-        <div id="project-section-box">
-          <IonGrid className="project-section-grid">
-            <IonRow className="project-section-title-row">
-              <h2 className="project-section-title">PROJECTS</h2>
+        <div id="my-project-section-box">
+          <IonGrid className="my-project-section-grid">
+            <IonRow className="my-project-section-title-row">
+              <h2 className="my-project-section-title">PROJECTS</h2>
               <IonButton
-                className="user-view-button view-all-button"
+                className="my-user-view-button view-all-button"
                 shape="round"
                 size="default"
               >
@@ -97,18 +98,22 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
                 <IonRippleEffect></IonRippleEffect>
               </IonButton>
             </IonRow>
-            <IonRow className="project-section-img-row">
+            <IonRow className="my-project-section-img-row">
               {projects.map((project, i) => {
                 return (
                   <IonCol size="6">
-                    <img className="project-img" src={project} alt="project" />
+                    <img
+                      className="my-project-img"
+                      src={project}
+                      alt="project"
+                    />
                   </IonCol>
                 );
               })}
             </IonRow>
           </IonGrid>
         </div>
-        <IonButton className="contact-button" shape="round">
+        <IonButton className="my-contact-button" shape="round" disabled>
           CONTACT
           <IonRippleEffect></IonRippleEffect>
         </IonButton>
@@ -117,4 +122,4 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
   );
 };
 
-export default UserView;
+export default ViewMyPage;
