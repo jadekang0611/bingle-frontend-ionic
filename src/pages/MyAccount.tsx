@@ -26,9 +26,10 @@ const Signup: React.FC = () => {
   const [password, setPassword] = useState('');
   const [title, setTitle] = useState('');
   const [bootcamp, setBootcamp] = useState('');
-  const [completion, setCompletion] = useState('');
   const [blurb, setBlurb] = useState('');
   const [photo, setPhoto] = useState('');
+  const [github, setGithub] = useState('');
+  const [completion, setCompletion] = useState('test');
 
   const [] = useState();
 
@@ -56,7 +57,7 @@ const Signup: React.FC = () => {
           .then(data => {
             const userData = data[0];
             setName(userData.name);
-            setUsername(userData.username);
+            setUsername(userData.email);
             setPassword(userData.password);
             setTitle(userData.title);
             setBlurb(userData.blurb);
@@ -69,12 +70,39 @@ const Signup: React.FC = () => {
     }
   }, []);
 
-  async function register() {
-    if (username.trim() === '' || password.trim() === '') {
-      return toast('Username and password are required');
+  function saveProfile(e: any) {
+    e.preventDefault();
+    if (auth !== null) {
+      if (auth.currentUser !== null) {
+        const uid = auth.currentUser.uid;
+
+        const data = {
+          id: uid,
+          blurb: blurb,
+          name: name,
+          title: title,
+          photo: photo,
+          github: github
+        };
+
+        const params = {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data),
+          method: 'PUT'
+        };
+
+        fetch(
+          'https://us-central1-bingle-backend.cloudfunctions.net/app/api/create/user/profile',
+          params
+        ).then(res => {
+          toast('Profile updated successfully!');
+        });
+      }
     }
-    const res = await registerUser(username, password);
   }
+
   return (
     <IonPage>
       <IonHeader>
@@ -86,90 +114,73 @@ const Signup: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <div id="my-account-container">
-          <form onSubmit={() => {}}>
-            <IonList lines="full" className="ion-no-margin ion-no-padding">
-              <IonListHeader className="signup-title">My Account</IonListHeader>
-              <IonItem>
-                <IonLabel position="stacked">Photo</IonLabel>
-                <IonInput
-                  type="url"
-                  placeholder="Upload your photo"
-                  clearInput
-                  value={photo}
-                  onIonChange={(e: any) => setName(e.target.value)}
-                ></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">Name</IonLabel>
-                <IonInput
-                  type="text"
-                  value={name}
-                  placeholder="Enter your name"
-                  clearInput
-                  onIonChange={(e: any) => setName(e.target.value)}
-                ></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">Title</IonLabel>
-                <IonInput
-                  type="text"
-                  value={title}
-                  placeholder="Enter your title"
-                  clearInput
-                  onIonChange={(e: any) => setTitle(e.target.value)}
-                ></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">Email</IonLabel>
-                <IonInput
-                  disabled
-                  type="email"
-                  placeholder="Enter your email"
-                  clearInput
-                  value={username}
-                  onIonChange={(e: any) => setUsername(e.target.value)}
-                ></IonInput>
-              </IonItem>
+          <IonList lines="full" className="ion-no-margin ion-no-padding">
+            <IonListHeader className="signup-title">My Account</IonListHeader>
+            <IonItem>
+              <IonLabel position="stacked">Photo</IonLabel>
+              <IonInput
+                clearInput
+                value={photo}
+                onIonChange={(e: any) => setPhoto(e.target.value)}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Name</IonLabel>
+              <IonInput
+                type="text"
+                value={name}
+                clearInput
+                onIonChange={(e: any) => setName(e.target.value)}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Title</IonLabel>
+              <IonInput
+                type="text"
+                value={title}
+                clearInput
+                onIonChange={(e: any) => setTitle(e.target.value)}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Email</IonLabel>
+              <IonInput
+                disabled
+                type="email"
+                clearInput
+                value={username}
+                onIonChange={(e: any) => setUsername(e.target.value)}
+              ></IonInput>
+            </IonItem>
 
-              <IonItem>
-                <IonLabel position="stacked">Password</IonLabel>
-                <IonInput
-                  disabled
-                  type="password"
-                  value={password}
-                  clearInput
-                  onIonChange={(e: any) => setPassword(e.target.value)}
-                ></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">Your Bootcamp</IonLabel>
-                <IonInput disabled value={bootcamp}></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">Completion</IonLabel>
-                <IonInput disabled value={completion}></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="floating">About me</IonLabel>
-                <IonTextarea
-                  autoGrow={true}
-                  placeholder="Please share who you are to the Bingle community!"
-                  value={blurb}
-                  onIonChange={(e: any) => setBlurb(e.target.value)}
-                ></IonTextarea>
-              </IonItem>
-            </IonList>
-            <div className="ion-padding">
-              <IonButton
-                expand="block"
-                type="submit"
-                className="ion-n-margin"
-                // onClick={Loading}
-              >
-                Save Changes
-              </IonButton>
-            </div>
-          </form>
+            <IonItem>
+              <IonLabel position="stacked">Your Bootcamp</IonLabel>
+              <IonInput disabled value={bootcamp}></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Completion</IonLabel>
+              <IonInput disabled value={completion}></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="floating">About me</IonLabel>
+              <IonTextarea
+                autoGrow={true}
+                placeholder="Please share who you are to the Bingle community!"
+                value={blurb}
+                onIonChange={(e: any) => setBlurb(e.target.value)}
+              ></IonTextarea>
+            </IonItem>
+          </IonList>
+          <div className="ion-padding">
+            <IonButton
+              expand="block"
+              type="submit"
+              className="ion-n-margin"
+              onClick={saveProfile}
+            >
+              Save Changes
+            </IonButton>
+          </div>
         </div>
       </IonContent>
     </IonPage>
