@@ -56,17 +56,17 @@ const SearchScreen: React.FC = () => {
   }
 
   const selectedItem = {
-    id: "",
-    name: "",
-    email: "",
-    bootcamp: "",
-    followers: "",
-    following: "",
-    blurb: "",
-    github: "",
-    photo: "",
-    projects: "",
-    title: "",
+    id: '',
+    name: '',
+    email: '',
+    bootcamp: '',
+    followers: '',
+    following: '',
+    blurb: '',
+    github: '',
+    photo: '',
+    projects: '',
+    title: ''
   };
 
   const [searchList, setSearchList] = useState([selectedItem]);
@@ -74,6 +74,14 @@ const SearchScreen: React.FC = () => {
   const [people, setPeople] = useState([selectedItem]);
 
   useEffect(() => {
+    // let hide = document.getElementsByTagName('ion-tab-bar');
+    // console.log(hide);
+    // if (hide !== null) {
+    //   for (let i = 0; i < hide.length; i++) {
+    //     hide[i].className += 'show';
+    //   }
+    // }
+
     const params = {
       headers: {
         'Content-Type': 'application/json'
@@ -102,8 +110,8 @@ const SearchScreen: React.FC = () => {
     if (!searchTerm) {
       return;
     }
-    console.log("Loaded List: " + loadedList);
-    console.log("People: " + people);
+    console.log('Loaded List: ' + loadedList);
+    console.log('People: ' + people);
     setSearchList(
       loadedList.filter(item => {
         if (item && searchTerm) {
@@ -149,7 +157,7 @@ const SearchScreen: React.FC = () => {
           {searchList.map((user, id) => {
             alternateColors();
             if (user !== undefined) {
-              let link = "/user/" + user.id;
+              let link = '/user/' + user.id;
               return (
                 <IonItem
                   routerLink={link}

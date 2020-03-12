@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   IonContent,
@@ -29,6 +29,15 @@ const LogIn: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
+
+  // useEffect(() => {
+  //   let hide = document.getElementsByTagName('ion-tab-bar');
+  //   if (hide !== null) {
+  //     for (let i = 0; i < hide.length; i++) {
+  //       hide[i].className = 'hide';
+  //     }
+  //   }
+  // });
 
   async function login() {
     setBusy(true);

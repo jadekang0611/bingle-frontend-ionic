@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   IonContent,
   IonPage,
@@ -15,6 +15,15 @@ import './Landing.css';
 import BingleLogo from './image/bingle-logo.png';
 
 const Landing: React.FC = () => {
+  // useEffect(() => {
+  //   let hide = document.getElementsByTagName('ion-tab-bar');
+  //   if (hide !== null) {
+  //     for (let i = 0; i < hide.length; i++) {
+  //       hide[i].className = 'hide';
+  //     }
+  //   }
+  // });
+
   return (
     <IonPage className="landing-page">
       <IonContent className="landing-page ">

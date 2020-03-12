@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   IonItemDivider,
@@ -43,6 +43,15 @@ const Signup: React.FC = () => {
     bootcamp: ''
   };
   const [busy, setBusy] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   let hide = document.getElementsByTagName('ion-tab-bar');
+  //   if (hide !== null) {
+  //     for (let i = 0; i < hide.length; i++) {
+  //       hide[i].className = 'hide';
+  //     }
+  //   }
+  // });
 
   async function register(e: any) {
     // e.preventDefault();

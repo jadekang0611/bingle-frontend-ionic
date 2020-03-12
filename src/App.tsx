@@ -26,6 +26,8 @@ import ViewMyPage from './pages/ViewMyPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { auth } from './firebaseConfig';
 
+import './App.css';
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -92,6 +94,7 @@ const App: React.FC = () => {
               <IonIcon icon={home} />
               <IonLabel>Landing</IonLabel>
             </IonTabButton>
+
             {/* <IonTabButton tab="splash" href="/signup/onboarding">
               <IonIcon icon={square} />
               <IonLabel>Onboarding</IonLabel>
