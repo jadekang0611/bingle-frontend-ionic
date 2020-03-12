@@ -14,11 +14,20 @@ import {
   IonPage,
   IonTextarea,
   IonBackButton,
-  IonListHeader
+  IonListHeader,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonRippleEffect
 } from '@ionic/react';
 import { toast } from '../toast';
 import { registerUser, auth } from '../firebaseConfig';
 import './MyAccount.css';
+
+function useForceUpdate() {
+  const [value, setValue] = useState(0);
+  return () => setValue(value => ++value);
+}
 
 const Signup: React.FC = () => {
   const [name, setName] = useState('');
@@ -30,10 +39,40 @@ const Signup: React.FC = () => {
   const [photo, setPhoto] = useState('');
   const [github, setGithub] = useState('');
   const [completion, setCompletion] = useState('test');
-
+  const [currentSrc, setCurrentSrc] = useState('');
+  const [currentUrl, setCurrentUrl] = useState('');
+  const [projects, setProjects] = useState([
+    {
+      src: '',
+      url: ''
+    }
+  ]);
   //let previewLink = '';
 
-  const [previewLink, setPreviewLink] = useState("");
+  const [previewLink, setPreviewLink] = useState('');
+
+  const forceUpdate = useForceUpdate();
+  function addProjectHandler(e: any) {
+    console.log(projects);
+    let currentProjects = projects;
+    let data = {
+      src: currentSrc,
+      url: currentUrl
+    };
+    console.log(data);
+    if (currentProjects[0].src === "" && currentProjects[0].url === "")
+    {
+      currentProjects[0] = data;
+    }
+    else{
+      currentProjects.push(data);
+    }
+    setProjects(currentProjects);
+    forceUpdate();
+    setCurrentUrl('');
+    setCurrentSrc('');
+    console.log(projects);
+  }
 
   useEffect(() => {
     if (auth !== null) {
@@ -185,6 +224,34 @@ const Signup: React.FC = () => {
               onClick={saveProfile}
             >
               Save Changes
+            </IonButton>
+          </div>
+          <IonList lines="full" className="ion-no-margin ion-no-padding">
+            <IonListHeader className="signup-title">My Portfolio</IonListHeader>
+            <IonItem>
+              <IonLabel position="stacked">Project Image Url</IonLabel>
+              <IonInput
+                clearInput
+                onIonChange={(e: any) => setCurrentSrc(e.target.value)}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Deployed Project Url</IonLabel>
+              <IonInput
+                type="text"
+                clearInput
+                onIonChange={(e: any) => setCurrentUrl(e.target.value)}
+              ></IonInput>
+            </IonItem>
+          </IonList>
+          <div className="ion-padding">
+            <IonButton
+              expand="block"
+              type="submit"
+              className="ion-n-margin"
+              onClick={addProjectHandler}
+            >
+              Add Project
             </IonButton>
           </div>
         </div>

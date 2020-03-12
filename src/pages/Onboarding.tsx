@@ -12,7 +12,7 @@ import './Onboarding.css';
 
 // This is an optional parameter set to pass to the swiper instance
 const slideOpts = {
-  initialSlide: 1,
+  initialSlide: 0,
   speed: 400
 };
 
@@ -52,7 +52,7 @@ const Onboarding: React.FC = () => {
         </IonSlide>
         <IonSlide className="slide">
           <img src="https://via.placeholder.com/250" alt="splash-img" />
-          <h2>Ready to Play?</h2>
+          <h2>Ready to start?</h2>
           <IonButton fill="clear">Let's Start!</IonButton>
         </IonSlide>
       </IonSlides>
