@@ -60,7 +60,7 @@ const App: React.FC = () => {
           <IonRouterOutlet>
             <Route path="/login" component={LogIn} />
             <Route path="/signup" component={Signup} />
-            <Route path="/onboarding" component={Onboarding} />
+            <Route path="/onboarding"  component={Onboarding} />
             <Route path="/landing" component={Landing} exact={true} />
             {/* <Route path="/institutions" component={Institutions} /> */}
             <ProtectedRoute

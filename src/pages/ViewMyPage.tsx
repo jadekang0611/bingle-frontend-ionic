@@ -35,6 +35,8 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
     src:"",
     url:""
   }]);
+  const [following, setFollowing] = useState('');
+  const [followers, setFollowers] = useState('');
 
   useEffect(() => {
     const uid: any = match.params.uid;
@@ -63,20 +65,11 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
         setPhoto(userData.photo);
         setBootcamp(userData.bootcamp);
         setPortfolio(userData.projects);
-        console.log(userData);
+        setFollowers(userData.followersCount);
+        setFollowing(userData.followingCount);
       });
   }, []);
 
-  const projects = [
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120'
-  ];
   return (
     <IonPage>
       <IonButtons className="my-back-button-container" slot="start">
@@ -113,12 +106,12 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
                 <IonRow>
                   <IonCol>
                     <IonRow className="my-card-bottom-title">Followers</IonRow>
-                    <IonRow className="my-card-bottom-number">20K</IonRow>
+                    <IonRow className="my-card-bottom-number">{followers}</IonRow>
                   </IonCol>
                   <div className="my-vertical-line"></div>
                   <IonCol>
                     <IonRow className="my-card-bottom-title">Following</IonRow>
-                    <IonRow className="my-card-bottom-number">5K</IonRow>
+                    <IonRow className="my-card-bottom-number">{following}</IonRow>
                   </IonCol>
                 </IonRow>
               </IonGrid>

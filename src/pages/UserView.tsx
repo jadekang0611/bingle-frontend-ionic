@@ -16,6 +16,7 @@ import {
   IonRippleEffect
 } from '@ionic/react';
 import './UserView.css';
+import { auth } from '../firebaseConfig';
 import person3 from './image/avatars/person3.png';
 import { RouteComponentProps } from 'react-router';
 
@@ -33,10 +34,16 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
   const [blurb, setBlurb] = useState('');
   const [photo, setPhoto] = useState('');
   const [github, setGithub] = useState('');
-  const [portfolio, setPortfolio] = useState([{
-    src:"",
-    url:""
-  }]);
+  const [portfolio, setPortfolio] = useState([
+    {
+      src: '',
+      url: ''
+    }
+  ]);
+  const [following, setFollowing] = useState('');
+  const [followers, setFollowers] = useState('');
+  const [disabled, setDisabled] = useState(false);
+const [followText, setFollowText] = useState("Follow");
 
   useEffect(() => {
     const uid: any = match.params.uid;
@@ -55,7 +62,6 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
     )
       .then(res => {
         return res.json();
-        console.log(res);
       })
       .then(data => {
         const userData = data[0];
@@ -67,22 +73,55 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
         setPhoto(userData.photo);
         setBootcamp(userData.bootcamp);
         setPortfolio(userData.projects);
-        console.log(userData);
+        setFollowers(userData.followersCount);
+        setFollowing(userData.followingCount);
+
+            // disable button
+    if (auth !== null) {
+      if (auth.currentUser !== null) {
+         if (userData.followers.includes(auth.currentUser.uid)) {
+           setDisabled(true);
+           setFollowText("Following");
+         }
+      }
+    }
       });
+
   }, []);
-
-  const projects = [
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120',
-    'https://via.placeholder.com/170x120'
-  ];
-
   let mailto = 'mailto:' + username;
+
+  const followHandler = (e: any) => {
+    e.preventDefault();
+    const followId: any = match.params.uid;
+    if (auth !== null) {
+      if (auth.currentUser !== null) {
+        const uid = auth.currentUser.uid;
+
+        const data = {
+          uid: uid,
+          followId: followId
+        };
+
+        const params = {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data),
+          method: 'PUT'
+        };
+
+        fetch(
+          'https://us-central1-bingle-backend.cloudfunctions.net/app/api/create/follow',
+          params
+        ).then(res => {
+          let update = followers + 1;
+          setFollowers(update);
+          setDisabled(true);
+          setFollowText("Following");
+        });
+      }
+    }
+  };
 
   return (
     <IonPage>
@@ -105,9 +144,10 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
                 <IonButton
                   className="user-view-button ripple-parent"
                   shape="round"
+                  onClick={followHandler}
+                  disabled={disabled}
                 >
-                  {' '}
-                  Follow
+                  {followText}
                   <IonRippleEffect type="unbounded"></IonRippleEffect>
                 </IonButton>
               </IonRow>
@@ -115,12 +155,12 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
                 <IonRow>
                   <IonCol>
                     <IonRow className="card-bottom-title">Followers</IonRow>
-                    <IonRow className="card-bottom-number">20K</IonRow>
+                    <IonRow className="card-bottom-number">{followers}</IonRow>
                   </IonCol>
                   <div className="vertical-line"></div>
                   <IonCol>
                     <IonRow className="card-bottom-title">Following</IonRow>
-                    <IonRow className="card-bottom-number">5K</IonRow>
+                    <IonRow className="card-bottom-number">{following}</IonRow>
                   </IonCol>
                 </IonRow>
               </IonGrid>
@@ -145,7 +185,11 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
               {portfolio.map((project, i) => {
                 return (
                   <IonCol size="6">
-                    <img className="project-img" src={project.src} alt="project" />
+                    <img
+                      className="project-img"
+                      src={project.src}
+                      alt="project"
+                    />
                   </IonCol>
                 );
               })}
