@@ -31,6 +31,10 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
   const [blurb, setBlurb] = useState('');
   const [photo, setPhoto] = useState('');
   const [github, setGithub] = useState('');
+  const [portfolio, setPortfolio] = useState([{
+    src:"",
+    url:""
+  }]);
 
   useEffect(() => {
     const uid: any = match.params.uid;
@@ -58,6 +62,7 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
         setBlurb(userData.blurb);
         setPhoto(userData.photo);
         setBootcamp(userData.bootcamp);
+        setPortfolio(userData.projects);
         console.log(userData);
       });
   }, []);
@@ -136,12 +141,12 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
               </IonButton>
             </IonRow>
             <IonRow className="my-project-section-img-row">
-              {projects.map((project, i) => {
+              {portfolio.map((project, i) => {
                 return (
                   <IonCol size="6">
                     <img
                       className="my-project-img"
-                      src={project}
+                      src={project.src}
                       alt="project"
                     />
                   </IonCol>
