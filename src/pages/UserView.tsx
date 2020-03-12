@@ -33,6 +33,10 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
   const [blurb, setBlurb] = useState('');
   const [photo, setPhoto] = useState('');
   const [github, setGithub] = useState('');
+  const [portfolio, setPortfolio] = useState([{
+    src:"",
+    url:""
+  }]);
 
   useEffect(() => {
     const uid: any = match.params.uid;
@@ -62,6 +66,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
         setBlurb(userData.blurb);
         setPhoto(userData.photo);
         setBootcamp(userData.bootcamp);
+        setPortfolio(userData.projects);
         console.log(userData);
       });
   }, []);
@@ -137,10 +142,10 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
               </IonButton>
             </IonRow>
             <IonRow className="project-section-img-row">
-              {projects.map((project, i) => {
+              {portfolio.map((project, i) => {
                 return (
                   <IonCol size="6">
-                    <img className="project-img" src={project} alt="project" />
+                    <img className="project-img" src={project.src} alt="project" />
                   </IonCol>
                 );
               })}
