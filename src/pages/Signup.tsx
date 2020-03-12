@@ -85,7 +85,7 @@ const Signup: React.FC = () => {
         console.log('you did it');
         console.log(res);
         toast('You have registered successfully!');
-        history.replace("/search");
+        history.replace('/onboarding');
       });
     }
   }
@@ -101,118 +101,118 @@ const Signup: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <div id="signup-container">
-            <IonList lines="full" className="ion-no-margin ion-no-padding">
-              <IonListHeader className="signup-title">
-                Create a new account
-              </IonListHeader>
-              <IonItem>
-                <IonLabel position="stacked">
-                  Name <IonText color="danger">*</IonText>
-                </IonLabel>
-                <IonInput
-                  type="text"
-                  placeholder="Enter your name"
-                  clearInput
-                  required
-                  onIonChange={(e: any) => setName(e.target.value)}
-                ></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">
-                  Title <IonText color="danger">*</IonText>
-                </IonLabel>
-                <IonInput
-                  type="text"
-                  placeholder="Enter your title"
-                  clearInput
-                  required
-                  onIonChange={(e: any) => setTitle(e.target.value)}
-                ></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">
-                  Email <IonText color="danger">*</IonText>
-                </IonLabel>
-                <IonInput
-                  type="email"
-                  placeholder="Enter your email"
-                  clearInput
-                  required
-                  onIonChange={(e: any) => setUsername(e.target.value)}
-                ></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">
-                  Password <IonText color="danger">*</IonText>
-                </IonLabel>
-                <IonInput
-                  type="password"
-                  placeholder="Enter your password"
-                  clearInput
-                  required
-                  onIonChange={(e: any) => setPassword(e.target.value)}
-                ></IonInput>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">
-                  Your Bootcamp <IonText color="danger">*</IonText>
-                </IonLabel>
-                <IonSelect
-                  placeholder="Select One"
-                  okText="Select"
-                  cancelText="Dismiss"
-                  onIonChange={(e: any) => setBootcamp(e.target.value)}
-                  interface="action-sheet"
-                >
-                  <IonSelectOption value="appAcademy">
-                    appAcademy
-                  </IonSelectOption>
-                  <IonSelectOption value="bloc">bloc</IonSelectOption>
-                  <IonSelectOption value="Coding Dojo">
-                    Coding Dojo
-                  </IonSelectOption>
-                  <IonSelectOption value="Flatiron">Flatiron</IonSelectOption>
-                  <IonSelectOption value="General Assembly">
-                    General Assembly
-                  </IonSelectOption>
-                  <IonSelectOption value="Hack Reactor">
-                    Hack Reactor
-                  </IonSelectOption>
-                  <IonSelectOption value="Iron Hack">Iron Hack</IonSelectOption>
-                  <IonSelectOption value="Lambda School">
-                    Lambda School
-                  </IonSelectOption>
-                  <IonSelectOption value="Le Wagon">Le Wagon</IonSelectOption>
-                  <IonSelectOption value="Udacity">Udacity</IonSelectOption>
-                </IonSelect>
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">Completion</IonLabel>
-                <IonDatetime
-                  displayFormat="MMM YYYY"
-                  placeholder="Select Date"
-                  onIonChange={(e: any) => setCompletion(e.target.value)}
-                ></IonDatetime>
-              </IonItem>
-
-              <IonItem>
-                <IonLabel position="floating">About me</IonLabel>
-                <IonTextarea
-                  placeholder="Please share who you are to the Bingle community!"
-                  required
-                  onIonChange={(e: any) => setAboutMe(e.target.value)}
-                ></IonTextarea>
-              </IonItem>
-            </IonList>
-            <div className="ion-padding">
-              <IonButton
-                expand="block"
-                className="ion-n-margin create-button"
-                onClick={register}
+          <IonList lines="full" className="ion-no-margin ion-no-padding">
+            <IonListHeader className="signup-title">
+              Create a new account
+            </IonListHeader>
+            <IonItem>
+              <IonLabel position="stacked">
+                Name <IonText color="danger">*</IonText>
+              </IonLabel>
+              <IonInput
+                type="text"
+                placeholder="Enter your name"
+                clearInput
+                required
+                maxlength={13}
+                onIonChange={(e: any) => setName(e.target.value)}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">
+                Title <IonText color="danger">*</IonText>
+              </IonLabel>
+              <IonInput
+                type="text"
+                placeholder="Enter your title"
+                clearInput
+                required
+                maxlength={18}
+                onIonChange={(e: any) => setTitle(e.target.value)}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">
+                Email <IonText color="danger">*</IonText>
+              </IonLabel>
+              <IonInput
+                type="email"
+                placeholder="Enter your email"
+                clearInput
+                required
+                onIonChange={(e: any) => setUsername(e.target.value)}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">
+                Password <IonText color="danger">*</IonText>
+              </IonLabel>
+              <IonInput
+                type="password"
+                placeholder="Enter your password"
+                clearInput
+                required
+                onIonChange={(e: any) => setPassword(e.target.value)}
+              ></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">
+                Your Bootcamp <IonText color="danger">*</IonText>
+              </IonLabel>
+              <IonSelect
+                placeholder="Select One"
+                okText="Select"
+                cancelText="Dismiss"
+                onIonChange={(e: any) => setBootcamp(e.target.value)}
+                interface="action-sheet"
               >
-                Create my account
-              </IonButton>
-            </div>
+                <IonSelectOption value="appAcademy">appAcademy</IonSelectOption>
+                <IonSelectOption value="bloc">bloc</IonSelectOption>
+                <IonSelectOption value="Coding Dojo">
+                  Coding Dojo
+                </IonSelectOption>
+                <IonSelectOption value="Flatiron">Flatiron</IonSelectOption>
+                <IonSelectOption value="General Assembly">
+                  General Assembly
+                </IonSelectOption>
+                <IonSelectOption value="Hack Reactor">
+                  Hack Reactor
+                </IonSelectOption>
+                <IonSelectOption value="Iron Hack">Iron Hack</IonSelectOption>
+                <IonSelectOption value="Lambda School">
+                  Lambda School
+                </IonSelectOption>
+                <IonSelectOption value="Le Wagon">Le Wagon</IonSelectOption>
+                <IonSelectOption value="Udacity">Udacity</IonSelectOption>
+              </IonSelect>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Completion</IonLabel>
+              <IonDatetime
+                displayFormat="MMM YYYY"
+                placeholder="Select Date"
+                onIonChange={(e: any) => setCompletion(e.target.value)}
+              ></IonDatetime>
+            </IonItem>
+
+            <IonItem>
+              <IonLabel position="floating">About me</IonLabel>
+              <IonTextarea
+                placeholder="Please share who you are to the Bingle community!"
+                required
+                onIonChange={(e: any) => setAboutMe(e.target.value)}
+              ></IonTextarea>
+            </IonItem>
+          </IonList>
+          <div className="ion-padding">
+            <IonButton
+              expand="block"
+              className="ion-n-margin create-button"
+              onClick={register}
+            >
+              Create my account
+            </IonButton>
+          </div>
         </div>
       </IonContent>
     </IonPage>

@@ -60,7 +60,7 @@ const App: React.FC = () => {
           <IonRouterOutlet>
             <Route path="/login" component={LogIn} />
             <Route path="/signup" component={Signup} />
-            <Route path="/signup/onboarding" component={Onboarding} />
+            <Route path="/onboarding" component={Onboarding} />
             <Route path="/landing" component={Landing} exact={true} />
             {/* <Route path="/institutions" component={Institutions} /> */}
             <ProtectedRoute
@@ -84,10 +84,7 @@ const App: React.FC = () => {
               auth={authenticated}
               component={UserView}
             />
-            <Route
-              path="/myaccount/:uid"
-              component={ViewMyPage}
-            />
+            <Route path="/myaccount/:uid" component={ViewMyPage} />
             <Route exact path="/" render={() => <Redirect to="/landing" />} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom" translucent={true}>

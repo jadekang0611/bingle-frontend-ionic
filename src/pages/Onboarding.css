@@ -2,13 +2,17 @@ IonSlides {
   height: 100%;
 }
 
+.onboarding-container {
+  --background: #f5cd34;
+}
+
 .slide {
   display: block;
 }
 
 .slide h2 {
   margin-top: 2.8rem;
-  color: #000000;
+  color: #121212;
 }
 
 .swiper-slide img {
@@ -30,5 +34,5 @@ IonSlides {
 }
 
 .slide p b {
-  color: #000000;
+  color: #121212;
 }

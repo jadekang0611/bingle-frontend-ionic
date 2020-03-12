@@ -86,7 +86,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
       </IonButtons>
       <IonContent>
         <div id="behind-background-box">
-          <img className="user-view-image" src={person3} alt="user" />
+          <img className="user-view-image" src={photo} alt="user" />
         </div>
         <div id="user-view-card-box">
           <IonCard className="user-view-card">

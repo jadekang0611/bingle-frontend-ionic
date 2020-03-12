@@ -20,41 +20,40 @@ const slideOpts = {
 
 const Onboarding: React.FC = () => {
   return (
-    <IonContent fullscreen className="ion-padding" scroll-y="false">
+    <IonContent
+      fullscreen
+      className="ion-padding onboarding-container"
+      scroll-y="false"
+    >
       <IonSlides pager={false} options={slideOpts}>
         <IonSlide className="slide">
           <img src="https://via.placeholder.com/250" alt="splash-img" />
-          <h2>Welcome</h2>
+          <h2>Become a Bingler</h2>
           <p>
-            The <b>Bingle app</b> is Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ea velit laborum eligendi natus tempore soluta
-            quisquam,
+            Welcome! The <b>Bingle app</b> is a judgment free place for
+            bootcampers. Tell other binglers about who you are.
           </p>
         </IonSlide>
         <IonSlide className="slide">
           <img src="https://via.placeholder.com/250" alt="splash-img" />
-          <h2>What is Bingle?</h2>
+          <h2>Find Binglers</h2>
           <p>
-            <b>Bingle</b> Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quas nostrum atque molestiae et iure modi ex quae dicta
-            tempora consectetur ducimus inventore numquam
+            Get to know other <b>Binglers</b> who previously attended or are
+            currently enrolled in your bootcamps or other bootcamps.
           </p>
         </IonSlide>
         <IonSlide className="slide">
           <img src="https://via.placeholder.com/250" alt="splash-img" />
-          <h2>What do I do here?</h2>
+          <h2>Be Binglified</h2>
           <p>
-            <b>Bingle</b> Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quas nostrum atque molestiae et iure modi ex quae dicta
-            tempora consectetur ducimus inventore numquam
+            Simply grow your portfolio, inspire and be inspired by other
+            Binglers, and be found by your next employers.
           </p>
         </IonSlide>
         <IonSlide className="slide">
           <img src="https://via.placeholder.com/250" alt="splash-img" />
           <h2>Ready to Play?</h2>
-          <IonButton fill="clear">
-            Continue <IonIcon icon={arrowForward} />
-          </IonButton>
+          <IonButton fill="clear">Let's Start!</IonButton>
         </IonSlide>
       </IonSlides>
     </IonContent>
