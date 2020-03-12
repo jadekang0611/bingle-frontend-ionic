@@ -18,7 +18,8 @@ import {
   IonPage,
   IonTextarea,
   IonBackButton,
-  IonListHeader
+  IonListHeader,
+  IonLoading
 } from '@ionic/react';
 import './Signup.css';
 import { toast } from '../toast';
@@ -41,9 +42,11 @@ const Signup: React.FC = () => {
     title: '',
     bootcamp: ''
   };
+  const [busy, setBusy] = useState<boolean>(false);
 
   async function register(e: any) {
-    e.preventDefault();
+    // e.preventDefault();
+    setBusy(true);
     console.log('register');
     console.log(username);
     console.log(password);
@@ -84,8 +87,9 @@ const Signup: React.FC = () => {
       ).then(res => {
         console.log('you did it');
         console.log(res);
-        toast('You have registered successfully!');
         history.replace('/onboarding');
+        toast('You have registered successfully!');
+        window.location.reload();
       });
     }
   }
@@ -99,6 +103,11 @@ const Signup: React.FC = () => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
+      <IonLoading
+        message="Signing up..."
+        duration={0}
+        isOpen={busy}
+      ></IonLoading>
       <IonContent fullscreen>
         <div id="signup-container">
           <IonList lines="full" className="ion-no-margin ion-no-padding">

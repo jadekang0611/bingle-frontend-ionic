@@ -3,7 +3,7 @@ IonSlides {
 }
 
 .onboarding-container {
-  --background: #f5cd34;
+  --background: #fff;
 }
 
 .slide {
@@ -30,7 +30,7 @@ IonSlides {
   padding: 0 40px;
   font-size: 14px;
   line-height: 1.5;
-  color: #60646b;
+  color: #a6b1bc;
 }
 
 .slide p b {
