@@ -1,26 +1,9 @@
-.my-back-button-container {
-  background: #f39c92;
-  padding: 16px;
-  position: relative;
-  z-index: 1;
-  color: #fff;
-}
-#my-behind-background-box {
-  background: #f39c92;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  height: 250px;
-  position: relative;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+.tool-bar-style {
+  --background: #fef9f8;
 }
 
 .my-user-view-image {
-  margin: 0 auto;
-  display: block;
-  border-radius: 50%;
+  border-radius: 10px;
 }
 
 .my-user-view-button {
@@ -34,22 +17,12 @@
   font-weight: 600 !important;
 }
 
-#my-user-view-card-box {
-  /* top: 50%;
-    z-index: 1; */
-  text-align: center;
-  transform: translateY(-25%);
-
-  position: relative;
-  z-index: 500;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 .my-user-view-card {
   --background: #fff;
+  padding-top: 16px;
   border-radius: 20px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .my-user-name {
@@ -102,9 +75,6 @@
   right: 0;
   margin: 0 auto;
   position: relative;
-  z-index: 600;
-  transform: translateY(-36%);
-  top: 20%;
 }
 
 #my-opacity-bottom-box {
@@ -168,4 +138,10 @@
   /* margin: 8px; */
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
   /* width: 130px; */
+}
+
+.view-all-button {
+  width: 100px;
+  font-size: 12px;
+  margin: 0;
 }

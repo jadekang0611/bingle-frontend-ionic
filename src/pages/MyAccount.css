@@ -20,6 +20,9 @@
   font-size: 18px;
 }
 
+.account-title-col {
+  align-items: flex-start;
+}
 .account-project-section-img-row {
   justify-content: center;
   display: flex;
@@ -43,7 +46,6 @@
 }
 
 #my-account-container {
-  position: absolute;
   left: 0;
   right: 0;
   margin: 16px;
@@ -60,4 +62,17 @@
 .my-account-back-button-container {
   --color: #f5cd34;
   --background: #fff !important;
+}
+
+.account-page-title {
+  justify-content: space-between;
+}
+
+.my-account-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.input-style {
+  color: #a6b1bc;
 }

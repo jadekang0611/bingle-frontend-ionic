@@ -13,7 +13,9 @@ import {
   IonButtons,
   IonButton,
   IonBackButton,
-  IonRippleEffect
+  IonRippleEffect,
+  IonHeader,
+  IonToolbar
 } from '@ionic/react';
 import './ViewMyPage.css';
 import person3 from './image/avatars/person3.png';
@@ -31,10 +33,12 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
   const [blurb, setBlurb] = useState('');
   const [photo, setPhoto] = useState('');
   const [github, setGithub] = useState('');
-  const [portfolio, setPortfolio] = useState([{
-    src:"",
-    url:""
-  }]);
+  const [portfolio, setPortfolio] = useState([
+    {
+      src: '',
+      url: ''
+    }
+  ]);
   const [following, setFollowing] = useState('');
   const [followers, setFollowers] = useState('');
 
@@ -72,52 +76,53 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
 
   return (
     <IonPage>
-      <IonButtons className="my-back-button-container" slot="start">
-        <IonBackButton defaultHref="/myaccount" />
-      </IonButtons>
-      <IonContent>
-        <div id="my-behind-background-box">
-          <img className="user-view-image" src={photo} alt="user" />
-        </div>
-        <div id="my-user-view-card-box">
-          <IonCard className="my-user-view-card">
-            <IonCardHeader>
-              <IonCardTitle className="my-user-name">{name}</IonCardTitle>
-              <IonCardSubtitle className="my-user-title">
-                {title}
-              </IonCardSubtitle>
-              <IonCardSubtitle className="my-user-blurb">
-                {blurb}
-              </IonCardSubtitle>
-            </IonCardHeader>
-            <IonCardContent className="my-user-bottom-container">
+      <IonToolbar className="tool-bar-style">
+        <IonButtons className="my-back-button-container" slot="start">
+          <IonBackButton defaultHref="/myaccount" />
+        </IonButtons>
+      </IonToolbar>
+      <IonContent fullscreen>
+        <IonCard className="my-user-view-card">
+          <img
+            className="my-user-view-image"
+            src={photo}
+            alt="user"
+            width="150"
+          />
+
+          <IonCardHeader>
+            <IonCardTitle className="my-user-name">{name}</IonCardTitle>
+            <IonCardSubtitle className="my-user-title">{title}</IonCardSubtitle>
+            <IonCardSubtitle className="my-user-blurb">{blurb}</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent className="my-user-bottom-container">
+            <IonRow>
+              <IonButton
+                className="my-user-view-button ripple-parent"
+                shape="round"
+                disabled
+              >
+                {' '}
+                Follow
+                <IonRippleEffect type="unbounded"></IonRippleEffect>
+              </IonButton>
+            </IonRow>
+            <IonGrid id="my-card-bottom-section-grid">
               <IonRow>
-                <IonButton
-                  className="my-user-view-button ripple-parent"
-                  shape="round"
-                  disabled
-                >
-                  {' '}
-                  Follow
-                  <IonRippleEffect type="unbounded"></IonRippleEffect>
-                </IonButton>
+                <IonCol>
+                  <IonRow className="my-card-bottom-title">Followers</IonRow>
+                  <IonRow className="my-card-bottom-number">{followers}</IonRow>
+                </IonCol>
+                <div className="my-vertical-line"></div>
+                <IonCol>
+                  <IonRow className="my-card-bottom-title">Following</IonRow>
+                  <IonRow className="my-card-bottom-number">{following}</IonRow>
+                </IonCol>
               </IonRow>
-              <IonGrid id="my-card-bottom-section-grid">
-                <IonRow>
-                  <IonCol>
-                    <IonRow className="my-card-bottom-title">Followers</IonRow>
-                    <IonRow className="my-card-bottom-number">{followers}</IonRow>
-                  </IonCol>
-                  <div className="my-vertical-line"></div>
-                  <IonCol>
-                    <IonRow className="my-card-bottom-title">Following</IonRow>
-                    <IonRow className="my-card-bottom-number">{following}</IonRow>
-                  </IonCol>
-                </IonRow>
-              </IonGrid>
-            </IonCardContent>
-          </IonCard>
-        </div>
+            </IonGrid>
+          </IonCardContent>
+        </IonCard>
+
         <div id="my-project-section-box">
           <IonGrid className="my-project-section-grid">
             <IonRow className="my-project-section-title-row">

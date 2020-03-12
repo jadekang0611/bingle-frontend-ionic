@@ -13,7 +13,9 @@ import {
   IonButtons,
   IonButton,
   IonBackButton,
-  IonRippleEffect
+  IonRippleEffect,
+  IonToolbar,
+  IonTitle
 } from '@ionic/react';
 import './UserView.css';
 import { auth } from '../firebaseConfig';
@@ -43,7 +45,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
   const [following, setFollowing] = useState('');
   const [followers, setFollowers] = useState('');
   const [disabled, setDisabled] = useState(false);
-const [followText, setFollowText] = useState("Follow");
+  const [followText, setFollowText] = useState('Follow');
 
   useEffect(() => {
     const uid: any = match.params.uid;
@@ -76,17 +78,16 @@ const [followText, setFollowText] = useState("Follow");
         setFollowers(userData.followersCount);
         setFollowing(userData.followingCount);
 
-            // disable button
-    if (auth !== null) {
-      if (auth.currentUser !== null) {
-         if (userData.followers.includes(auth.currentUser.uid)) {
-           setDisabled(true);
-           setFollowText("Following");
-         }
-      }
-    }
+        // disable button
+        if (auth !== null) {
+          if (auth.currentUser !== null) {
+            if (userData.followers.includes(auth.currentUser.uid)) {
+              setDisabled(true);
+              setFollowText('Following');
+            }
+          }
+        }
       });
-
   }, []);
   let mailto = 'mailto:' + username;
 
@@ -117,7 +118,7 @@ const [followText, setFollowText] = useState("Follow");
           let update = followers + 1;
           setFollowers(update);
           setDisabled(true);
-          setFollowText("Following");
+          setFollowText('Following');
         });
       }
     }
@@ -125,48 +126,47 @@ const [followText, setFollowText] = useState("Follow");
 
   return (
     <IonPage>
-      <IonButtons className="back-button-container" slot="start">
-        <IonBackButton defaultHref="/search" />
-      </IonButtons>
+      <IonToolbar className="tool-bar-style">
+        <IonButtons className="back-button-container" slot="start">
+          <IonBackButton defaultHref="/search" />
+        </IonButtons>
+      </IonToolbar>
       <IonContent>
-        <div id="behind-background-box">
-          <img className="user-view-image" src={photo} alt="user" />
-        </div>
-        <div id="user-view-card-box">
-          <IonCard className="user-view-card">
-            <IonCardHeader>
-              <IonCardTitle className="user-name">{name}</IonCardTitle>
-              <IonCardSubtitle className="user-title">{title}</IonCardSubtitle>
-              <IonCardSubtitle className="user-blurb">{blurb}</IonCardSubtitle>
-            </IonCardHeader>
-            <IonCardContent className="user-bottom-container">
+        <IonCard className="user-view-card">
+          <img className="user-view-image" src={photo} alt="user" width="150" />
+          <IonCardHeader>
+            <IonCardTitle className="user-name">{name}</IonCardTitle>
+            <IonCardSubtitle className="user-title">{title}</IonCardSubtitle>
+            <IonCardSubtitle className="user-blurb">{blurb}</IonCardSubtitle>
+          </IonCardHeader>
+          <IonCardContent className="user-bottom-container">
+            <IonRow>
+              <IonButton
+                className="user-view-button ripple-parent"
+                shape="round"
+                onClick={followHandler}
+                disabled={disabled}
+              >
+                {followText}
+                <IonRippleEffect type="unbounded"></IonRippleEffect>
+              </IonButton>
+            </IonRow>
+            <IonGrid id="card-bottom-section-grid">
               <IonRow>
-                <IonButton
-                  className="user-view-button ripple-parent"
-                  shape="round"
-                  onClick={followHandler}
-                  disabled={disabled}
-                >
-                  {followText}
-                  <IonRippleEffect type="unbounded"></IonRippleEffect>
-                </IonButton>
+                <IonCol>
+                  <IonRow className="card-bottom-title">Followers</IonRow>
+                  <IonRow className="card-bottom-number">{followers}</IonRow>
+                </IonCol>
+                <div className="vertical-line"></div>
+                <IonCol>
+                  <IonRow className="card-bottom-title">Following</IonRow>
+                  <IonRow className="card-bottom-number">{following}</IonRow>
+                </IonCol>
               </IonRow>
-              <IonGrid id="card-bottom-section-grid">
-                <IonRow>
-                  <IonCol>
-                    <IonRow className="card-bottom-title">Followers</IonRow>
-                    <IonRow className="card-bottom-number">{followers}</IonRow>
-                  </IonCol>
-                  <div className="vertical-line"></div>
-                  <IonCol>
-                    <IonRow className="card-bottom-title">Following</IonRow>
-                    <IonRow className="card-bottom-number">{following}</IonRow>
-                  </IonCol>
-                </IonRow>
-              </IonGrid>
-            </IonCardContent>
-          </IonCard>
-        </div>
+            </IonGrid>
+          </IonCardContent>
+        </IonCard>
+
         <div id="project-section-box">
           <IonGrid className="project-section-grid">
             <IonRow className="project-section-title-row">

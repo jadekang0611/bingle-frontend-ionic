@@ -1,26 +1,9 @@
-.back-button-container {
-  background: #f39c92;
-  padding: 16px;
-  position: relative;
-  z-index: 1;
-  color: #fff;
-}
-#behind-background-box {
-  background: #f39c92;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  height: 250px;
-  position: relative;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+.user-view-image {
+  border-radius: 10px;
 }
 
-.user-view-image {
-  margin: 0 auto;
-  display: block;
-  border-radius: 50%;
+.tool-bar-style {
+  --background: #fef9f8;
 }
 
 .user-view-button {
@@ -34,22 +17,12 @@
   font-weight: 600 !important;
 }
 
-#user-view-card-box {
-  /* top: 50%;
-  z-index: 1; */
-  text-align: center;
-  transform: translateY(-25%);
-
-  position: relative;
-  z-index: 500;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 .user-view-card {
+  padding-top: 16px;
   --background: #fff;
   border-radius: 20px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .user-name {
@@ -101,10 +74,6 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  position: relative;
-  z-index: 600;
-  transform: translateY(-36%);
-  top: 20%;
 }
 
 #opacity-bottom-box {

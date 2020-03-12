@@ -60,11 +60,9 @@ const Signup: React.FC = () => {
       url: currentUrl
     };
     console.log(data);
-    if (currentProjects[0].src === "" && currentProjects[0].url === "")
-    {
+    if (currentProjects[0].src === '' && currentProjects[0].url === '') {
       currentProjects[0] = data;
-    }
-    else{
+    } else {
       currentProjects.push(data);
     }
     setProjects(currentProjects);
@@ -157,13 +155,26 @@ const Signup: React.FC = () => {
       <IonContent fullscreen>
         <div id="my-account-container">
           <IonList lines="full" className="ion-no-margin ion-no-padding">
-            <IonListHeader className="signup-title">My Account</IonListHeader>
+            <IonRow className="account-page-title">
+              <IonCol className="account-title-col">
+                <IonListHeader className="my-account-title">
+                  My Account
+                </IonListHeader>
+              </IonCol>
+              <IonCol className="account-title-col">
+                <IonButton
+                  href={previewLink}
+                  className="button-style ripple-parent"
+                >
+                  View my profile
+                  <IonRippleEffect></IonRippleEffect>
+                </IonButton>
+              </IonCol>
+            </IonRow>
             <IonItem>
-              <IonButton href={previewLink}>View my profile</IonButton>
-            </IonItem>
-            <IonItem>
-              <IonLabel position="stacked">Photo</IonLabel>
+              <IonLabel position="stacked">Photo URL</IonLabel>
               <IonInput
+                className="input-style"
                 clearInput
                 value={photo}
                 onIonChange={(e: any) => setPhoto(e.target.value)}
@@ -173,6 +184,7 @@ const Signup: React.FC = () => {
               <IonLabel position="stacked">Name</IonLabel>
               <IonInput
                 type="text"
+                className="input-style"
                 value={name}
                 clearInput
                 onIonChange={(e: any) => setName(e.target.value)}
@@ -182,6 +194,7 @@ const Signup: React.FC = () => {
               <IonLabel position="stacked">Title</IonLabel>
               <IonInput
                 type="text"
+                className="input-style"
                 value={title}
                 clearInput
                 onIonChange={(e: any) => setTitle(e.target.value)}
@@ -192,6 +205,7 @@ const Signup: React.FC = () => {
               <IonInput
                 disabled
                 type="email"
+                className="input-style"
                 clearInput
                 value={username}
                 onIonChange={(e: any) => setUsername(e.target.value)}
@@ -200,16 +214,21 @@ const Signup: React.FC = () => {
 
             <IonItem>
               <IonLabel position="stacked">Your Bootcamp</IonLabel>
-              <IonInput disabled value={bootcamp}></IonInput>
+              <IonInput
+                disabled
+                value={bootcamp}
+                className="input-style"
+              ></IonInput>
             </IonItem>
-            <IonItem>
+            {/* <IonItem>
               <IonLabel position="stacked">Completion</IonLabel>
               <IonInput disabled value={completion}></IonInput>
-            </IonItem>
+            </IonItem> */}
             <IonItem>
               <IonLabel position="floating">About me</IonLabel>
               <IonTextarea
                 autoGrow={true}
+                className="input-style"
                 placeholder="Please share who you are to the Bingle community!"
                 value={blurb}
                 onIonChange={(e: any) => setBlurb(e.target.value)}
@@ -220,26 +239,34 @@ const Signup: React.FC = () => {
             <IonButton
               expand="block"
               type="submit"
-              className="ion-n-margin"
+              className="ion-n-margin ripple-parent"
               onClick={saveProfile}
             >
               Save Changes
+              <IonRippleEffect></IonRippleEffect>
             </IonButton>
           </div>
+        </div>
+        <br></br>
+        <div id="my-account-container">
           <IonList lines="full" className="ion-no-margin ion-no-padding">
-            <IonListHeader className="signup-title">My Portfolio</IonListHeader>
+            <IonListHeader className="my-account-title">
+              My Portfolio
+            </IonListHeader>
             <IonItem>
-              <IonLabel position="stacked">Project Image Url</IonLabel>
+              <IonLabel position="stacked">Project Image URL</IonLabel>
               <IonInput
                 clearInput
+                className="input-style"
                 onIonChange={(e: any) => setCurrentSrc(e.target.value)}
               ></IonInput>
             </IonItem>
             <IonItem>
-              <IonLabel position="stacked">Deployed Project Url</IonLabel>
+              <IonLabel position="stacked">Deployed Project URL</IonLabel>
               <IonInput
                 type="text"
                 clearInput
+                className="input-style"
                 onIonChange={(e: any) => setCurrentUrl(e.target.value)}
               ></IonInput>
             </IonItem>
@@ -248,10 +275,11 @@ const Signup: React.FC = () => {
             <IonButton
               expand="block"
               type="submit"
-              className="ion-n-margin"
+              className="ion-n-margin ripple-parent"
               onClick={addProjectHandler}
             >
               Add Project
+              <IonRippleEffect></IonRippleEffect>
             </IonButton>
           </div>
         </div>
