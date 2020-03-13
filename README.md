@@ -1,26 +1,13 @@
 # Bingle : Front-End
 
-<!-- ![Copy of devating-logo](https://user-images.githubusercontent.com/56938630/75009422-803e8b00-542f-11ea-89fd-63a879dd9177.png)
+![BingleMain](https://user-images.githubusercontent.com/56938630/76613670-ce4d2880-64db-11ea-922f-57ec02c91828.png)
 
-[To our application](https://devating.herokuapp.com/) -->
+
+
 
 ## Project Overview
 
 Bootcamps have been steadily popular since 2012 and these programs graduated more than 33,900 students in 2019 alone. However, there is no strong community where bootcamp students can showcase their work, build strong relationships with others in their bootcamps or even other bootcamps. Therefore, I decided to build a mobile app where current bootcamp students and grads showcase their works, become influencers, build stronger communities, and get contacted by recruiters.
-
-## Table of Contents:
-
-- [User Stories](https://github.com/jadekang0611/bingle-frontend#user-stories)
-- [Wireframes](https://github.com/jadekang0611/bingle-frontend#wireframes)
-- [Planning](https://github.com/jadekang0611/bingle-frontend#planning)
-- [Technologies](https://github.com/jadekang0611/bingle-frontend#technologies)
-- [Installation](https://github.com/jadekang0611/bingle-frontend#installation)
-- [Usage](https://github.com/jadekang0611/bingle-frontend#usage)
-- [Testing](https://github.com/jadekang0611/bingle-frontend#testing)
-- [UX Modifications/Hurdles/Unsolved problems](https://github.com/jadekang0611/bingle-frontend#ux-modificationshurdlesunsolved-problems)
-- [Future Add-ons](https://github.com/jadekang0611/bingle-frontend#future-add-ons)
-- [Contribution Guidelines](https://github.com/jadekang0611/bingle-frontend#contribution-guidelines)
-- [Credits](https://github.com/jadekang0611/bingle-frontend#credits)
 
 ## User Stories:
 
@@ -31,29 +18,17 @@ Bootcamps have been steadily popular since 2012 and these programs graduated mor
 
 **Why are they using our app?**
 
-<!-- - They want to meet people like them, think the same way, have similar experiences
-- Want to destress from a long day of coding
-- Find a new ‘pair partner’
-- Meeting them(our users) where they are- on the computer! -easy access -->
+- To build and maintain relationships with many bootcamp students and graduates to be inspired and inspire through their careers and portfolios.
 
-**How can our app give our users the best experience?**
-
-<!-- - They want to feel accepted- don’t feel guilty for being a nerd aka loving coding
-- Mainstreamed/efficient/quick set up
-- Bug free
-- Super user friendly, easy to use
-- #Nostrainonthebrain
-- Image front and center with name, age, job title
-- Mobile: swipe functionality?
-- Browser: buttons (see Jade for button idea later)
-- Simple, concise summary/profile thingy
-- No strings attached coding -->
 
 **What are they doing in our app? What is their main activity?**
+![Screen Shot 2020-03-12 at 4 23 23 PM](https://user-images.githubusercontent.com/56938630/76613129-c640b900-64da-11ea-9371-5f766e289d33.png)
 
-<!-- - Meet someone new with same interests
-- Browsing, looking for a loving (friendly) pair programmer.
-- Reading about other people. -->
+![Screen Shot 2020-03-12 at 4 23 33 PM](https://user-images.githubusercontent.com/56938630/76613146-ce005d80-64da-11ea-987a-0677da7a896f.png)
+
+![Screen Shot 2020-03-12 at 4 23 43 PM](https://user-images.githubusercontent.com/56938630/76613156-d0fb4e00-64da-11ea-8a60-c06a16fedbfe.png)
+
+
 
 **Ultimate goal**
 
@@ -68,24 +43,27 @@ Bootcamps have been steadily popular since 2012 and these programs graduated mor
 
 ![IMG_20200306_103812__01__01](https://user-images.githubusercontent.com/56938630/76112578-4e810480-5f97-11ea-9414-8e0cfe1a6019.jpg)
 
-## Planning:
+![Screen Shot 2020-03-12 at 4 18 27 PM](https://user-images.githubusercontent.com/56938630/76613213-f25c3a00-64da-11ea-856b-9b9ce55e3dd3.png)
 
-<!-- We review our [Trello Board](https://trello.com/b/K0hAl5co/devating) during daily standup. The board includes project tasks for front-end, back-end, and testing. -->
+![Screen Shot 2020-03-12 at 4 18 57 PM](https://user-images.githubusercontent.com/56938630/76613199-ebcdc280-64da-11ea-9f13-467086c9a6ff.png)
+
+![Screen Shot 2020-03-10 at 2 56 51 PM](https://user-images.githubusercontent.com/56938630/76613193-e8d2d200-64da-11ea-9e6b-191625732adf.png)
+
 
 **Bronze version**
 
-- [ ] User Authentication
-- [ ] User Account Setting
-  - [ ] Add user profile image
-  - [ ] Be able to update user's password
-  - [ ] Be able to update user's title
-- [ ] Navigation
-- [ ] View user profile
-- [ ] Search users by title and bootcamp institution
-- [ ] Be able to follow users
-- [ ] CRUD
-  - [ ] Create & Update User Information
-  - [ ] Add, Update, and Delete user's own portfolios
+- [x] User Authentication
+- [x] User Account Setting
+  - [x] Add user profile image
+  - [x] Be able to update user's password
+  - [x] Be able to update user's title
+- [x] Navigation
+- [x] View user profile
+- [x] Search users by title and bootcamp institution
+- [x] Be able to follow users
+- [x] CRUD
+  - [x] Create & Update User Information
+  - [x] Add and update portfolios
 
 **Silver version**
 
@@ -101,9 +79,13 @@ Bootcamps have been steadily popular since 2012 and these programs graduated mor
 - React
 - Ionic
 - Capacitor
+- Typescript
 - Firebase
 - Firestore
 - Node.js
+- Express
+- Android Studio
+- Xcode
 
 ## Installation:
 
@@ -116,32 +98,10 @@ Bootcamps have been steadily popular since 2012 and these programs graduated mor
 - Be inspired by other bootcampers' portfolios and follow them
 - Be a bootcamp influencer by showcasing your great portfolios!
 
-## Testing:
-
-<!-- - Jest & Enzyme - passed
-- HTML validator - passed
-- CSS validator - passed -->
-
-## UX Modifications/Hurdles:
-
-**Modifications**
-
-<!-- - Removed User profile picture upload feature
-- Removed question progress bar
-- Removed match card component and placed all inside results component -->
-
-**Hurdles**
-
-<!-- - Locating conflicting files when doing css
-- Terminal dependencies installation conflicts
-- Fetching backend api from frontend
-- Github merge conflicts while working on multiple feature branches -->
 
 ## Future Add-ons:
 
-<!-- - User creating new account to be able to upload an image
-- Chat capable
-- Feature to allow user to have calendar access to book for a date
-- Loading page when user submits their information to create matches -->
+- I will replace the current file upload with local storage upload feature
+- I will add chat functionalities beween users.
 
-## Credits:
+
