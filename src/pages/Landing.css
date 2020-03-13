@@ -63,6 +63,10 @@
   color: #fff;
 }
 
+.landing-blurb-container h2 {
+  font-size: 26px;
+}
+
 .center-items {
   position: absolute;
   left: 0;
@@ -71,4 +75,3 @@
   top: 50%;
   transform: translateY(-50%);
 }
-

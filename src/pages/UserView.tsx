@@ -15,7 +15,9 @@ import {
   IonBackButton,
   IonRippleEffect,
   IonToolbar,
-  IonTitle
+  IonTitle,
+  IonLoading,
+  IonRouterLink
 } from '@ionic/react';
 import './UserView.css';
 import { auth } from '../firebaseConfig';
@@ -46,8 +48,10 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
   const [followers, setFollowers] = useState('');
   const [disabled, setDisabled] = useState(false);
   const [followText, setFollowText] = useState('Follow');
+  const [busy, setBusy] = useState<boolean>(false);
 
   useEffect(() => {
+    setBusy(true);
     const uid: any = match.params.uid;
 
     const params = {
@@ -77,6 +81,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
         setPortfolio(userData.projects);
         setFollowers(userData.followersCount);
         setFollowing(userData.followingCount);
+        setBusy(false);
 
         // disable button
         if (auth !== null) {
@@ -131,6 +136,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
           <IonBackButton defaultHref="/search" />
         </IonButtons>
       </IonToolbar>
+      <IonLoading message="Loading..." duration={0} isOpen={busy}></IonLoading>
       <IonContent>
         <IonCard className="user-view-card">
           <img className="user-view-image" src={photo} alt="user" width="150" />
@@ -185,11 +191,13 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
               {portfolio.map((project, i) => {
                 return (
                   <IonCol size="6">
-                    <img
-                      className="project-img"
-                      src={project.src}
-                      alt="project"
-                    />
+                    <IonRouterLink href={project.url}>
+                      <img
+                        className="project-img"
+                        src={project.src}
+                        alt="project"
+                      />
+                    </IonRouterLink>
                   </IonCol>
                 );
               })}

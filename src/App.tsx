@@ -58,52 +58,35 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            <Route path="/login" component={LogIn} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/onboarding"  component={Onboarding} />
-            <Route path="/landing" component={Landing} exact={true} />
-            {/* <Route path="/institutions" component={Institutions} /> */}
-            <ProtectedRoute
-              path="/search"
-              auth={authenticated}
-              component={SearchScreen}
-            />
-            <ProtectedRoute
-              path="/follows"
-              auth={authenticated}
-              component={Follow}
-            />
-            <ProtectedRoute
-              path="/myaccount"
-              auth={authenticated}
-              component={MyAccount}
-              exact={true}
-            />
-            <ProtectedRoute
-              path="/user/:uid"
-              auth={authenticated}
-              component={UserView}
-            />
-            <Route path="/myaccount/:uid" component={ViewMyPage} />
-            <Route exact path="/" render={() => <Redirect to="/landing" />} />
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom" translucent={true}>
+        {/* <IonTabs> */}
+        <IonRouterOutlet>
+          <Route path="/login" component={LogIn} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/onboarding" component={Onboarding} />
+          <Route path="/landing" component={Landing} exact={true} />
+          {/* <Route path="/institutions" component={Institutions} /> */}
+          <Route path="/search" component={SearchScreen} />
+          <Route path="/follows" component={Follow} />
+          <Route path="/myaccount" component={MyAccount} exact={true} />
+          <Route path="/user/:uid" component={UserView} />
+          <Route path="/myaccount/:uid" component={ViewMyPage} />
+          <Route exact path="/" render={() => <Redirect to="/landing" />} />
+        </IonRouterOutlet>
+        {/* <IonTabBar slot="bottom" translucent={true}>
             <IonTabButton tab="landing" href="/landing">
               <IonIcon icon={home} />
               <IonLabel>Landing</IonLabel>
-            </IonTabButton>
+            </IonTabButton> */}
 
-            {/* <IonTabButton tab="splash" href="/signup/onboarding">
+        {/* <IonTabButton tab="splash" href="/signup/onboarding">
               <IonIcon icon={square} />
               <IonLabel>Onboarding</IonLabel>
             </IonTabButton> */}
-            {/* <IonTabButton tab="institutions" href="/institutions">
+        {/* <IonTabButton tab="institutions" href="/institutions">
             <IonIcon icon={grid} />
             <IonLabel>Institutions</IonLabel>
           </IonTabButton> */}
-            <IonTabButton tab="search" href="/search">
+        {/* <IonTabButton tab="search" href="/search">
               <IonIcon icon={search} />
               <IonLabel>Search</IonLabel>
             </IonTabButton>
@@ -116,7 +99,7 @@ const App: React.FC = () => {
               <IonLabel>Profile</IonLabel>
             </IonTabButton>
           </IonTabBar>
-        </IonTabs>
+        </IonTabs> */}
       </IonReactRouter>
     </IonApp>
   );

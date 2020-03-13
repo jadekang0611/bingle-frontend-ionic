@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  IonText,
   IonInput,
   IonItem,
   IonLabel,
@@ -8,7 +7,6 @@ import {
   IonList,
   IonButton,
   IonButtons,
-  IonDatetime,
   IonHeader,
   IonToolbar,
   IonPage,
@@ -16,10 +14,14 @@ import {
   IonBackButton,
   IonListHeader,
   IonGrid,
+  IonFooter,
+  IonIcon,
   IonRow,
   IonCol,
-  IonRippleEffect
+  IonRippleEffect,
+  IonLoading
 } from '@ionic/react';
+import { search, star, person, logOut } from 'ionicons/icons';
 import { toast } from '../toast';
 import { registerUser, auth } from '../firebaseConfig';
 import './MyAccount.css';
@@ -50,29 +52,56 @@ const Signup: React.FC = () => {
   //let previewLink = '';
 
   const [previewLink, setPreviewLink] = useState('');
+  const [busy, setBusy] = useState<boolean>(false);
+  const [saving, setSaving] = useState<boolean>(false);
+  const [uploading, setUploading] = useState<boolean>(false);
 
   const forceUpdate = useForceUpdate();
   function addProjectHandler(e: any) {
     console.log(projects);
-    let currentProjects = projects;
-    let data = {
-      src: currentSrc,
-      url: currentUrl
-    };
-    console.log(data);
-    if (currentProjects[0].src === '' && currentProjects[0].url === '') {
-      currentProjects[0] = data;
-    } else {
-      currentProjects.push(data);
+    setUploading(true);
+    if (auth !== null) {
+      if (auth.currentUser !== null) {
+        let currentProjects = projects;
+        let data = {
+          src: currentSrc,
+          url: currentUrl,
+          id: auth.currentUser.uid
+        };
+
+        // save to database
+        const params = {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data),
+          method: 'PUT'
+        };
+
+        fetch(
+          'https://us-central1-bingle-backend.cloudfunctions.net/app/api/create/project',
+          params
+        ).then(res => {
+          setUploading(false);
+          toast('Portflio updated successfully!');
+        });
+
+        if (currentProjects[0].src === '' && currentProjects[0].url === '') {
+          currentProjects[0] = data;
+        } else {
+          currentProjects.push(data);
+        }
+        setProjects(currentProjects);
+        forceUpdate();
+        setCurrentUrl('');
+        setCurrentSrc('');
+        console.log(projects);
+      }
     }
-    setProjects(currentProjects);
-    forceUpdate();
-    setCurrentUrl('');
-    setCurrentSrc('');
-    console.log(projects);
   }
 
   useEffect(() => {
+    setBusy(true);
     if (auth !== null) {
       if (auth.currentUser !== null) {
         const uid = auth.currentUser.uid;
@@ -105,6 +134,7 @@ const Signup: React.FC = () => {
             setBootcamp(userData.bootcamp);
             setCompletion(userData.completion);
             console.log(userData);
+            setBusy(false);
           });
       }
     }
@@ -112,6 +142,7 @@ const Signup: React.FC = () => {
 
   function saveProfile(e: any) {
     e.preventDefault();
+    setSaving(true);
     if (auth !== null) {
       if (auth.currentUser !== null) {
         const uid = auth.currentUser.uid;
@@ -137,6 +168,7 @@ const Signup: React.FC = () => {
           'https://us-central1-bingle-backend.cloudfunctions.net/app/api/create/user/profile',
           params
         ).then(res => {
+          setSaving(false);
           toast('Profile updated successfully!');
         });
       }
@@ -152,6 +184,13 @@ const Signup: React.FC = () => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
+      <IonLoading message="Loading..." duration={0} isOpen={busy}></IonLoading>
+      <IonLoading message="Saving..." duration={0} isOpen={saving}></IonLoading>
+      <IonLoading
+        message="Uploading..."
+        duration={0}
+        isOpen={uploading}
+      ></IonLoading>
       <IonContent fullscreen>
         <div id="my-account-container">
           <IonList lines="full" className="ion-no-margin ion-no-padding">

@@ -8,7 +8,12 @@ import {
   IonAvatar,
   IonSlides,
   IonSlide,
-  IonLabel
+  IonLabel,
+  IonFab,
+  IonFabButton,
+  IonIcon,
+  IonFabList,
+  IonLoading
 } from '@ionic/react';
 import './SearchScreen.css';
 import person1 from './image/avatars/person1.png';
@@ -23,7 +28,17 @@ import person9 from './image/avatars/person9.png';
 import person10 from './image/avatars/person10.png';
 //
 import { IonReactRouter } from '@ionic/react-router';
+import { logoutUser } from '../firebaseConfig';
 import { people } from './data/dummy-data';
+import { useHistory } from 'react-router-dom';
+import {
+  arrowBackCircle,
+  homeOutline,
+  logOutOutline,
+  search,
+  starOutline,
+  personCircleOutline
+} from 'ionicons/icons';
 
 const slideOpts = {
   slidesPerView: 4,
@@ -72,16 +87,12 @@ const SearchScreen: React.FC = () => {
   const [searchList, setSearchList] = useState([selectedItem]);
   const [loadedList, setLoadedList] = useState([selectedItem]);
   const [people, setPeople] = useState([selectedItem]);
+  const [busy, setBusy] = useState<boolean>(false);
+  const history = useHistory();
 
   useEffect(() => {
-    // let hide = document.getElementsByTagName('ion-tab-bar');
-    // console.log(hide);
-    // if (hide !== null) {
-    //   for (let i = 0; i < hide.length; i++) {
-    //     hide[i].className += 'show';
-    //   }
-    // }
-
+    setBusy(true);
+console.log("set busy");
     const params = {
       headers: {
         'Content-Type': 'application/json'
@@ -101,9 +112,21 @@ const SearchScreen: React.FC = () => {
         setLoadedList(data);
         setPeople(data);
         console.log(data);
+        setBusy(false);
       });
   }, []);
 
+  function goToHome() {
+    history.push('/search');
+  }
+
+  function goToFollows() {
+    history.push('/follows');
+  }
+
+  function goToEdit() {
+    history.push('/myaccount');
+  }
   function filterList(e: any) {
     const searchTerm = e.srcElement.value;
     setSearchList(people);
@@ -115,7 +138,11 @@ const SearchScreen: React.FC = () => {
     setSearchList(
       loadedList.filter(item => {
         if (item && searchTerm) {
-          if (item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          if (
+            item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
+            item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
+            item.bootcamp.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+          ) {
             return true;
           }
           return false;
@@ -136,7 +163,7 @@ const SearchScreen: React.FC = () => {
           // value={searchString}
           // onChange={searchHandler}
         ></IonSearchbar>
-
+      <IonLoading message="Loading..." duration={0} isOpen={busy}></IonLoading>
         <IonSlides options={slideOpts} id="avatar-container">
           {avatars.map((avatar, i) => {
             return (
@@ -163,7 +190,6 @@ const SearchScreen: React.FC = () => {
                   routerLink={link}
                   key={id}
                   className={`alt-color-${count} search-users-container`}
-                  onClick={() => {}}
                 >
                   <IonAvatar className="search-image-container" slot="start">
                     <img
@@ -185,6 +211,22 @@ const SearchScreen: React.FC = () => {
           })}
         </IonList>
       </IonContent>
+      <IonFab vertical="bottom" horizontal="end" slot="fixed">
+        <IonFabButton>
+          <IonIcon icon={arrowBackCircle} />
+        </IonFabButton>
+        <IonFabList side="start">
+          <IonFabButton>
+            <IonIcon icon={logOutOutline} onClick={logoutUser} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={starOutline} onClick={goToFollows} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={personCircleOutline} onClick={goToEdit} />
+          </IonFabButton>
+        </IonFabList>
+      </IonFab>
     </IonPage>
   );
 };

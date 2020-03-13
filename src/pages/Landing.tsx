@@ -3,16 +3,17 @@ import {
   IonContent,
   IonPage,
   IonButton,
-  IonToolbar,
-  IonFooter,
-  IonTitle,
   IonGrid,
   IonRow,
   IonCol,
+  IonFooter,
+  IonToolbar,
+  IonTitle,
   IonRippleEffect
 } from '@ionic/react';
 import './Landing.css';
-import BingleLogo from './image/bingle-logo.png';
+
+import BingleLogo from './image/BINGLE.png';
 
 const Landing: React.FC = () => {
   // useEffect(() => {
@@ -32,7 +33,7 @@ const Landing: React.FC = () => {
             <img id="bingle-logo" src={BingleLogo} alt="Bingle" />
           </div>
           <div className="landing-blurb-container">
-            <h2>Empower the bootcamp community</h2>
+            <h2>Empowering the bootcamp community</h2>
           </div>
           <IonGrid>
             <IonRow className="button-container">

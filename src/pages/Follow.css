@@ -2,6 +2,11 @@
   justify-content: space-between;
 }
 
+#follow-tool-bar {
+  --background: #fef9f8;
+  --border-color: #fef9f8;
+}
+
 .institution-chip {
   margin: 0;
   margin-right: 2px;
@@ -50,7 +55,7 @@
 
 #follow-vertical-line {
   height: 80%;
-  border: 0.25px solid #e7e7e7;
+  border: 0.5px solid #e7e7e7;
 }
 
 .follow-main-title {

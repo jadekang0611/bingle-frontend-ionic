@@ -53,7 +53,7 @@ const LogIn: React.FC = () => {
       <IonHeader>
         <IonToolbar className="login-tool-bar toolbar-background">
           <IonButtons className="login-back-button-container" slot="start">
-            <IonBackButton defaultHref="/landing" />
+            <IonBackButton className="back-button-icon" defaultHref="/landing" />
           </IonButtons>
         </IonToolbar>
       </IonHeader>

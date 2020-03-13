@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "881260489432",
+    "firebase_url": "https://bingle-backend.firebaseio.com",
+    "project_id": "bingle-backend",
+    "storage_bucket": "bingle-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881260489432:android:fd560cb7689e29695c05ad",
+        "android_client_info": {
+          "package_name": "com.jadekang.bingle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881260489432-p448mds7fh86ffaapcc4kn6202kined5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFQt2vLkTKOSgQbGFNVwZP35rGSQ5HNZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881260489432-p448mds7fh86ffaapcc4kn6202kined5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

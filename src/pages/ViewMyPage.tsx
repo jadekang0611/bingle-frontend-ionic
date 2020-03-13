@@ -15,7 +15,9 @@ import {
   IonBackButton,
   IonRippleEffect,
   IonHeader,
-  IonToolbar
+  IonToolbar,
+  IonLoading,
+  IonRouterLink
 } from '@ionic/react';
 import './ViewMyPage.css';
 import person3 from './image/avatars/person3.png';
@@ -33,6 +35,7 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
   const [blurb, setBlurb] = useState('');
   const [photo, setPhoto] = useState('');
   const [github, setGithub] = useState('');
+  const [busy, setBusy] = useState<boolean>(false);
   const [portfolio, setPortfolio] = useState([
     {
       src: '',
@@ -43,6 +46,7 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
   const [followers, setFollowers] = useState('');
 
   useEffect(() => {
+    setBusy(true);
     const uid: any = match.params.uid;
 
     const params = {
@@ -71,16 +75,20 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
         setPortfolio(userData.projects);
         setFollowers(userData.followersCount);
         setFollowing(userData.followingCount);
+        setBusy(false);
       });
   }, []);
 
   return (
     <IonPage>
-      <IonToolbar className="tool-bar-style">
-        <IonButtons className="my-back-button-container" slot="start">
-          <IonBackButton defaultHref="/myaccount" />
-        </IonButtons>
-      </IonToolbar>
+      <IonHeader>
+        <IonToolbar className="tool-bar-style">
+          <IonButtons className="my-back-button-container" slot="start">
+            <IonBackButton defaultHref="/myaccount" />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonLoading message="Loading..." duration={0} isOpen={busy}></IonLoading>
       <IonContent fullscreen>
         <IonCard className="my-user-view-card">
           <img
@@ -142,11 +150,13 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
               {portfolio.map((project, i) => {
                 return (
                   <IonCol size="6">
-                    <img
-                      className="my-project-img"
-                      src={project.src}
-                      alt="project"
-                    />
+                    <IonRouterLink href={project.url}>
+                      <img
+                        className="my-project-img"
+                        src={project.src}
+                        alt="project"
+                      />
+                    </IonRouterLink>
                   </IonCol>
                 );
               })}
