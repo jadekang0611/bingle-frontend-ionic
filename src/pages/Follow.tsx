@@ -28,6 +28,18 @@ import {
   starOutline,
   personCircleOutline
 } from 'ionicons/icons';
+
+import appAcademy from './image/logos/appAcademy.png';
+import bloc from './image/logos/bloc.png';
+import codingDojo from './image/logos/codingDojo.png';
+import flatIron from './image/logos/flatIron.png';
+import generalAssembly from './image/logos/generalAssembly.png';
+import hackReactor from './image/logos/hackReactor.png';
+import ironHack from './image/logos/ironHack.png';
+import lambda from './image/logos/lambda.png';
+import leWagon from './image/logos/leWagon.png';
+import udacity from './image/logos/udacity.png';
+
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebaseConfig';
 import { people } from './data/dummy-data';
@@ -56,7 +68,8 @@ const Follow: React.FC = () => {
       following: '',
       github: '',
       photo: '',
-      projects: ''
+      projects: '',
+      uid: ''
     }
   ]);
   const [who, setWho] = useState('Check out your followers');
@@ -72,7 +85,8 @@ const Follow: React.FC = () => {
       following: '',
       github: '',
       photo: '',
-      projects: ''
+      projects: '',
+      uid: ''
     }
   ]);
 
@@ -88,7 +102,8 @@ const Follow: React.FC = () => {
       following: '',
       github: '',
       photo: '',
-      projects: ''
+      projects: '',
+      uid: ''
     }
   ]);
 
@@ -113,6 +128,12 @@ const Follow: React.FC = () => {
   function goToEdit() {
     history.push('/myaccount');
   }
+
+  function signOut() {
+    logoutUser();
+    history.replace('/');
+  }
+
   useEffect(() => {
     setBusy(true);
     if (auth !== null) {
@@ -232,9 +253,32 @@ const Follow: React.FC = () => {
           <IonListHeader className="follow-main-title">{who}</IonListHeader>
           {showFollow.map((user, id) => {
             if (user !== undefined) {
+              let link = '/user/' + user.uid;
               if (user.bootcamp !== '') {
+                let bootcampSrc = '';
+                if (user.bootcamp === 'appAcademy') {
+                  bootcampSrc = appAcademy;
+                } else if (user.bootcamp === 'bloc') {
+                  bootcampSrc = bloc;
+                } else if (user.bootcamp === 'Coding Dojo') {
+                  bootcampSrc = codingDojo;
+                } else if (user.bootcamp === 'Flatiron') {
+                  bootcampSrc = flatIron;
+                } else if (user.bootcamp === 'General Assembly') {
+                  bootcampSrc = generalAssembly;
+                } else if (user.bootcamp === 'Hack Reactor') {
+                  bootcampSrc = hackReactor;
+                } else if (user.bootcamp === 'Iron Hack') {
+                  bootcampSrc = ironHack;
+                } else if (user.bootcamp === 'Lambda School') {
+                  bootcampSrc = lambda;
+                } else if (user.bootcamp === 'Le Wagon') {
+                  bootcampSrc = leWagon;
+                } else if (user.bootcamp === 'Udacity') {
+                  bootcampSrc = udacity;
+                }
                 return (
-                  <IonItem key={id}>
+                  <IonItem routerLink={link} key={id}>
                     <IonAvatar slot="start">
                       <img src={user.photo} alt={user.name} />
                     </IonAvatar>
@@ -246,7 +290,7 @@ const Follow: React.FC = () => {
                             <h3>{user.bootcamp}</h3>
                           </IonLabel>
                           <IonAvatar>
-                            <img src={user.photo} alt={user.bootcamp}></img>
+                            <img src={bootcampSrc} alt={user.bootcamp}></img>
                           </IonAvatar>
                         </IonChip>
                       </IonRow>
@@ -265,7 +309,7 @@ const Follow: React.FC = () => {
         </IonFabButton>
         <IonFabList side="start">
           <IonFabButton>
-            <IonIcon icon={logOutOutline} onClick={logoutUser} />
+            <IonIcon icon={logOutOutline} onClick={signOut} />
           </IonFabButton>
           <IonFabButton>
             <IonIcon icon={search} onClick={goToSearch} />

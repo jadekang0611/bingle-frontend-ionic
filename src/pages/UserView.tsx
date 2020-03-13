@@ -20,7 +20,8 @@ import {
   IonIcon,
   IonFab,
   IonFabButton,
-  IonFabList
+  IonFabList,
+  IonHeader
 } from '@ionic/react';
 import './UserView.css';
 import {
@@ -50,6 +51,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
   const [blurb, setBlurb] = useState('');
   const [photo, setPhoto] = useState('');
   const [github, setGithub] = useState('');
+  const [disableGitHub, setDisableGitHub] = useState<boolean>(false);
   const [portfolio, setPortfolio] = useState([
     {
       src: '',
@@ -63,9 +65,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
   const [busy, setBusy] = useState<boolean>(false);
   const history = useHistory();
   let mailto = 'mailto:' + username;
-  function goToHome() {
-    history.push('/search');
-  }
+ 
 
   function goToFollows() {
     history.push('/follows');
@@ -75,9 +75,12 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
     history.push('/myaccount');
   }
 
-  function contact() {
-    history.push(mailto);
+  function signOut(){
+    logoutUser();
+    history.replace("/");
   }
+
+  
 
   useEffect(() => {
     setBusy(true);
@@ -112,6 +115,10 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
         setFollowing(userData.followingCount);
         setGithub(userData.github);
         setBusy(false);
+
+        if(userData.github === null || userData.github === ""){
+          setDisableGitHub(true);
+        }
 
         // disable button
         if (auth !== null) {
@@ -160,11 +167,13 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
 
   return (
     <IonPage>
+      <IonHeader>
       <IonToolbar className="tool-bar-style">
         <IonButtons className="back-button-container" slot="start">
           <IonBackButton defaultHref="/search" />
         </IonButtons>
       </IonToolbar>
+      </IonHeader>
       <IonLoading message="Loading..." duration={0} isOpen={busy}></IonLoading>
       <IonContent>
         <IonCard className="user-view-card">
@@ -211,6 +220,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
                 shape="round"
                 size="default"
                 href={github}
+                disabled={disableGitHub}
               >
                 GITHUB
                 <IonRippleEffect></IonRippleEffect>
@@ -240,7 +250,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
         </IonFabButton>
         <IonFabList side="start">
           <IonFabButton>
-            <IonIcon icon={logOutOutline} onClick={logoutUser} />
+            <IonIcon icon={logOutOutline} onClick={signOut} />
           </IonFabButton>
           <IonFabButton>
             <IonIcon icon={starOutline} onClick={goToFollows} />

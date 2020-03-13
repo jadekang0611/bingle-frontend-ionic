@@ -8,6 +8,7 @@ IonSlides {
 
 .slide {
   display: block;
+  padding-top: 40px;
 }
 
 .slide h2 {
@@ -24,15 +25,22 @@ IonSlides {
 
 .slide p b {
   font-weight: 500;
+  text-decoration: underline solid #f5cd34;
 }
 
 .slide p {
   padding: 0 40px;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.5;
-  color: #a6b1bc;
+  color: var(--ion-color-step-600, #60646b);
 }
 
 .slide p b {
   color: #121212;
+}
+
+.start-button {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }

@@ -1,3 +1,7 @@
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
 .follower-following-name-institution-row {
   justify-content: space-between;
 }

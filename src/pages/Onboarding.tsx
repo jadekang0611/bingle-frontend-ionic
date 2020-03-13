@@ -32,9 +32,9 @@ const Onboarding: React.FC = () => {
       className="ion-padding onboarding-container"
       scroll-y="false"
     >
-      <IonSlides pager={false} options={slideOpts}>
+      <IonSlides pager={true} options={slideOpts}>
         <IonSlide className="slide">
-          <img src={onboard1} alt="onboard1" />
+          <img src={onboard1} alt="onboard1" className="onboarding-img" />
           <h2>Become a Bingler</h2>
           <p>
             Welcome! The <b>Bingle app</b> is a judgment free place for
@@ -42,7 +42,7 @@ const Onboarding: React.FC = () => {
           </p>
         </IonSlide>
         <IonSlide className="slide">
-          <img src={onboard2} alt="onboard2" />
+          <img src={onboard2} alt="onboard2" className="onboarding-img" />
           <h2>Find Binglers</h2>
           <p>
             Get to know other <b>Binglers</b> who previously attended or are
@@ -50,20 +50,16 @@ const Onboarding: React.FC = () => {
           </p>
         </IonSlide>
         <IonSlide className="slide">
-          <img src={onboard3} alt="onboard3" />
+          <img src={onboard3} alt="onboard3" className="onboarding-img" />
           <h2>Be Binglified</h2>
           <p>
             Simply grow your portfolio, inspire and be inspired by other
             Binglers, and be found by your next employers.
           </p>
-          <IonButton fill="clear" onClick={goToSearch}>
-            Let's Start!
+          <IonButton fill="clear" onClick={goToSearch} className="start-button">
+            Let's get started!
           </IonButton>
         </IonSlide>
-        {/* <IonSlide className="slide">
-          <img src="https://via.placeholder.com/250" alt="splash-img" />
-          <h2>Ready to start?</h2>
-        </IonSlide> */}
       </IonSlides>
     </IonContent>
   );

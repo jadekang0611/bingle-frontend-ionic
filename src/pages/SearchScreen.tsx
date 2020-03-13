@@ -67,6 +67,10 @@ const SearchScreen: React.FC = () => {
       count++;
     }
   }
+  function signOut(){
+    logoutUser();
+    history.replace("/");
+  }
 
   const selectedItem = {
     id: '',
@@ -163,12 +167,12 @@ console.log("set busy");
         ></IonSearchbar>
       <IonLoading message="Loading..." duration={0} isOpen={busy}></IonLoading>
         <IonSlides options={slideOpts} id="avatar-container">
-          {avatars.map((avatar, i) => {
+          {people.map((avatar, i) => {
             return (
               <IonSlide className="avatar-slide-single" key={i}>
                 <img
                   className="avatar-img"
-                  src={avatar}
+                  src={avatar.photo}
                   width="200"
                   alt="avatar"
                 />
@@ -215,7 +219,7 @@ console.log("set busy");
         </IonFabButton>
         <IonFabList side="start">
           <IonFabButton>
-            <IonIcon icon={logOutOutline} onClick={logoutUser} />
+            <IonIcon icon={logOutOutline} onClick={signOut} />
           </IonFabButton>
           <IonFabButton>
             <IonIcon icon={starOutline} onClick={goToFollows} />
