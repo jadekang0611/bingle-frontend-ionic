@@ -106,11 +106,6 @@ const Follow: React.FC = () => {
     }
   ]);
 
-  function useForceUpdate() {
-    const [value, setValue] = useState(0);
-    return () => setValue(value => ++value);
-  }
-
   const [busy, setBusy] = useState<boolean>(false);
   const forceUpdate = useForceUpdate();
 
