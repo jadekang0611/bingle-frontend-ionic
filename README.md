@@ -22,11 +22,7 @@ Bootcamps have been steadily popular since 2012 and these programs graduated mor
 
 
 **What are they doing in our app? What is their main activity?**
-![Screen Shot 2020-03-12 at 4 23 23 PM](https://user-images.githubusercontent.com/56938630/76613129-c640b900-64da-11ea-9371-5f766e289d33.png)
-
-![Screen Shot 2020-03-12 at 4 23 33 PM](https://user-images.githubusercontent.com/56938630/76613146-ce005d80-64da-11ea-987a-0677da7a896f.png)
-
-![Screen Shot 2020-03-12 at 4 23 43 PM](https://user-images.githubusercontent.com/56938630/76613156-d0fb4e00-64da-11ea-8a60-c06a16fedbfe.png)
+![Copy of Untitled](https://user-images.githubusercontent.com/56938630/76614097-a1e5dc00-64dc-11ea-8af2-1e0b61663b45.png)
 
 
 
