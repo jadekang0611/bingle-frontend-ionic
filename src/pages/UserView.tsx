@@ -27,7 +27,6 @@ import './UserView.css';
 import {
   arrowBackCircle,
   logOutOutline,
-  search,
   starOutline,
   personCircleOutline,
   mailOutline

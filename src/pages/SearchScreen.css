@@ -85,6 +85,10 @@
   color: #fff;
 }
 
+.avatar-slide-single {
+  width: 100px;
+}
+
 .user-info-basic p {
   font-size: 16px;
   color: #fff;
@@ -92,6 +96,10 @@
 
 .user-image-md {
   width: 200px;
+}
+
+.user-image-sm {
+  width: 100px;
 }
 
 .search-image-container {

@@ -2,8 +2,7 @@ import {
   IonContent,
   IonSlides,
   IonSlide,
-  IonButton,
-  IonIcon
+  IonButton,  
 } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import onboard1 from './image/onboard1.svg';

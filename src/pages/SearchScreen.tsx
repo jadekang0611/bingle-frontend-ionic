@@ -16,47 +16,45 @@ import {
   IonLoading
 } from '@ionic/react';
 import './SearchScreen.css';
-import person1 from './image/avatars/person1.png';
-import person2 from './image/avatars/person2.png';
-import person3 from './image/avatars/person3.png';
-import person4 from './image/avatars/person4.png';
-import person5 from './image/avatars/person5.png';
-import person6 from './image/avatars/person6.png';
-import person7 from './image/avatars/person7.png';
-import person8 from './image/avatars/person8.png';
-import person9 from './image/avatars/person9.png';
-import person10 from './image/avatars/person10.png';
-//
-import { IonReactRouter } from '@ionic/react-router';
+// import person1 from './image/avatars/person1.png';
+// import person2 from './image/avatars/person2.png';
+// import person3 from './image/avatars/person3.png';
+// import person4 from './image/avatars/person4.png';
+// import person5 from './image/avatars/person5.png';
+// import person6 from './image/avatars/person6.png';
+// import person7 from './image/avatars/person7.png';
+// import person8 from './image/avatars/person8.png';
+// import person9 from './image/avatars/person9.png';
+// import person10 from './image/avatars/person10.png';
+
+
 import { logoutUser } from '../firebaseConfig';
 import { useHistory } from 'react-router-dom';
 import {
   arrowBackCircle,
   logOutOutline,
-  search,
   starOutline,
   personCircleOutline
 } from 'ionicons/icons';
 
-const slideOpts = {
-  slidesPerView: 4,
-  initialSlide: 1,
-  speed: 400
-};
-
 const SearchScreen: React.FC = () => {
-  const avatars = [
-    person1,
-    person2,
-    person3,
-    person4,
-    person5,
-    person6,
-    person7,
-    person8,
-    person9,
-    person10
-  ];
+  const slideOpts = {
+    slidesPerView: 4,
+    initialSlide: 1,
+    speed: 400
+  };
+  // const avatars = [
+  //   person1,
+  //   person2,
+  //   person3,
+  //   person4,
+  //   person5,
+  //   person6,
+  //   person7,
+  //   person8,
+  //   person9,
+  //   person10
+  // ];
 
   let count = 0;
 
@@ -67,9 +65,9 @@ const SearchScreen: React.FC = () => {
       count++;
     }
   }
-  function signOut(){
+  function signOut() {
     logoutUser();
-    history.replace("/");
+    history.replace('/');
   }
 
   const selectedItem = {
@@ -94,7 +92,7 @@ const SearchScreen: React.FC = () => {
 
   useEffect(() => {
     setBusy(true);
-console.log("set busy");
+    console.log('set busy');
     const params = {
       headers: {
         'Content-Type': 'application/json'
@@ -107,7 +105,7 @@ console.log("set busy");
     )
       .then(res => {
         return res.json();
-        console.log(res);
+        
       })
       .then(data => {
         setSearchList(data);
@@ -117,10 +115,6 @@ console.log("set busy");
         setBusy(false);
       });
   }, []);
-
-  function goToHome() {
-    history.push('/search');
-  }
 
   function goToFollows() {
     history.push('/follows');
@@ -165,17 +159,16 @@ console.log("set busy");
           // value={searchString}
           // onChange={searchHandler}
         ></IonSearchbar>
-      <IonLoading message="Loading..." duration={0} isOpen={busy}></IonLoading>
+        <IonLoading
+          message="Loading..."
+          duration={0}
+          isOpen={busy}
+        ></IonLoading>
         <IonSlides options={slideOpts} id="avatar-container">
           {people.map((avatar, i) => {
             return (
               <IonSlide className="avatar-slide-single" key={i}>
-                <img
-                  className="avatar-img"
-                  src={avatar.photo}
-                  width="200"
-                  alt="avatar"
-                />
+                <img className="avatar-img" src={avatar.photo} alt="avatar" />
               </IonSlide>
             );
           })}

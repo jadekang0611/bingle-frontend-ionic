@@ -11,7 +11,6 @@ import {
   IonItem,
   IonBackButton,
   IonButton,
-  IonGrid,
   IonRow,
   IonCol,
   IonChip,
