@@ -71,6 +71,11 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
     history.push('/myaccount');
   }
 
+  function signOut() {
+    logoutUser();
+    history.replace('/');
+  }
+
   useEffect(() => {
     setBusy(true);
     const uid: any = match.params.uid;
@@ -196,7 +201,7 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
         </IonFabButton>
         <IonFabList side="start">
           <IonFabButton>
-            <IonIcon icon={logOutOutline} onClick={logoutUser} />
+            <IonIcon icon={logOutOutline} onClick={signOut} />
           </IonFabButton>
           <IonFabButton>
             <IonIcon icon={search} onClick={goToSearch} />
