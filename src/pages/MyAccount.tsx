@@ -133,6 +133,7 @@ const Signup: React.FC = () => {
             setPhoto(userData.photo);
             setBootcamp(userData.bootcamp);
             setCompletion(userData.completion);
+            setGithub(userData.github);
             console.log(userData);
             setBusy(false);
           });
@@ -259,10 +260,16 @@ const Signup: React.FC = () => {
                 className="input-style"
               ></IonInput>
             </IonItem>
-            {/* <IonItem>
-              <IonLabel position="stacked">Completion</IonLabel>
-              <IonInput disabled value={completion}></IonInput>
-            </IonItem> */}
+            <IonItem>
+              <IonLabel position="stacked">Github URL</IonLabel>
+              <IonInput
+                placeholder="https://www.github.com/username"
+                clearInput
+                value={github}
+                className="input-style"
+                onIonChange={(e: any) => setGithub(e.target.value)}
+              ></IonInput>
+            </IonItem>
             <IonItem>
               <IonLabel position="floating">About me</IonLabel>
               <IonTextarea
@@ -292,6 +299,7 @@ const Signup: React.FC = () => {
             <IonListHeader className="my-account-title">
               My Portfolio
             </IonListHeader>
+
             <IonItem>
               <IonLabel position="stacked">Project Image URL</IonLabel>
               <IonInput

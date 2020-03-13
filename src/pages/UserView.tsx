@@ -15,14 +15,26 @@ import {
   IonBackButton,
   IonRippleEffect,
   IonToolbar,
-  IonTitle,
   IonLoading,
-  IonRouterLink
+  IonRouterLink,
+  IonIcon,
+  IonFab,
+  IonFabButton,
+  IonFabList
 } from '@ionic/react';
 import './UserView.css';
+import {
+  arrowBackCircle,
+  logOutOutline,
+  search,
+  starOutline,
+  personCircleOutline,
+  mailOutline
+} from 'ionicons/icons';
 import { auth } from '../firebaseConfig';
-import person3 from './image/avatars/person3.png';
 import { RouteComponentProps } from 'react-router';
+import { logoutUser } from '../firebaseConfig';
+import { useHistory } from 'react-router-dom';
 
 interface UserViewProps
   extends RouteComponentProps<{
@@ -49,6 +61,23 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
   const [disabled, setDisabled] = useState(false);
   const [followText, setFollowText] = useState('Follow');
   const [busy, setBusy] = useState<boolean>(false);
+  const history = useHistory();
+  let mailto = 'mailto:' + username;
+  function goToHome() {
+    history.push('/search');
+  }
+
+  function goToFollows() {
+    history.push('/follows');
+  }
+
+  function goToEdit() {
+    history.push('/myaccount');
+  }
+
+  function contact() {
+    history.push(mailto);
+  }
 
   useEffect(() => {
     setBusy(true);
@@ -81,6 +110,7 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
         setPortfolio(userData.projects);
         setFollowers(userData.followersCount);
         setFollowing(userData.followingCount);
+        setGithub(userData.github);
         setBusy(false);
 
         // disable button
@@ -94,7 +124,6 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
         }
       });
   }, []);
-  let mailto = 'mailto:' + username;
 
   const followHandler = (e: any) => {
     e.preventDefault();
@@ -204,11 +233,26 @@ const UserView: React.FC<UserViewProps> = ({ match }) => {
             </IonRow>
           </IonGrid>
         </div>
-        <IonButton className="contact-button" shape="round" href={mailto}>
-          CONTACT
-          <IonRippleEffect></IonRippleEffect>
-        </IonButton>
       </IonContent>
+      <IonFab vertical="bottom" horizontal="end" slot="fixed">
+        <IonFabButton>
+          <IonIcon icon={arrowBackCircle} />
+        </IonFabButton>
+        <IonFabList side="start">
+          <IonFabButton>
+            <IonIcon icon={logOutOutline} onClick={logoutUser} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={starOutline} onClick={goToFollows} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={personCircleOutline} onClick={goToEdit} />
+          </IonFabButton>
+          <IonFabButton href={mailto}>
+            <IonIcon icon={mailOutline} />
+          </IonFabButton>
+        </IonFabList>
+      </IonFab>
     </IonPage>
   );
 };

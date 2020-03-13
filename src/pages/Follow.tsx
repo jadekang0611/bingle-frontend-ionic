@@ -15,13 +15,26 @@ import {
   IonRow,
   IonCol,
   IonChip,
-  IonLoading
+  IonLoading,
+  IonIcon,
+  IonFab,
+  IonFabButton,
+  IonFabList
 } from '@ionic/react';
+import {
+  arrowBackCircle,
+  logOutOutline,
+  search,
+  starOutline,
+  personCircleOutline
+} from 'ionicons/icons';
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebaseConfig';
 import { people } from './data/dummy-data';
 import { followingPeople } from './data/dummy-data-following';
 import './Follow.css';
+import { logoutUser } from '../firebaseConfig';
+import { useHistory } from 'react-router-dom';
 
 function useForceUpdate() {
   const [value, setValue] = useState(0);
@@ -87,6 +100,19 @@ const Follow: React.FC = () => {
   const [busy, setBusy] = useState<boolean>(false);
   const forceUpdate = useForceUpdate();
 
+  const history = useHistory();
+
+  function goToSearch() {
+    history.push('/search');
+  }
+
+  function goToFollows() {
+    history.push('/follows');
+  }
+
+  function goToEdit() {
+    history.push('/myaccount');
+  }
   useEffect(() => {
     setBusy(true);
     if (auth !== null) {
@@ -233,6 +259,25 @@ const Follow: React.FC = () => {
           })}
         </IonList>
       </IonContent>
+      <IonFab vertical="bottom" horizontal="end" slot="fixed">
+        <IonFabButton>
+          <IonIcon icon={arrowBackCircle} />
+        </IonFabButton>
+        <IonFabList side="start">
+          <IonFabButton>
+            <IonIcon icon={logOutOutline} onClick={logoutUser} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={search} onClick={goToSearch} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={starOutline} onClick={goToFollows} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={personCircleOutline} onClick={goToEdit} />
+          </IonFabButton>
+        </IonFabList>
+      </IonFab>
     </IonPage>
   );
 };

@@ -29,11 +29,9 @@ import person10 from './image/avatars/person10.png';
 //
 import { IonReactRouter } from '@ionic/react-router';
 import { logoutUser } from '../firebaseConfig';
-import { people } from './data/dummy-data';
 import { useHistory } from 'react-router-dom';
 import {
   arrowBackCircle,
-  homeOutline,
   logOutOutline,
   search,
   starOutline,

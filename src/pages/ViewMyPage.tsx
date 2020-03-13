@@ -17,11 +17,24 @@ import {
   IonHeader,
   IonToolbar,
   IonLoading,
-  IonRouterLink
+  IonRouterLink,
+  IonIcon,
+  IonFab,
+  IonFabButton,
+  IonFabList
 } from '@ionic/react';
+import {
+  arrowBackCircle,
+  logOutOutline,
+  search,
+  starOutline,
+  personCircleOutline
+} from 'ionicons/icons';
 import './ViewMyPage.css';
 import person3 from './image/avatars/person3.png';
 import { RouteComponentProps } from 'react-router';
+import { logoutUser } from '../firebaseConfig';
+import { useHistory } from 'react-router-dom';
 
 interface ViewMyPageProps
   extends RouteComponentProps<{
@@ -44,6 +57,19 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
   ]);
   const [following, setFollowing] = useState('');
   const [followers, setFollowers] = useState('');
+  const history = useHistory();
+
+  function goToSearch() {
+    history.push('/search');
+  }
+
+  function goToFollows() {
+    history.push('/follows');
+  }
+
+  function goToEdit() {
+    history.push('/myaccount');
+  }
 
   useEffect(() => {
     setBusy(true);
@@ -163,11 +189,26 @@ const ViewMyPage: React.FC<ViewMyPageProps> = ({ match }) => {
             </IonRow>
           </IonGrid>
         </div>
-        <IonButton className="my-contact-button" shape="round" disabled>
-          CONTACT
-          <IonRippleEffect></IonRippleEffect>
-        </IonButton>
       </IonContent>
+      <IonFab vertical="bottom" horizontal="end" slot="fixed">
+        <IonFabButton>
+          <IonIcon icon={arrowBackCircle} />
+        </IonFabButton>
+        <IonFabList side="start">
+          <IonFabButton>
+            <IonIcon icon={logOutOutline} onClick={logoutUser} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={search} onClick={goToSearch} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={starOutline} onClick={goToFollows} />
+          </IonFabButton>
+          <IonFabButton>
+            <IonIcon icon={personCircleOutline} onClick={goToEdit} />
+          </IonFabButton>
+        </IonFabList>
+      </IonFab>
     </IonPage>
   );
 };
